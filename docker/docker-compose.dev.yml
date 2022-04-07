@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  frontend:
+    image: taller-grado-frontend
+    build:
+      context: ../
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ../:/usr/src/app
+    ports:
+      - 3001:3000
+    networks:
+      - frontend
+networks:
+  frontend:
+    external:
+      name: frontend
