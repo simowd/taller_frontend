@@ -8,9 +8,12 @@ services:
     volumes:
       - ../:/usr/src/app
     ports:
-      - 3001:3000
+      - 3000:3000
     networks:
       - frontend
+    environment:
+      - name=value
+    tty: true
 networks:
   frontend:
     external:
