@@ -1,11 +1,11 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-//import Login from './pages/Login';
+import { stringTranslate, translate } from './i18n';
 
 function App() {
+  console.log(stringTranslate('username'));
   return (
     <div>
-      <FormattedMessage id='login' />
+      { translate('password') }
     </div>
   );
 }
