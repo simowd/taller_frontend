@@ -1,9 +1,11 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+//import Login from './pages/Login';
 
 function App() {
   return (
     <div>
-      Hello project
+      <FormattedMessage id='login' />
     </div>
   );
 }
