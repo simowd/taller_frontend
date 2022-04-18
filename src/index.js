@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from 'react-redux';
-import store from './providers';
+import store from './reducers';
 import { startAxios } from './utils/axios.conf';
 import { ChakraProvider } from '@chakra-ui/react';
 import { I18nProvider, LOCALES } from './i18n';

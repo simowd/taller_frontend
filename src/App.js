@@ -1,12 +1,23 @@
-import React from 'react';
-import { stringTranslate, translate } from './i18n';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { loadUser } from './reducers/user_reducer';
 
 function App() {
-  console.log(stringTranslate('username'));
+  //Redux variable
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  });
+
   return (
-    <div>
-      { translate('password') }
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<div>Chau</div>}>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
