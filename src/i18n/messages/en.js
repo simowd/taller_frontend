@@ -1,9 +1,19 @@
 import { LOCALES } from '../constants';
+import flatten from 'flat';
 
-export default {
-  [LOCALES.ENGLISH]: {
+const strings = {
+  username: 'Username',
+  password: 'Password',
+  navbar: {
+    closeNavbar: 'Close Navbar Menu',
+    openNavbar: 'Open Navbar Menu',
     login: 'Log in',
-    username: 'Username',
-    password: 'Password'
+    signup: 'Sign Up'
   }
 };
+
+const translation = {
+  [LOCALES.ENGLISH]: flatten(strings)
+};
+
+export default translation;

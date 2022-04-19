@@ -6,6 +6,10 @@ import store from './reducers';
 import { startAxios } from './utils/axios.conf';
 import { ChakraProvider } from '@chakra-ui/react';
 import { I18nProvider, LOCALES } from './i18n';
+import theme from './utils/customTheme';
+
+import '@fontsource/raleway';
+import '@fontsource/roboto';
 
 //Start Axios configuration
 startAxios();
@@ -15,7 +19,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <I18nProvider locale={LOCALES.ENGLISH}>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <App />
         </ChakraProvider>
       </I18nProvider>
