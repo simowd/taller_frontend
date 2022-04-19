@@ -1,11 +1,12 @@
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import LoginForm from '../components/Login/LoginForm';
 
 const Login = () => {
-  return(
-    <div>
+  return (
+    <Flex justifyContent={'center'} alignContent='center'>
       <LoginForm />
-    </div>
+    </Flex>
   );
 };
 

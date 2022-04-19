@@ -9,6 +9,12 @@ const strings = {
     openNavbar: 'Open Navbar Menu',
     login: 'Log in',
     signup: 'Sign Up'
+  },
+  login: {
+    username: 'Username',
+    password: 'Password',
+    login: 'Log in',
+    loading: 'Loading'
   }
 };
 

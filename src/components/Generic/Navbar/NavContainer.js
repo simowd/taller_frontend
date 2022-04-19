@@ -5,7 +5,7 @@ import AuthLinks from './AuthLinks';
 const NavContainer = () => {
   return (
     <Box>
-      <Flex bg={useColorModeValue('white', 'gray.800')}
+      <Flex bg={useColorModeValue('#FAF7F7', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
