@@ -1,24 +1,15 @@
 import loginService from '../services/login';
-import { createToast } from './toast_reducer';
 
 export const loginUser = (content) => {
   return async (dispatch) => {
-    try {
-      const response = await loginService.login(content);
-      dispatch({
-        type: 'SET_USER',
-        data: response.data
-      });
-    }
-    catch (error) {
-      //Setting up error data
-      const error_data = {
-        data: error.response.data,
-        status: error.response.status,
-      };
+    const response = await loginService.login(content);
 
-      dispatch(createToast(error_data, 'error', 'login'));
-    }
+    window.localStorage.setItem('user', JSON.stringify(response.data));
+
+    dispatch({
+      type: 'SET_USER',
+      data: response.data
+    });
   };
 };
 

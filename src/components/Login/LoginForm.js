@@ -5,14 +5,33 @@ import { stringTranslate, translate } from '../../i18n/message_handle';
 import * as Yup from 'yup';
 import { loginUser } from '../../reducers/user_reducer';
 import { useDispatch } from 'react-redux';
+import { useToastHook } from '../../hooks/Toast';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
 
   const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
+  const [state, newToast] = useToastHook();
+  const navigate = useNavigate();
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = async (values, actions) => {
     const loginValues = values;
-    dispatch(loginUser(loginValues));
+    try {
+      await dispatch(loginUser(loginValues));
+      navigate('/s/');
+    }
+    catch (error) {
+      //Setting up error data
+      const error_data = {
+        type: 'error',
+        status: error.response.status,
+        endpoint: 'login'
+      };
+
+      newToast(error_data);
+      
+    }
     //Reset Form
     actions.resetForm();
     actions.setSubmitting(false);
@@ -20,7 +39,7 @@ const LoginForm = () => {
 
   //Setting up yup schema
   const yup_login = Yup.object({
-    username: Yup.string().max(50, stringTranslate('forms.max_length', {length: 50})).required(stringTranslate('forms.required')),
+    username: Yup.string().max(50, stringTranslate('forms.max_length', { length: 50 })).required(stringTranslate('forms.required')),
     password: Yup.string().required(stringTranslate('forms.required')),
   });
 

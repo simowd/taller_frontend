@@ -11,6 +11,7 @@ const stringTranslate = (id, value = {}) => {
 };
 
 const cache = createIntlCache();
+
 const intl = createIntl({
   locale: LOCALES.ENGLISH,
   messages: language_messages[LOCALES.ENGLISH]
