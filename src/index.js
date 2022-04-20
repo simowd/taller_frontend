@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './reducers';
-import { startAxios } from './utils/axios.conf';
 import { ChakraProvider } from '@chakra-ui/react';
 import { I18nProvider, LOCALES } from './i18n';
 import theme from './utils/customTheme';
@@ -12,7 +11,6 @@ import '@fontsource/raleway';
 import '@fontsource/roboto';
 
 //Start Axios configuration
-startAxios();
 
 //Setup App render
 ReactDOM.render(

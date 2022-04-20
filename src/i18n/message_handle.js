@@ -1,5 +1,7 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { createIntl, createIntlCache, FormattedMessage, useIntl } from 'react-intl';
+import { LOCALES } from './constants';
+import language_messages from './messages';
 
 const translate = (id, value = {}) => <FormattedMessage id={id} values={{ ...value }} />;
 
@@ -8,4 +10,10 @@ const stringTranslate = (id, value = {}) => {
   return(intl.formatMessage({ id: id }, { ...value }));
 };
 
-export { translate, stringTranslate };
+const cache = createIntlCache();
+const intl = createIntl({
+  locale: LOCALES.ENGLISH,
+  messages: language_messages[LOCALES.ENGLISH]
+}, cache);
+
+export { translate, stringTranslate, intl };

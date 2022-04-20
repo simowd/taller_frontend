@@ -1,23 +1,37 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
-import { Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input } from '@chakra-ui/react';
-import { yup_login } from '../../utils/yup_schemas';
+import { Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input } from '@chakra-ui/react';
 import { stringTranslate, translate } from '../../i18n/message_handle';
+import * as Yup from 'yup';
+import { loginUser } from '../../reducers/user_reducer';
+import { useDispatch } from 'react-redux';
 
 const LoginForm = () => {
+
+  const dispatch = useDispatch();
+
   const onSubmit = (values, actions) => {
-    console.log(values);
+    const loginValues = values;
+    dispatch(loginUser(loginValues));
+    //Reset Form
+    actions.resetForm();
     actions.setSubmitting(false);
   };
 
+  //Setting up yup schema
+  const yup_login = Yup.object({
+    username: Yup.string().max(50, stringTranslate('forms.max_length', {length: 50})).required(stringTranslate('forms.required')),
+    password: Yup.string().required(stringTranslate('forms.required')),
+  });
+
   return (
-    <Flex bg={'white'} px={'5rem'} py={'5rem'} rounded={'lg'} m={'5rem'} flexDirection={'column'}>
+    <Flex bg={'white'} px={'5rem'} pb={'8rem'} pt={'5rem'} rounded={'lg'} m={'5rem'} flexDirection={'column'}>
       <Flex justifyContent={'center'}>
         <Heading >
           {stringTranslate('login.login').toUpperCase()}
         </Heading>
       </Flex>
-      <Flex px={'3rem'} pt={'3rem'}>
+      <Flex px={'7rem'} pt={'4rem'}>
         <Formik initialValues={{
           username: '',
           password: ''
@@ -37,6 +51,7 @@ const LoginForm = () => {
                   </FormControl>
                 )}
               </Field>
+              <Box py={'1rem'}></Box>
               <Field name='password'>
                 {({ field, form }) => (
                   <FormControl isInvalid={form.errors.password && form.touched.password}>

@@ -1,13 +1,24 @@
 import loginService from '../services/login';
+import { createToast } from './toast_reducer';
 
 export const loginUser = (content) => {
   return async (dispatch) => {
-    const response = await loginService.login(content);
-    console.log(response);
-    dispatch({
-      type: 'SET_USER',
-      data: content
-    });
+    try {
+      const response = await loginService.login(content);
+      dispatch({
+        type: 'SET_USER',
+        data: response.data
+      });
+    }
+    catch (error) {
+      //Setting up error data
+      const error_data = {
+        data: error.response.data,
+        status: error.response.status,
+      };
+
+      dispatch(createToast(error_data, 'error', 'login'));
+    }
   };
 };
 
@@ -44,7 +55,6 @@ const reducer = (state = null, action) => {
   case ('LOAD_USER'):
     return action.data;
   }
-
   return state;
 };
 
