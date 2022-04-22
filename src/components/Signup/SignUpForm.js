@@ -30,7 +30,7 @@ const SignUpForm = () => {
       const error_data = {
         type: 'error',
         status: error.response.status,
-        endpoint: 'login'
+        endpoint: 'signup'
       };
 
       newToast(error_data);

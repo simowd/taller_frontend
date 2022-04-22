@@ -40,6 +40,9 @@ const strings = {
     login: {
       unauthorized: 'Wrong password, try again.',
       not_found: 'User does not exist.'
+    },
+    signup: {
+      already_exists: 'The selected username already exists'
     }
   }
 };
