@@ -9,8 +9,8 @@ const CountrySelect = ({field, form}) => {
   const intl = useIntl();
   return(
     <FormControl isRequired isInvalid={form.errors.country && form.touched.country}>
-      <FormLabel htmlFor='countries'> { translate('auth.country')} </FormLabel>
-      <Select {...field} id={'countries'} variant={'outline'} placeholder={stringTranslate('auth.select_country')} defaultValue='bo'>
+      <FormLabel htmlFor='country'> { translate('auth.country')} </FormLabel>
+      <Select {...field} id={'country'} variant={'outline'} placeholder={stringTranslate('auth.select_country')}>
         {
           countries.map((country) => {
             return (
@@ -19,7 +19,7 @@ const CountrySelect = ({field, form}) => {
           })
         }
       </Select>
-      <FormErrorMessage> {form.errors.language} </FormErrorMessage>
+      <FormErrorMessage> {form.errors.country} </FormErrorMessage>
     </FormControl>
   );
 };

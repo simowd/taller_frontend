@@ -6,8 +6,8 @@ import languages from '../../utils/data/languages';
 const LanguageSelect = ({field, form}) => {
   return(
     <FormControl isRequired isInvalid={form.errors.language && form.touched.language}>
-      <FormLabel htmlFor='languages'> { translate('auth.language')} </FormLabel>
-      <Select {...field} id={'languages'} variant={'outline'} placeholder={stringTranslate('auth.select_country')} defaultValue='bo'>
+      <FormLabel htmlFor='language'> { translate('auth.language')} </FormLabel>
+      <Select {...field} id={'language'} variant={'outline'} placeholder={stringTranslate('auth.select_language')}>
         {
           languages.map((language) => {
             return (

@@ -26,7 +26,8 @@ const strings = {
     name: 'Name',
     last_name: 'Last Name',
     email: 'E-mail',
-    repeat_password: 'Repeat Password'
+    repeat_password: 'Repeat Password',
+    account_created: 'Account created successfully'
   },
   forms: {
     required: 'Required',

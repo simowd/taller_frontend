@@ -20,24 +20,29 @@ export const useToastHook = () => {
     if (state) {
       const { type, status, endpoint } = state;
       info.status = type;
-
       if (status === 500) {
         info.title = intl.formatMessage('errors.server_error');
       }
-      if (endpoint === 'login') {
-        if (status === 404) {
-          info.title = intl.formatMessage({ id: 'errors.login.not_found' });
+      else if (info.status === 'error') {
+        if (endpoint === 'login') {
+          if (status === 404) {
+            info.title = intl.formatMessage({ id: 'errors.login.not_found' });
+          }
+          else if (status === 401) {
+            info.title = intl.formatMessage({ id: 'errors.login.unauthorized' });
+          }
         }
-        if (status === 401) {
-          info.title = intl.formatMessage({ id: 'errors.login.unauthorized' });
+        if (endpoint === 'signup') {
+          if (status === 409) {
+            info.title = intl.formatMessage({ id: 'errors.signup.already_exists' });
+          }
         }
       }
-      if (endpoint === 'signup') {
-        if (status === 409) {
-          info.title = intl.formatMessage({ id: 'errors.signup.already_exists' });
+      else if (info.status === 'success') {
+        if (endpoint === 'signup'){
+          info.title = intl.formatMessage({ id: 'auth.account_created' });
         }
       }
-
       toast(info);
     }
   }, [state, toast]);

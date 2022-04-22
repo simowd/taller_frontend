@@ -1,4 +1,5 @@
 import loginService from '../services/login';
+import userService from '../services/user';
 
 export const loginUser = (content) => {
   return async (dispatch) => {
@@ -8,6 +9,17 @@ export const loginUser = (content) => {
 
     dispatch({
       type: 'SET_USER',
+      data: response.data
+    });
+  };
+};
+
+export const createUser = (content) => {
+  return async (dispatch) => {
+    const response = await userService.createUser(content);
+
+    dispatch({
+      type: 'CREATE_USER',
       data: response.data
     });
   };
@@ -45,6 +57,8 @@ const reducer = (state = null, action) => {
     return null;
   case ('LOAD_USER'):
     return action.data;
+  case ('CREATE_USER'):
+    return null;
   }
   return state;
 };
