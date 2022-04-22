@@ -7,6 +7,7 @@ import { loginUser } from '../../reducers/user_reducer';
 import { useDispatch } from 'react-redux';
 import { useToastHook } from '../../hooks/Toast';
 import { useNavigate } from 'react-router-dom';
+import InputField from '../Generic/InputField';
 
 const LoginForm = () => {
 
@@ -47,10 +48,10 @@ const LoginForm = () => {
     <Flex bg={'white'} px={'5rem'} pb={'8rem'} pt={'5rem'} rounded={'lg'} m={'5rem'} flexDirection={'column'}>
       <Flex justifyContent={'center'}>
         <Heading >
-          {stringTranslate('login.login').toUpperCase()}
+          {stringTranslate('auth.login').toUpperCase()}
         </Heading>
       </Flex>
-      <Flex px={'7rem'} pt={'4rem'}>
+      <Flex px={'7rem'} pt={'4rem'} justify={'center'}>
         <Formik initialValues={{
           username: '',
           password: ''
@@ -61,13 +62,7 @@ const LoginForm = () => {
             <Form>
               <Field name='username'>
                 {({ field, form }) => (
-                  <FormControl isInvalid={form.errors.username && form.touched.username}>
-                    <FormLabel htmlFor='username'>
-                      {translate('login.username')}
-                    </FormLabel>
-                    <Input {...field} id='username' autoComplete='off' />
-                    <FormErrorMessage> {form.errors.username} </FormErrorMessage>
-                  </FormControl>
+                  <InputField name='username' field={field} form={form}/>
                 )}
               </Field>
               <Box py={'1rem'}></Box>
@@ -75,7 +70,7 @@ const LoginForm = () => {
                 {({ field, form }) => (
                   <FormControl isInvalid={form.errors.password && form.touched.password}>
                     <FormLabel htmlFor='password'>
-                      {translate('login.password')}
+                      {translate('auth.password')}
                     </FormLabel>
                     <Input {...field} id='password' autoComplete='off' type={'password'} />
                     <FormErrorMessage> {form.errors.password} </FormErrorMessage>
@@ -84,8 +79,8 @@ const LoginForm = () => {
                 }
               </Field>
               <Flex justifyContent={'center'} pt={'2rem'}>
-                <Button colorScheme={'gray'} isLoading={props.isSubmitting} loadingText={stringTranslate('login.loading')} type='submit' size={'md'}>
-                  {translate('login.login')}
+                <Button colorScheme={'gray'} isLoading={props.isSubmitting} loadingText={stringTranslate('auth.loading')} type='submit' size={'md'}>
+                  {translate('auth.login')}
                 </Button>
               </Flex>
             </Form>

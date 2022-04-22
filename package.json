@@ -16,6 +16,8 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.26.1",
+    "countries-list": "^2.6.1",
+    "country-flag-icons": "^1.4.25",
     "flat": "^5.0.2",
     "formik": "^2.2.9",
     "framer-motion": "^6.2.9",

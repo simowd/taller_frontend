@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Navbar } from './components/Generic/Navbar';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 import { loadUser } from './reducers/user_reducer';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <Route path='/' element={<Navbar />}>
           <Route index/>
           <Route path='signin' element={ <Login /> }/>
-          <Route path='signup' />
+          <Route path='signup' element={ <SignUp /> }/>
         </Route>
         <Route path='/s' element={<div>Chau</div>}>
         </Route>

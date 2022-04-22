@@ -1,13 +1,13 @@
 import { Flex } from '@chakra-ui/react';
 import React from 'react';
-import LoginForm from '../components/Login/LoginForm';
+import SignUpForm from '../components/Signup/SignUpForm';
 
-const Login = () => {
+const SignUp = () => {
   return (
     <Flex justifyContent={'center'} align={'center'}>
-      <LoginForm />
+      <SignUpForm />
     </Flex>
   );
 };
 
-export default Login;
+export default SignUp;
