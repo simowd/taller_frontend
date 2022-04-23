@@ -4,19 +4,18 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './reducers';
 import { ChakraProvider } from '@chakra-ui/react';
-import { I18nProvider, LOCALES } from './i18n';
+import { I18nProvider } from './i18n';
 import theme from './utils/customTheme';
 
 import '@fontsource/raleway';
 import '@fontsource/roboto';
 
 //Start Axios configuration
-
 //Setup App render
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <I18nProvider locale={LOCALES.ENGLISH}>
+      <I18nProvider>
         <ChakraProvider theme={theme}>
           <App />
         </ChakraProvider>
