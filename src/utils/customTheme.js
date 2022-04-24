@@ -3,8 +3,8 @@ import { mode } from '@chakra-ui/theme-tools';
 
 const theme = extendTheme({
   fonts: {
-    heading: 'Roboto, sans-serif',
-    body: 'Roboto, sans-serif'
+    heading: 'Ubuntu, sans-serif',
+    body: 'Ubuntu, sans-serif'
   },
   styles: {
     global: (props) => ({
