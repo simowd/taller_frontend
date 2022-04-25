@@ -17,7 +17,7 @@ function App() {
   //Setup react routes
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes>        
         <Route path='/' element={<Navbar />}>
           <Route index/>
           <Route path='signin' element={ <Login /> }/>

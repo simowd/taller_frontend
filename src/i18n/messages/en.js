@@ -45,6 +45,9 @@ const strings = {
     signup: {
       already_exists: 'The selected username already exists'
     }
+  },
+  accesibility: {
+    skip_content: 'Skip to content'
   }
 };
 
