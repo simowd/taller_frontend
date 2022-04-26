@@ -12,7 +12,7 @@ const NavContainer = () => {
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
+        borderColor={useColorModeValue('gray.300', 'gray.900')}
         align={'center'}>
         <Spacer />
         <AuthLinks />

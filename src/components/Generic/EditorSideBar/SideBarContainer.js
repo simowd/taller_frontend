@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Icon } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Icon, VStack } from '@chakra-ui/react';
 import { SiPython } from 'react-icons/si';
 
 import { RiLogoutBoxLine } from 'react-icons/ri';
@@ -18,10 +18,10 @@ const SideBarContainer = () => {
       <GridItem display='flex' justifyContent={'center'}>
         <SideBarContent />
       </GridItem>
-      <GridItem display='flex' justifyContent={'center'}>
-        <Box>
+      <GridItem display='flex' justifyContent={'center'} pb='0.5rem'>
+        <VStack spacing={10} align='stretch'>
           <IconLink icon={RiLogoutBoxLine} name={'logout'} />
-        </Box>
+        </VStack>
       </GridItem>
     </Grid>
   );
