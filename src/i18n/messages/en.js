@@ -10,6 +10,13 @@ const strings = {
     login: 'Log in',
     signup: 'Sign Up'
   },
+  sidebar: {
+    home: 'Homepage',
+    files: 'Files',
+    account: 'Account',
+    settings: 'Settings',
+    logout: 'Logout'
+  },
   auth: {
     username: 'Username',
     password: 'Password',
