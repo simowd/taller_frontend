@@ -9,6 +9,7 @@ const editorOptions = {
   minimap: {
     enabled: false,
   },
+  lineNumbers: 'off',
   readOnly: true,
   tabCompletion: 'off',
   wordWrap: 'on',

@@ -3,9 +3,8 @@ import Editor, { loader } from '@monaco-editor/react';
 import React, { useRef } from 'react';
 import editorOptions from './editorOptions';
 
-const EditorInstance = ({ user, data }) => {
+const ConsoleInstance = ({ user, data='' }) => {
   const monacoRef = useRef(null);
-
 
   //Send the data to Backend with Socket.IO
   const onEditorChange = (value, event) => {
@@ -73,4 +72,4 @@ const EditorInstance = ({ user, data }) => {
   );
 };
 
-export default EditorInstance;
+export default ConsoleInstance;

@@ -1,4 +1,5 @@
 const editorOptions = {
+  autoIndent: 'none',
   accessibilitySupport: 'on',
   autoClosingBrackets: 'never',
   bracketPairColorization: 'on',
