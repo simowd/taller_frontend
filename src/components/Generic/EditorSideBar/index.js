@@ -13,7 +13,7 @@ const EditorSideBar = () => {
         <SideBarContainer />
       </GridItem>
       <GridItem>
-        <Box background={'red'} >
+        <Box>
           <Outlet />
         </Box>
       </GridItem>

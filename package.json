@@ -24,6 +24,8 @@
     "flat": "^5.0.2",
     "formik": "^2.2.9",
     "framer-motion": "^6.2.9",
+    "monaco-editor": "^0.33.0",
+    "monaco-editor-nls": "^3.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",

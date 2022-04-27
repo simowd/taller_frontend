@@ -1,3 +1,3 @@
-const API_BACKEND_URL = process.env.REACT_APP_API_BACKEND_URL;
+const API_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export { API_BACKEND_URL };
