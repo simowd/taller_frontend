@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
 import store from './reducers';
@@ -10,9 +10,10 @@ import theme from './utils/customTheme';
 import '@fontsource/raleway';
 import '@fontsource/roboto';
 
-//Start Axios configuration
 //Setup App render
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <I18nProvider>
@@ -22,6 +23,5 @@ ReactDOM.render(
       </I18nProvider>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
 );
 
