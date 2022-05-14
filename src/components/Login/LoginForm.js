@@ -20,7 +20,7 @@ const LoginForm = () => {
     const loginValues = values;
     try {
       await dispatch(loginUser(loginValues));
-      navigate('/s/');
+      navigate('/s/menu');
     }
     catch (error) {
       //Setting up error data

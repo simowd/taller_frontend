@@ -5,7 +5,7 @@ import { stringTranslate } from '../../../i18n';
 
 const IconLink = ({ icon, name }) => {
   return(
-    <Link as={RouterLink} variant={'link'} to='/e' aria-label={stringTranslate(`sidebar.${name}`)}>
+    <Link as={RouterLink} variant={'link'} to={`/s/${name}`} aria-label={stringTranslate(`sidebar.${name}`)}>
       <Icon as={icon} w={8} h={8} color='#EBEBEC' />
     </Link>
   );
