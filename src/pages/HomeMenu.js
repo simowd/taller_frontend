@@ -11,7 +11,6 @@ const HomeMenu = () => {
   useEffect(() => {
     const data = async () => {
       if(user){
-        console.log('Ingresa');
         const data = await getProjects();
         setProjects(data.data);
       }
