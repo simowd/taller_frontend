@@ -8,6 +8,11 @@ export const loginUser = (content) => {
 
     window.localStorage.setItem('user', JSON.stringify(response.data));
 
+    api.interceptors.request.use(function (config) {
+      config.headers.Authorization = response.data.token.token;
+      return config;
+    });
+
     dispatch({
       type: 'SET_USER',
       data: response.data
