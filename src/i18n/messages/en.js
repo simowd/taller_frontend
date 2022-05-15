@@ -20,7 +20,8 @@ const strings = {
   home: {
     edit: 'Edit folder options',
     download: 'Download folder',
-    delete: 'Delete folder'
+    delete: 'Delete folder',
+    my_projects: 'My projects'
   },
   auth: {
     username: 'Username',
