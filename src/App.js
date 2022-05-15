@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import EditorSideBar from './components/Generic/EditorSideBar';
-import { Navbar } from './components/Generic/Navbar';
+import Navbar from './components/Generic/Navbar';
 import MainSideBar from './components/Generic/MainSideBar';
 import Editor from './pages/Editor';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { loadUser } from './reducers/user_reducer';
+import HomeMenu from './pages/HomeMenu';
 
 function App() {
   //Redux variable
@@ -27,7 +28,8 @@ function App() {
           <Route path='signup' element={<SignUp />} />
         </Route>
         <Route path='/s' element={<MainSideBar />}>
-
+          <Route index element={<Navigate to='/s/menu'/>}/>
+          <Route path='menu' element={<HomeMenu />}/>
         </Route>
         <Route path='/e' element={<EditorSideBar />}>
           <Route index />
