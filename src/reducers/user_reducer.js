@@ -1,5 +1,6 @@
 import loginService from '../services/login';
 import userService from '../services/user';
+import api from '../utils/api';
 
 export const loginUser = (content) => {
   return async (dispatch) => {
@@ -37,6 +38,10 @@ export const loadUser = () => {
   const loggedUserJSON = window.localStorage.getItem('user');
   if (loggedUserJSON) {
     const userParsed = JSON.parse(loggedUserJSON);
+    api.interceptors.request.use(function (config) {
+      config.headers.Authorization = userParsed.token.token;
+      return config;
+    });
     return {
       type: 'LOAD_USER',
       data: userParsed

@@ -8,7 +8,7 @@ import SideBarContainer from './SideBarContainer';
 const MainSideBar = () => {
 
   return (<>
-    <Grid h='100vh' w='100%' templateColumns='15rem 1fr'>
+    <Grid h='100vh' w='100%' templateColumns='15rem 1fr' pos="fixed">
       <SkipNavLink> {stringTranslate('accesibility.skip_content')} </SkipNavLink>
       <GridItem>
         <SideBarContainer />

@@ -5,7 +5,6 @@ import { stringTranslate } from '../../../i18n';
 
 const IconLink = ({ icon, name }) => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <Link as={RouterLink} variant={'link'} to={`/s/${name}`} aria-label={stringTranslate(`sidebar.${name}`)}>

@@ -17,6 +17,11 @@ const strings = {
     settings: 'Settings',
     logout: 'Logout'
   },
+  home: {
+    edit: 'Edit folder options',
+    download: 'Download folder',
+    delete: 'Delete folder'
+  },
   auth: {
     username: 'Username',
     password: 'Password',
