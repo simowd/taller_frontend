@@ -23,7 +23,12 @@ const strings = {
     delete: 'Delete folder',
     my_projects: 'My projects',
     delete_head: 'Delete Project',
-    delete_message: 'Are you sure you want to delete the project named {name}'
+    delete_message: 'Are you sure you want to delete the project named {name}?',
+    update_head: 'Update Project',
+    update_message: 'Are you sure you want to update the project named {name}?',
+    folder_name: 'Project Name',
+    private: 'Private',
+    update_success: 'Updated folder successfully'
   },
   auth: {
     username: 'Username',
@@ -50,7 +55,9 @@ const strings = {
     email: 'Must be an email',
     repeat_password: 'Password must match',
     cancel: 'Cancel',
-    delete: 'Delete'
+    delete: 'Delete',
+    update: 'Update',
+    repeated: 'New name can\'t be old name'
   },
   errors: {
     server_error: 'Server error, try again later.',

@@ -11,7 +11,9 @@ const Projects = () => {
   const projectBuilder = () => {
     if(projects){
       const data = projects.map((project) => {
-        return <ProjectCard project={project} key={project.id_folder}/>;
+        if (project.folder_name !== 'Sketchbook'){
+          return <ProjectCard project={project} key={project.id_folder}/>;
+        }
       });
       return (data);
     }

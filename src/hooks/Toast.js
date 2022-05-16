@@ -53,6 +53,9 @@ export const useToastHook = () => {
         if (endpoint === 'signup'){
           info.title = intl.formatMessage({ id: 'auth.account_created' });
         }
+        if (endpoint === 'home'){
+          info.title = intl.formatMessage({ id: 'home.update_success' });
+        }
       }
       toast(info);
     }
