@@ -7,4 +7,9 @@ const getProjects = async () => {
   return folders;
 };
 
-export default { getProjects };
+const deleteProject = async (projectId) => {
+  const response = await api.delete(`${projectURL}/${projectId}`);
+  return response;
+};
+
+export default { getProjects, deleteProject };
