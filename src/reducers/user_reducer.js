@@ -31,14 +31,6 @@ export const createUser = (content) => {
   };
 };
 
-export const clearUser = () => {
-  window.localStorage.removeItem('user');
-  return {
-    clearUser: 'CLEAR_USER',
-    data: ''
-  };
-};
-
 export const loadUser = () => {
   const loggedUserJSON = window.localStorage.getItem('user');
   if (loggedUserJSON) {
@@ -64,6 +56,8 @@ const reducer = (state = null, action) => {
   case ('SET_USER'):
     return action.data;
   case ('CLEAR_USER'):
+    window.localStorage.removeItem('user');
+    api.interceptors.request.handlers.forEach((inter, index) => api.interceptors.request.eject(index));
     return null;
   case ('LOAD_USER'):
     return action.data;

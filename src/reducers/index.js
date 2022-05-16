@@ -4,13 +4,14 @@ import thunk from 'redux-thunk';
 import user_reducer from './user_reducer';
 import project_reducer from './projects_reducer';
 
+const composeEnhancers = composeWithDevTools({ trace: true });
 
 const reducer = combineReducers({
   user: user_reducer,
   projects: project_reducer
 });
 
-const store = createStore(reducer, composeWithDevTools(
+const store = createStore(reducer, composeEnhancers(
   applyMiddleware(thunk),
 ));
 

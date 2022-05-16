@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { stringTranslate } from '../../i18n';
 import LoadingProjectCard from './LoadingProjectCard';
 import ProjectCard from './ProjectCard';
+import ProjectCardSketchbook from './ProjectCardSketchbook';
 
 const Projects = () => {
   const projects = useSelector((state) => state.projects);
@@ -13,6 +14,9 @@ const Projects = () => {
       const data = projects.map((project) => {
         if (project.folder_name !== 'Sketchbook'){
           return <ProjectCard project={project} key={project.id_folder}/>;
+        }
+        else {
+          return <ProjectCardSketchbook project={project} key={project.id_folder}/>;
         }
       });
       return (data);

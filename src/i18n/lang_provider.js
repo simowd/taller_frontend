@@ -11,14 +11,16 @@ const LangProvider = ({ children, locale = LOCALES.ENGLISH }) => {
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(loadUser());
+    if (user === null || user === undefined) {
+      dispatch(loadUser());
+    }
   }, []);
 
-  if(user)
+  if (user)
     locale = user.locale;
 
   return (
-    <IntlProvider textComponent={Fragment} locale={ locale } messages={messages[locale]}>
+    <IntlProvider textComponent={Fragment} locale={locale} messages={messages[locale]}>
       {children}
     </IntlProvider>);
 };
