@@ -28,7 +28,6 @@ const ProjectCard = ({ project }) => {
       };
 
       newToast(error_data);
-
     }
 
   };
