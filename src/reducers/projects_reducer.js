@@ -31,6 +31,8 @@ const reducer = (state = null, action) => {
     return action.data;
   case ('DELETE_PROJECT'):
     return state.filter(folder => folder.id_folder !== action.data);
+  case('CLEAR_USER'):
+    return null;
   }
   return state;
 };
