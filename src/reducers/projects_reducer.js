@@ -3,7 +3,6 @@ import projectService from '../services/projects';
 export const loadProjects = () => {
   return async (dispatch) => {
     const response = await projectService.getProjects();
-
     dispatch({
       type: 'SET_PROJECTS',
       data: response.data,
@@ -21,6 +20,19 @@ export const deleteProject = (projectId) => {
   };
 };
 
+export const updateProject = (data, projectId) => {
+  return async (dispatch) => {
+    await projectService.updateProject(data, projectId);
+    dispatch({
+      type: 'UPDATE_PROJECT',
+      data: {
+        data: data,
+        id_project: projectId
+      },
+    });
+  };
+};
+
 const reducer = (state = null, action) => {
   switch (action.type) {
   case ('SET_PROJECTS'):
@@ -31,6 +43,8 @@ const reducer = (state = null, action) => {
     return action.data;
   case ('DELETE_PROJECT'):
     return state.filter(folder => folder.id_folder !== action.data);
+  case ('UPDATE_PROJECT'):
+    return state.map(folder => folder.id_folder === action.data.id_project ? {...folder, ...action.data.data} : folder);
   case('CLEAR_USER'):
     return null;
   }

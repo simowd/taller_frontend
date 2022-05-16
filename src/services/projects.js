@@ -12,4 +12,9 @@ const deleteProject = async (projectId) => {
   return response;
 };
 
-export default { getProjects, deleteProject };
+const updateProject = async (data, projectId) => {
+  const response = await api.put(`${projectURL}/${projectId}`, data);
+  return response;
+};
+
+export default { getProjects, deleteProject, updateProject };
