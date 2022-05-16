@@ -61,6 +61,11 @@ const strings = {
     },
     signup: {
       already_exists: 'The selected username already exists'
+    },
+    generic: {
+      not_allowed: 'Not Allowed',
+      unauthorized: 'Unauthorized',
+      not_found: 'Not found'
     }
   },
   accesibility: {

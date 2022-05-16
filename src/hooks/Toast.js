@@ -37,6 +37,17 @@ export const useToastHook = () => {
             info.title = intl.formatMessage({ id: 'errors.signup.already_exists' });
           }
         }
+        if (endpoint === 'home') {
+          if (status === 405) {
+            info.title = intl.formatMessage({ id: 'errors.generic.not_allowed'});
+          }
+          if (status === 401) {
+            info.title = intl.formatMessage({ id: 'errors.generic.unauthorized'});
+          }
+          if (status === 404) {
+            info.title = intl.formatMessage({ id: 'errors.generic.not_found'});
+          }
+        }
       }
       else if (info.status === 'success') {
         if (endpoint === 'signup'){
