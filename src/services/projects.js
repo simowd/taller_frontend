@@ -7,4 +7,4 @@ const getProjects = async () => {
   return folders;
 };
 
-export { getProjects };
+export default { getProjects };
