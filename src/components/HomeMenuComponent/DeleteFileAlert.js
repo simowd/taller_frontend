@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { stringTranslate } from '../../i18n';
 import { deleteProject } from '../../reducers/projects_reducer';
 
-const DeleteFileModal = ({ isOpen, onClose, project }) => {
+const DeleteFileAlert = ({ isOpen, onClose, project }) => {
   const [loading , setLoading] = useState(false);
   const cancelRef = React.useRef();
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const DeleteFileModal = ({ isOpen, onClose, project }) => {
         isOpen={isOpen}
         leastDestructiveRef={cancelRef}
         onClose={onClose}
+        isCentered
       >
         <AlertDialogOverlay>
           <AlertDialogContent>
@@ -48,4 +49,4 @@ const DeleteFileModal = ({ isOpen, onClose, project }) => {
   );
 };
 
-export default DeleteFileModal;
+export default DeleteFileAlert;

@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { loadUser } from './reducers/user_reducer';
 import HomeMenu from './pages/HomeMenu';
+import LogoutContainer from './components/Generic/LogoutContainer';
 
 function App() {
   //Redux variable
@@ -30,6 +31,7 @@ function App() {
         <Route path='/s' element={<MainSideBar />}>
           <Route index element={<Navigate to='/s/menu'/>}/>
           <Route path='menu' element={<HomeMenu />}/>
+          <Route path='logout' element={<LogoutContainer />} />
         </Route>
         <Route path='/e' element={<EditorSideBar />}>
           <Route index />

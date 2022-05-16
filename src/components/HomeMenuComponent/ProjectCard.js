@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { RiEditLine, RiDownload2Line, RiDeleteBinLine, RiFileCodeLine } from 'react-icons/ri';
 import { stringTranslate } from '../../i18n';
 import { downloadProject } from '../../services/file_managment';
-import DeleteFileModal from './DeleteFileModal';
+import DeleteFileModal from './DeleteFileAlert';
 
 const ProjectCard = ({ project }) => {
   const [loadingD, setLoadingD] = useState(false);
