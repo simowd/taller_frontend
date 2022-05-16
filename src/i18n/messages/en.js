@@ -21,7 +21,9 @@ const strings = {
     edit: 'Edit folder options',
     download: 'Download folder',
     delete: 'Delete folder',
-    my_projects: 'My projects'
+    my_projects: 'My projects',
+    delete_head: 'Delete Project',
+    delete_message: 'Are you sure you want to delete the project named {name}'
   },
   auth: {
     username: 'Username',
@@ -46,7 +48,9 @@ const strings = {
     required: 'Required',
     max_length: 'Must be {length, number} characters or less',
     email: 'Must be an email',
-    repeat_password: 'Password must match'
+    repeat_password: 'Password must match',
+    cancel: 'Cancel',
+    delete: 'Delete'
   },
   errors: {
     server_error: 'Server error, try again later.',
