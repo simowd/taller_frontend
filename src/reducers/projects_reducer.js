@@ -11,6 +11,16 @@ export const loadProjects = () => {
   };
 };
 
+export const deleteProject = (projectId) => {
+  return async (dispatch) => {
+    await projectService.deleteProject(projectId);
+    dispatch({
+      type: 'DELETE_PROJECT',
+      data: projectId,
+    });
+  };
+};
+
 const reducer = (state = null, action) => {
   switch (action.type) {
   case ('SET_PROJECTS'):
@@ -19,6 +29,8 @@ const reducer = (state = null, action) => {
     return null;
   case ('ADD_PROJECT'):
     return action.data;
+  case ('DELETE_PROJECT'):
+    return state.filter(folder => folder.id_folder !== action.data);
   }
   return state;
 };
