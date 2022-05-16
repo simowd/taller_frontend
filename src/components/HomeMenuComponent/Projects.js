@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { stringTranslate } from '../../i18n';
 import LoadingProjectCard from './LoadingProjectCard';
 import ProjectCard from './ProjectCard';
+import ProjectCardCreate from './ProjectCardCreate';
 import ProjectCardSketchbook from './ProjectCardSketchbook';
 
 const Projects = () => {
@@ -30,6 +31,7 @@ const Projects = () => {
     <Flex alignItems={'center'} justifyContent={'center'} alignContent={'center'} flexDirection={'column'} paddingX={'3rem'} w={'100%'} h={'100%'}>
       <Heading as='h1' size={'2xl'} py={'2.5rem'}> {stringTranslate('home.my_projects')} </ Heading>
       <SimpleGrid columns={{md: 2, lg: 3}} height={'100%'} width={'100%'} spacing={20} justifyContent={'space-between'}>
+        {projects ? <ProjectCardCreate projects={projects}/> : null}
         {projectBuilder()}
       </SimpleGrid>
     </Flex>

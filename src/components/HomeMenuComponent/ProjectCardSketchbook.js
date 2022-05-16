@@ -31,7 +31,7 @@ const ProjectCardSketchbook = ({ project }) => {
   };
 
   return (
-    <Box background={'white'} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between'>
+    <Box background={'white'} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between' boxShadow='md'>
       <HStack height={'15%'} pl={'0.5rem'} w={'100%'}>
         <Heading w='75%' as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>
         <Box>

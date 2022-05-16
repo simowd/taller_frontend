@@ -56,6 +56,9 @@ export const useToastHook = () => {
         if (endpoint === 'home'){
           info.title = intl.formatMessage({ id: 'home.update_success' });
         }
+        if (endpoint === 'create_folder'){
+          info.title = intl.formatMessage({ id: 'home.create_success' });
+        }
       }
       toast(info);
     }

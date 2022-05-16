@@ -26,9 +26,12 @@ const strings = {
     delete_message: 'Are you sure you want to delete the project named {name}?',
     update_head: 'Update Project',
     update_message: 'Are you sure you want to update the project named {name}?',
+    create_message: 'Create a new folder',
+    create_head: 'Create a project',
     folder_name: 'Project Name',
     private: 'Private',
-    update_success: 'Updated folder successfully'
+    update_success: 'Updated folder successfully',
+    create_success: 'Created folder successfully'
   },
   auth: {
     username: 'Username',
@@ -57,7 +60,9 @@ const strings = {
     cancel: 'Cancel',
     delete: 'Delete',
     update: 'Update',
-    repeated: 'New name can\'t be old name'
+    repeated: 'New name can\'t be old name',
+    create: 'Create',
+    existed: 'Folder name already exists'
   },
   errors: {
     server_error: 'Server error, try again later.',
