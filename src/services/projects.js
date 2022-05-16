@@ -17,4 +17,9 @@ const updateProject = async (data, projectId) => {
   return response;
 };
 
-export default { getProjects, deleteProject, updateProject };
+const createProject = async (data) => {
+  const response = await api.post(projectURL, data);
+  return response;
+};
+
+export default { getProjects, deleteProject, updateProject, createProject };

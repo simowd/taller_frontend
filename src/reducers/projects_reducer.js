@@ -10,6 +10,16 @@ export const loadProjects = () => {
   };
 };
 
+export const createProject = (data) => {
+  return async (dispatch) => {
+    const response = await projectService.createProject(data);
+    dispatch({
+      type: 'ADD_PROJECT',
+      data: response.data,
+    });
+  };
+};
+
 export const deleteProject = (projectId) => {
   return async (dispatch) => {
     await projectService.deleteProject(projectId);
@@ -40,7 +50,7 @@ const reducer = (state = null, action) => {
   case ('CLEAR_PROJECTS'):
     return null;
   case ('ADD_PROJECT'):
-    return action.data;
+    return state.concat(action.data);
   case ('DELETE_PROJECT'):
     return state.filter(folder => folder.id_folder !== action.data);
   case ('UPDATE_PROJECT'):
