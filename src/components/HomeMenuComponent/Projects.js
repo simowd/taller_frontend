@@ -1,17 +1,18 @@
 import { Flex, Heading, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { stringTranslate } from '../../i18n';
 import LoadingProjectCard from './LoadingProjectCard';
 import ProjectCard from './ProjectCard';
 
-const Projects = ({ projects }) => {
+const Projects = () => {
+  const projects = useSelector((state) => state.projects);
+
   const projectBuilder = () => {
     if(projects){
       const data = projects.map((project) => {
-        console.log(project);
         return <ProjectCard project={project} key={project.id_folder}/>;
       });
-      console.log(data);
       return (data);
     }
     else {

@@ -1,9 +1,9 @@
 import React from 'react';
 import Projects from './Projects';
 
-const HomeMenuComponent = ({ projects }) => {
+const HomeMenuComponent = () => {
   return (
-    <Projects projects={projects} />
+    <Projects />
   );
 };
 

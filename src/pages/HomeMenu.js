@@ -1,18 +1,17 @@
 import { SkipNavContent } from '@chakra-ui/skip-nav';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import HomeMenuComponent from '../components/HomeMenuComponent';
-import { getProjects } from '../services/projects';
+import { loadProjects } from '../reducers/projects_reducer';
 
 const HomeMenu = () => {
   const user = useSelector(state => state.user);
-  const [projects, setProjects] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const data = async () => {
       if(user){
-        const data = await getProjects();
-        setProjects(data.data);
+        dispatch(loadProjects());
       }
     };
     
@@ -22,7 +21,7 @@ const HomeMenu = () => {
   return(
     <div>
       <SkipNavContent />
-      <HomeMenuComponent projects={projects}/>
+      <HomeMenuComponent />
     </div>
   );
 };
