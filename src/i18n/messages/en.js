@@ -31,7 +31,8 @@ const strings = {
     folder_name: 'Project Name',
     private: 'Private',
     update_success: 'Updated folder successfully',
-    create_success: 'Created folder successfully'
+    create_success: 'Created folder successfully',
+    create_folder: 'Create new folder'
   },
   auth: {
     username: 'Username',

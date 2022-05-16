@@ -66,12 +66,11 @@ const UpdateFileAlert = ({ isOpen, onClose, project }) => {
             {(props) => (
               <AlertDialogContent>
                 <Form>
-                  <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                  <AlertDialogHeader ref={cancelRef} fontSize='lg' fontWeight='bold'>
                     {stringTranslate('home.update_head')}
                   </AlertDialogHeader>
                   <AlertDialogBody>
                     {stringTranslate('home.update_message', { name: project.folder_name })}
-
 
                     <Field name={'folder_name'}>
                       {({ field, form }) => (
@@ -92,7 +91,7 @@ const UpdateFileAlert = ({ isOpen, onClose, project }) => {
 
                   </AlertDialogBody>
                   <AlertDialogFooter>
-                    <Button ref={cancelRef} onClick={onClose}>
+                    <Button onClick={onClose}>
                       {stringTranslate('forms.cancel')}
                     </Button>
                     <Button colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>

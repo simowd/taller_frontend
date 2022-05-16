@@ -22,6 +22,7 @@ function App() {
         <Route path='/s' element={<MainSideBar />}>
           <Route index element={<Navigate to='/s/menu' />} />
           <Route path='menu' element={<HomeMenu />} />
+          <Route path='home' element={<Navigate to='/s/menu' />} />
           <Route path='logout' element={<LogoutContainer />} />
         </Route>
         <Route path='/e' element={<EditorSideBar />}>

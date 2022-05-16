@@ -28,7 +28,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
       //success message
       const success = {
         type: 'success',
-        endpoint: 'home'
+        endpoint: 'create_folder'
       };
       newToast(success);
     }
@@ -37,7 +37,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
       const error_data = {
         type: 'error',
         status: error.response.status,
-        endpoint: 'create_folder'
+        endpoint: 'home'
       };
       onClose();
       newToast(error_data);
@@ -66,7 +66,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
             {(props) => (
               <AlertDialogContent>
                 <Form>
-                  <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                  <AlertDialogHeader ref={cancelRef} fontSize='lg' fontWeight='bold'>
                     {stringTranslate('home.create_head')}
                   </AlertDialogHeader>
                   <AlertDialogBody>
@@ -89,7 +89,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
 
                   </AlertDialogBody>
                   <AlertDialogFooter>
-                    <Button ref={cancelRef} onClick={onClose}>
+                    <Button onClick={onClose}>
                       {stringTranslate('forms.cancel')}
                     </Button>
                     <Button colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
