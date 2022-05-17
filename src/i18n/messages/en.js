@@ -35,6 +35,9 @@ const strings = {
     create_folder: 'Create new folder',
     folder_not_found: 'Folder does not have any content'
   },
+  settings: {
+    title: 'Settings'
+  },
   auth: {
     username: 'Username',
     password: 'Password',

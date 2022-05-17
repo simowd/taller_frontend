@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useToastHook } from '../../hooks/Toast';
 import { useNavigate } from 'react-router-dom';
 import InputField from '../Generic/InputField';
+import { loadSettings } from '../../reducers/settings_reducer';
 
 const LoginForm = () => {
 
@@ -20,6 +21,7 @@ const LoginForm = () => {
     const loginValues = values;
     try {
       await dispatch(loginUser(loginValues));
+      await dispatch(loadSettings());
       navigate('/s/menu');
     }
     catch (error) {
@@ -45,7 +47,7 @@ const LoginForm = () => {
   });
 
   return (
-    <Flex bg={'white'} px={'5rem'} pb={'8rem'} pt={'5rem'} rounded={'lg'} m={'5rem'} flexDirection={'column'}>
+    <Flex bg={'white'} px={'5rem'} pb={'8rem'} pt={'5rem'} m={'5rem'} flexDirection={'column'} boxShadow='sm' borderRadius={'xl'}>
       <Flex justifyContent={'center'}>
         <Heading >
           {stringTranslate('auth.login').toUpperCase()}

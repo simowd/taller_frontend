@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { IntlProvider } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import { loadSettings } from '../reducers/settings_reducer';
 import { loadUser } from '../reducers/user_reducer';
 import { LOCALES } from './constants';
 
@@ -13,6 +14,7 @@ const LangProvider = ({ children, locale = LOCALES.ENGLISH }) => {
   useEffect(() => {
     if (user === null || user === undefined) {
       dispatch(loadUser());
+      dispatch(loadSettings());
     }
   }, []);
 

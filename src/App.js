@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import HomeMenu from './pages/HomeMenu';
 import LogoutContainer from './components/Generic/LogoutContainer';
+import Settings from './components/Settings';
 
 function App() {
   //Setup react routes
@@ -21,8 +22,9 @@ function App() {
         </Route>
         <Route path='/s' element={<MainSideBar />}>
           <Route index element={<Navigate to='/s/menu' />} />
-          <Route path='menu' element={<HomeMenu />} />
-          <Route path='home' element={<Navigate to='/s/menu' />} />
+          <Route path='home' element={<HomeMenu />} />
+          <Route path='settings' element={<Settings />} />
+          <Route path='menu' element={<Navigate to='/s/home' />} />
           <Route path='logout' element={<LogoutContainer />} />
         </Route>
         <Route path='/e' element={<EditorSideBar />}>

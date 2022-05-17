@@ -15,7 +15,7 @@ export const createProject = (data) => {
     const response = await projectService.createProject(data);
     dispatch({
       type: 'ADD_PROJECT',
-      data: response.data,
+      data: {...response.data, files: []},
     });
   };
 };
