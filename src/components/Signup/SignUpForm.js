@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
-import { Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, HStack, Input, StackDivider } from '@chakra-ui/react';
 import { stringTranslate, translate } from '../../i18n/message_handle';
 import * as Yup from 'yup';
 import { createUser } from '../../reducers/user_reducer';
@@ -61,13 +61,15 @@ const SignUpForm = () => {
   });
 
   return (
-    <Flex bg={'white'} px={'5rem'} pb={'8rem'} pt={'5rem'} rounded={'lg'} m={'5rem'} flexDirection={'column'}>
+    <Flex bg={'white'} px={'5rem'} pb={'8rem'} pt={'5rem'} boxShadow='sm' borderRadius={'xl'} m={'5rem'} flexDirection={'column'}>
       <Flex justifyContent={'center'}>
         <Heading >
           {stringTranslate('auth.signup').toUpperCase()}
         </Heading>
       </Flex>
-      <Flex px={'7rem'} pt={'4rem'} justify={'center'}>
+      <Flex px={'7rem'} pt={'4rem'} justify={'center'} alignItems={'stretch'}>
+
+
         <Formik initialValues={{
           name: '',
           last_name: '',
@@ -84,82 +86,90 @@ const SignUpForm = () => {
           {(props) => {
             return (
               <Form>
-                <Field name='username'>
-                  {({ field, form }) => (
-                    <InputField field={field} form={form} name={'username'} required={true} />
-                  )}
-                </Field>
-                <Box py={'0.2rem'}></Box>
-                <Field name='name'>
-                  {({ field, form }) => (
-                    <InputField field={field} form={form} name={'name'} />
-                  )}
-                </Field>
-                <Box py={'0.2rem'}></Box>
-                <Field name='last_name'>
-                  {({ field, form }) => (
-                    <InputField field={field} form={form} name={'last_name'} />
-                  )}
-                </Field>
-                <Box py={'0.2rem'}></Box>
-                <Field name='email'>
-                  {({ field, form }) => (
-                    <InputField field={field} form={form} name={'email'} required={true} />
-                  )}
-                </Field>
-                <Box py={'0.2rem'}></Box>
-                <Field name='country' >
-                  {({ field, form }) => (
-                    <CountrySelect field={field} form={form} />
-                  )}
-                </Field>
-                <Box py={'0.2rem'}></Box>
-                <Field name='language'>
-                  {({ field, form }) => (
-                    <LanguageSelect field={field} form={form} />
-                  )}
-                </Field>
-                <Box py={'0.2rem'}></Box>
-                <Field name='gender'>
-                  {({ field, form }) => (
-                    <GenderSelect field={field} form={form} />
-                  )}
-                </Field>
-                <Box py={'0.2rem'}></Box>
-                <Field name='password'>
-                  {({ field, form }) => (
-                    <FormControl isRequired isInvalid={form.errors.password && form.touched.password}>
-                      <FormLabel htmlFor='password'>
-                        {translate('auth.password')}
-                      </FormLabel>
-                      <Input {...field} id='password' autoComplete='off' type={'password'} />
-                      <FormErrorMessage> {form.errors.password} </FormErrorMessage>
-                    </FormControl>
-                  )
-                  }
-                </Field>
-                <Box py={'0.2rem'}></Box>
-                <Field name='repeat_password'>
-                  {({ field, form }) => (
-                    <FormControl isRequired isInvalid={form.errors.repeat_password && form.touched.repeat_password}>
-                      <FormLabel htmlFor='repeat_password'>
-                        {translate('auth.repeat_password')}
-                      </FormLabel>
-                      <Input {...field} id='repeat_password' autoComplete='off' type={'password'} />
-                      <FormErrorMessage> {form.errors.repeat_password} </FormErrorMessage>
-                    </FormControl>
-                  )
-                  }
-                </Field>
-                <Flex justifyContent={'center'} pt={'2rem'}>
-                  <Button colorScheme={'gray'} isLoading={props.isSubmitting} loadingText={stringTranslate('auth.loading')} type='submit' size={'md'}>
-                    {translate('auth.create_account')}
-                  </Button>
-                </Flex>
+                <HStack w={'100%'} h={'100%'} divider={<StackDivider borderColor='gray.200' />} spacing={6} justifyContent={'center'} alignItems={'flex-start'}>
+                  <Box h='100%' w={'50%'} display={'flex'} alignItems={'flex-start'} flexDirection={'column'}>
+                    <Field name='username'>
+                      {({ field, form }) => (
+                        <InputField field={field} form={form} name={'username'} required={true} />
+                      )}
+                    </Field>
+                    <Box py={'0.2rem'}></Box>
+                    <Field name='name'>
+                      {({ field, form }) => (
+                        <InputField field={field} form={form} name={'name'} />
+                      )}
+                    </Field>
+                    <Box py={'0.2rem'}></Box>
+                    <Field name='last_name'>
+                      {({ field, form }) => (
+                        <InputField field={field} form={form} name={'last_name'} />
+                      )}
+                    </Field>
+                    <Box py={'0.2rem'}></Box>
+                    <Field name='email'>
+                      {({ field, form }) => (
+                        <InputField field={field} form={form} name={'email'} required={true} />
+                      )}
+                    </Field>
+                    <Box py={'0.2rem'}></Box>
+                    <Field name='country' >
+                      {({ field, form }) => (
+                        <CountrySelect field={field} form={form} />
+                      )}
+                    </Field>
+                  </Box>
+                  <Box h='100%' w={'50%'} display={'flex'} alignItems={'flex-start'} flexDirection={'column'}>
+                    <Box py={'0.2rem'}></Box>
+                    <Field name='language'>
+                      {({ field, form }) => (
+                        <LanguageSelect field={field} form={form} />
+                      )}
+                    </Field>
+                    <Box py={'0.2rem'}></Box>
+                    <Field name='gender'>
+                      {({ field, form }) => (
+                        <GenderSelect field={field} form={form} />
+                      )}
+                    </Field>
+                    <Box py={'0.2rem'}></Box>
+                    <Field name='password'>
+                      {({ field, form }) => (
+                        <FormControl isRequired isInvalid={form.errors.password && form.touched.password}>
+                          <FormLabel htmlFor='password'>
+                            {translate('auth.password')}
+                          </FormLabel>
+                          <Input {...field} id='password' autoComplete='off' type={'password'} />
+                          <FormErrorMessage> {form.errors.password} </FormErrorMessage>
+                        </FormControl>
+                      )
+                      }
+                    </Field>
+                    <Box py={'0.2rem'}></Box>
+                    <Field name='repeat_password'>
+                      {({ field, form }) => (
+                        <FormControl isRequired isInvalid={form.errors.repeat_password && form.touched.repeat_password}>
+                          <FormLabel htmlFor='repeat_password'>
+                            {translate('auth.repeat_password')}
+                          </FormLabel>
+                          <Input {...field} id='repeat_password' autoComplete='off' type={'password'} />
+                          <FormErrorMessage> {form.errors.repeat_password} </FormErrorMessage>
+                        </FormControl>
+                      )
+                      }
+                    </Field>
+                    <Flex justifyContent={'center'} pt={'2rem'}>
+                      <Button colorScheme={'gray'} isLoading={props.isSubmitting} loadingText={stringTranslate('auth.loading')} type='submit' size={'md'}>
+                        {translate('auth.create_account')}
+                      </Button>
+                    </Flex>
+                  </Box>
+                </HStack>
               </Form>
+
             );
           }}
         </Formik>
+
       </Flex>
     </Flex>
   );
