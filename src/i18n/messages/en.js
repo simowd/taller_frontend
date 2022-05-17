@@ -32,7 +32,8 @@ const strings = {
     private: 'Private',
     update_success: 'Updated folder successfully',
     create_success: 'Created folder successfully',
-    create_folder: 'Create new folder'
+    create_folder: 'Create new folder',
+    folder_not_found: 'Folder does not have any content'
   },
   auth: {
     username: 'Username',

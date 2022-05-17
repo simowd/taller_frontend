@@ -8,7 +8,7 @@ import { updateProject } from '../../reducers/projects_reducer';
 import InputField from './InputField';
 import * as Yup from 'yup';
 
-const UpdateFileAlert = ({ isOpen, onClose, project }) => {
+const UpdateFileAlert = ({ isOpen, onClose, project, projects }) => {
   const cancelRef = React.useRef();
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const UpdateFileAlert = ({ isOpen, onClose, project }) => {
 
   //Setting up yup schema
   const yup_update_folder = Yup.object({
-    folder_name: Yup.string().max(255, stringTranslate('forms.max_length', { length: 255 })).notOneOf([project.folder_name], stringTranslate('forms.repeated')).required(stringTranslate('forms.required')),
+    folder_name: Yup.string().max(255, stringTranslate('forms.max_length', { length: 255 })).notOneOf([project.folder_name].concat(projects.map((folder) => folder.folder_name)), stringTranslate('forms.repeated')).required(stringTranslate('forms.required')),
     private: Yup.boolean().required(stringTranslate('forms.required')),
   });
 
