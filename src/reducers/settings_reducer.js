@@ -10,23 +10,22 @@ export const loadSettings = () => {
   };
 };
 
-// export const updateProject = (data, projectId) => {
-//   return async (dispatch) => {
-//     await projectService.updateProject(data, projectId);
-//     dispatch({
-//       type: 'UPDATE_PROJECT',
-//       data: {
-//         data: data,
-//         id_project: projectId
-//       },
-//     });
-//   };
-// };
+export const updateSettings = (data) => {
+  return async (dispatch) => {
+    await settingsService.updateSettings(data);
+    dispatch({
+      type: 'UPDATE_SETTING',
+      data: data
+    });
+  };
+};
 
 const reducer = (state = null, action) => {
   switch (action.type) {
   case ('SET_SETTINGS'):
     return action.data;
+  case ('UPDATE_SETTING'):
+    return {...state, ...action.data};
   case('CLEAR_USER'):
     return null;
   }

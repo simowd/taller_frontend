@@ -7,4 +7,9 @@ const getSettings = async () => {
   return response;
 };
 
-export default { getSettings };
+const updateSettings = async (data) => {
+  const response = await api.put(settingsURL, data);
+  return response;
+};
+
+export default { getSettings, updateSettings };

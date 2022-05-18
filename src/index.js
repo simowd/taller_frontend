@@ -9,6 +9,7 @@ import theme from './utils/customTheme';
 
 import '@fontsource/raleway';
 import '@fontsource/roboto';
+import '@fontsource/ubuntu-mono';
 
 //Setup App render
 const root = ReactDOM.createRoot(document.getElementById('root'));

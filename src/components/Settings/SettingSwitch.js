@@ -1,14 +1,24 @@
 import { FormControl, FormLabel, Switch } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { stringTranslate } from '../../i18n';
+import { updateSettings } from '../../reducers/settings_reducer';
 
 const SettingSwitch = ({ setting, name }) => {
+  const [checked, setChecked] = useState(!!setting);
+  const dispatch = useDispatch();
+
+  const onChange = async () => {
+    setChecked(!checked);
+    await dispatch(updateSettings({ [name]: +!checked}));
+  };
+
   return (
-    <FormControl display={'flex'} alignItems={'center'}>
+    <FormControl display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
       <FormLabel htmlFor={name} mb={'0'}>
-        {stringTranslate(`setting.${name}`)}
+        {stringTranslate(`settings.${name}`)}
       </FormLabel>
-      <Switch id={setting} size={'lg'} defaultChecked={setting}/>
+      <Switch onChange={onChange} id={name} size={'lg'} value={checked} defaultChecked={checked}/>
     </FormControl>
   );
 };

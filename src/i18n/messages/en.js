@@ -36,7 +36,13 @@ const strings = {
     folder_not_found: 'Folder does not have any content'
   },
   settings: {
-    title: 'Settings'
+    title: 'Settings',
+    dark_light: 'Enable Dark Mode',
+    audio_feedback: 'Enable Audio Feedback',
+    animations: 'Enable Animations',
+    high_contrast: 'Enable Editor High Contrast',
+    font_size: 'Editor Font Size',
+    font_type: 'Editor Font Family'
   },
   auth: {
     username: 'Username',
