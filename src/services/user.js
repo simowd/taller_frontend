@@ -21,4 +21,19 @@ const createUser = async (content) => {
   return response;
 };
 
-export default { createUser };
+const getUserInfo = async (userId) => {
+  const response = await api.get(`${userURL}/${userId}`);
+  return response;
+};
+
+const updateUserInfo = async (data) => {
+  const response = await api.put(userURL, data);
+  return response;
+};
+
+const updatePassword = async (data) => {
+  const response = await api.put(`${userURL}/password`, data);
+  return response;
+};
+
+export default { createUser, getUserInfo, updateUserInfo, updatePassword };

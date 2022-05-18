@@ -48,6 +48,11 @@ export const useToastHook = () => {
             info.title = intl.formatMessage({ id: 'errors.generic.not_found'});
           }
         }
+        if (endpoint === 'change_password') {
+          if (status === 403) {
+            info.title = intl.formatMessage({ id: 'errors.password.not_authorized' });
+          }
+        }
       }
       else if (info.status === 'success') {
         if (endpoint === 'signup'){
@@ -58,6 +63,12 @@ export const useToastHook = () => {
         }
         if (endpoint === 'create_folder'){
           info.title = intl.formatMessage({ id: 'home.create_success' });
+        }
+        if (endpoint === 'account'){
+          info.title = intl.formatMessage({ id: 'account.account_success' });
+        }
+        if (endpoint === 'update_password'){
+          info.title = intl.formatMessage({ id: 'account.update_password_success' });
         }
       }
       toast(info);

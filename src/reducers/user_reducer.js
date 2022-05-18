@@ -63,6 +63,8 @@ const reducer = (state = null, action) => {
     return action.data;
   case ('CREATE_USER'):
     return null;
+  case ('CHANGE_LOCALE'):
+    return { ...state, locale: action.data };
   }
   return state;
 };

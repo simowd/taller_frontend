@@ -57,7 +57,7 @@ const SignUpForm = () => {
     gender: Yup.mixed().required(stringTranslate('forms.required')),
     country: Yup.mixed().required(stringTranslate('forms.required')),
     language: Yup.mixed().required(stringTranslate('forms.required')),
-    repeat_password: Yup.string().oneOf([Yup.ref('password'), null], stringTranslate('forms.repeat_password')).required(stringTranslate('forms.required')),
+    repeat_password: Yup.string().oneOf([Yup.ref('password'), null], stringTranslate('forms.repeat_password'))
   });
 
   return (

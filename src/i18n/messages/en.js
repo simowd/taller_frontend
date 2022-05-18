@@ -63,6 +63,15 @@ const strings = {
     repeat_password: 'Repeat Password',
     account_created: 'Account created successfully'
   },
+  account: {
+    account_success: 'Updated successfully',
+    my_account: 'My account',
+    update_password: 'Change current password',
+    old_password: 'Old password',
+    new_password: 'New password',
+    new_password_repeat: 'Repeat New Password',
+    update_password_success: 'Updated password successfully'
+  },
   forms: {
     required: 'Required',
     max_length: 'Must be {length, number} characters or less',
@@ -73,7 +82,8 @@ const strings = {
     update: 'Update',
     repeated: 'New name can\'t be old name',
     create: 'Create',
-    existed: 'Folder name already exists'
+    existed: 'Folder name already exists',
+    change_password: 'Change Password'
   },
   errors: {
     server_error: 'Server error, try again later.',
@@ -84,6 +94,9 @@ const strings = {
     },
     signup: {
       already_exists: 'The selected username already exists'
+    },
+    password:{
+      not_authorized: ' Old password is wrong'
     },
     generic: {
       not_allowed: 'Not Allowed',
