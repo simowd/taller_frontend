@@ -7,6 +7,7 @@ import { stringTranslate, translate } from '../../i18n';
 import { createProject } from '../../reducers/projects_reducer';
 import InputField from './InputField';
 import * as Yup from 'yup';
+import FileUploadButton from './FileUploadButton';
 
 const CreateFileAlert = ({ isOpen, onClose, projects }) => {
   const cancelRef = React.useRef();
@@ -68,6 +69,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
                 <Form>
                   <AlertDialogHeader ref={cancelRef} fontSize='lg' fontWeight='bold'>
                     {stringTranslate('home.create_head')}
+                    <FileUploadButton projects={projects} onClose={onClose}/>
                   </AlertDialogHeader>
                   <AlertDialogBody>
                     <Field name={'folder_name'}>

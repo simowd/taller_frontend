@@ -21,4 +21,12 @@ const uploadFile = async (file, projectId) => {
   return response;
 };
 
-export {downloadProject, uploadFile};
+const uploadProject = async (file) => {
+  var data = new FormData();
+  data.append('file', file);
+  const response = await api.post(`${URL}/upload/project`, data);
+
+  return response;
+};
+
+export {downloadProject, uploadFile, uploadProject};

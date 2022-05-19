@@ -1,4 +1,6 @@
 import projectService from '../services/projects';
+import { uploadProject } from '../services/file_managment';
+
 
 export const loadProjects = () => {
   return async (dispatch) => {
@@ -16,6 +18,16 @@ export const createProject = (data) => {
     dispatch({
       type: 'ADD_PROJECT',
       data: {...response.data, files: []},
+    });
+  };
+};
+
+export const uploadProjectFile = (file) => {
+  return async (dispatch) => {
+    const response = await uploadProject(file);
+    dispatch({
+      type: 'ADD_PROJECT',
+      data: {...response.data},
     });
   };
 };

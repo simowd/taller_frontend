@@ -47,6 +47,9 @@ export const useToastHook = () => {
           if (status === 404) {
             info.title = intl.formatMessage({ id: 'errors.generic.not_found'});
           }
+          if (status === 409) {
+            info.title = intl.formatMessage({ id: 'forms.existed'});
+          }
         }
         if (endpoint === 'change_password') {
           if (status === 403) {
