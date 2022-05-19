@@ -1,9 +1,11 @@
-import { Box, Flex, Heading, HStack, Icon, IconButton, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack, Icon, IconButton, Link, Text, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { RiEditLine, RiDownload2Line, RiDeleteBinLine, RiFileCodeLine } from 'react-icons/ri';
+import { RiEditLine, RiDownload2Line, RiDeleteBinLine, RiFolderWarningLine } from 'react-icons/ri';
 import { stringTranslate } from '../../i18n';
 import { downloadProject } from '../../services/file_managment';
 import { useToastHook } from '../../hooks/Toast';
+import { Link as RouteLink } from 'react-router-dom';
+import FileSpace from './FileSpace';
 
 const ProjectCardSketchbook = ({ project }) => {
   const [loadingD, setLoadingD] = useState(false);
@@ -27,27 +29,48 @@ const ProjectCardSketchbook = ({ project }) => {
 
       newToast(error_data);
     }
+  };
 
+  const fileBuilder = () => {
+    if (project) {
+      if (project.files.length === 0) {
+        return (
+          <Flex justifyContent={'center'} alignContent={'center'} height={'100%'} width={'100%'}>
+            <VStack>
+              <Icon alignSelf={'center'} as={RiFolderWarningLine} w={32} h={32} />
+              <Text justifyContent={'center'}>
+                {stringTranslate('home.folder_not_found')}
+              </Text>
+            </VStack>
+          </Flex>
+        );
+      }
+      const files = project.files.map((file, index) => {
+        if (index <= 2) {
+          return (<FileSpace file={file} key={file.id_file} />);
+        }
+        else {
+          return null;
+        }
+      });
+      return files;
+    }
   };
 
   return (
     <Box background={'white'} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between' boxShadow='md'>
       <HStack height={'15%'} pl={'0.5rem'} w={'100%'}>
-        <Heading w='75%' as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>
+        <Link w='75%' as={RouteLink} to={`/e/${project.id_folder}`}>
+          <Heading w='75%' as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>
+        </Link>
         <Box>
-          <IconButton icon={<RiEditLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.edit')} isDisabled/>
+          <IconButton icon={<RiEditLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.edit')} isDisabled />
           <IconButton icon={<RiDownload2Line />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
-          <IconButton icon={<RiDeleteBinLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.delete')} isDisabled/>
+          <IconButton icon={<RiDeleteBinLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.delete')} isDisabled />
         </Box>
       </HStack>
-
-      <VStack height={'85%'} spacing={'1.5rem'} pt={'0.5rem'} display='flex' alignItems={'start'} justifyContent='space-between'>
-        <Flex background={'#282C34'} height={'20%'} width={'77%'} borderRightRadius={'3xl'}>
-          <HStack pl={'0.5rem'}>
-            <Icon color={'white'} as={RiFileCodeLine} w={5} h={5}></Icon>
-            <Text fontWeight={'light'} color={'white'}> Hola </Text>
-          </HStack>
-        </Flex>
+      <VStack height={'85%'} spacing={'1.5rem'} pt={'0.5rem'} display='flex' alignItems={'flex-start'} alignContent={'flex-start'} justifyContent='flex-start'>
+        {fileBuilder()}
       </VStack>
     </Box>
   );
