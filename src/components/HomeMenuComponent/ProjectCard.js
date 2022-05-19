@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, HStack, Icon, IconButton, Text, useDisclosure, VStack } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack, Icon, IconButton, Link, Text, useDisclosure, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { RiEditLine, RiDownload2Line, RiDeleteBinLine, RiFolderWarningLine } from 'react-icons/ri';
 import { stringTranslate } from '../../i18n';
@@ -7,6 +7,7 @@ import DeleteFileAlert from './DeleteFileAlert';
 import { useToastHook } from '../../hooks/Toast';
 import UpdateFileAlert from './UpdateFileAlert';
 import FileSpace from './FileSpace';
+import { Link as RouteLink } from 'react-router-dom';
 
 const ProjectCard = ({ project, projects }) => {
   const [loadingD, setLoadingD] = useState(false);
@@ -65,7 +66,9 @@ const ProjectCard = ({ project, projects }) => {
       <DeleteFileAlert isOpen={isOpen} onClose={onClose} project={project} />
       <UpdateFileAlert isOpen={isOpenU} onClose={onCloseU} project={project} projects={projects} />
       <HStack height={'15%'} pl={'0.5rem'} w={'100%'}>
-        <Heading w='75%' as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>
+        <Link w='75%'as={RouteLink} to={`/e/${project.id_folder}`}>
+          <Heading as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>
+        </Link>
         <Box>
           <IconButton icon={<RiEditLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.edit')} onClick={onOpenU} />
           <IconButton icon={<RiDownload2Line />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
