@@ -31,8 +31,8 @@ function App() {
           <Route path='*' element={<Navigate to='/s/home' />} />
         </Route>
         <Route path='/e' element={<EditorSideBar />}>
-          <Route index />
-          <Route path='editor' element={<Editor />} />
+          <Route index element={<Navigate to='/s/menu' />}/>
+          <Route path=':projectId' element={<Editor />} />
         </ Route>
       </Routes>
     </BrowserRouter>

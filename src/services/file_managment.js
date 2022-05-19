@@ -12,4 +12,13 @@ const downloadProject = async (folder) => {
   link.click();
 };
 
-export {downloadProject};
+
+const uploadFile = async (file, projectId) => {
+  var data = new FormData();
+  data.append('file', file);
+  const response = await api.post(`${URL}/upload/file/${projectId}`, data);
+
+  return response;
+};
+
+export {downloadProject, uploadFile};

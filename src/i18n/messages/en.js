@@ -85,6 +85,10 @@ const strings = {
     existed: 'Folder name already exists',
     change_password: 'Change Password'
   },
+  editor: {
+    title: 'Files',
+    upload: 'Upload File'
+  },
   errors: {
     server_error: 'Server error, try again later.',
     email: 'The email provided is not valid',

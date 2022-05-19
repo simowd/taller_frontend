@@ -64,6 +64,7 @@ const reducer = (state = null, action) => {
   case ('CREATE_USER'):
     return null;
   case ('CHANGE_LOCALE'):
+    document.documentElement.lang = action.data;
     return { ...state, locale: action.data };
   }
   return state;

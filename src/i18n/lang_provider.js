@@ -21,7 +21,6 @@ const LangProvider = ({ children, locale = LOCALES.ENGLISH }) => {
   if (user)
     locale = user.locale;
 
-  console.log(locale);
   document.documentElement.lang = locale;
 
   return (
