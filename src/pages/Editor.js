@@ -24,8 +24,8 @@ const Editor = () => {
           if (projectData.project === null || projectData.project === null) {
             const filteredData = response.data.files.map((file) => {
               return {
-                file_id: file.id_file,
-                file_storage: file.storage,
+                id_file: file.id_file,
+                storage: file.storage,
                 value: file.content,
                 language: 'python'
               };
@@ -42,8 +42,8 @@ const Editor = () => {
   const builder = () => {
     if (projectData.project || projectData.editorData) {
       return (
-        <Grid h='100vh' w='100%' templateColumns={'15rem 1fr 4rem 1fr'}>
-          <GridItem background={'green'}>
+        <Grid h='100vh' w='100%' templateColumns={'20rem 1fr 4rem 1fr'}>
+          <GridItem display={'flex'} alignItems='center' height={'100%'}>
             <FileSideBar projectData={projectData} setProjectData={setProjectData}/>
           </GridItem>
           <GridItem display={'flex'}>

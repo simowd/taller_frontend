@@ -14,8 +14,8 @@ const FileUploadButton = ({ setProjectData, projectData }) => {
       setProjectData({
         project: { ...projectData.project, files: projectData.project.files.concat(response.data) },
         editorData: projectData.editorData.concat({
-          file_id: response.data.id_file,
-          file_storage: response.data.storage,
+          id_file: response.data.id_file,
+          storage: response.data.storage,
           value: response.data.fileString,
           language: 'python'
         })

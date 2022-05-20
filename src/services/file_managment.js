@@ -12,6 +12,16 @@ const downloadProject = async (folder) => {
   link.click();
 };
 
+const downloadFile = async (file) => {
+  const response = await api.get(`${URL}/download/file/${file.id_file}`, { responseType: 'blob'});
+  const url = window.URL.createObjectURL(new Blob([response.data]));
+  const link = document.createElement('a');
+  link.href = url;
+  link.setAttribute('download', `${file.file_name}`);
+  document.body.appendChild(link);
+  link.click();
+};
+
 
 const uploadFile = async (file, projectId) => {
   var data = new FormData();
@@ -29,4 +39,4 @@ const uploadProject = async (file) => {
   return response;
 };
 
-export {downloadProject, uploadFile, uploadProject};
+export {downloadProject, uploadFile, uploadProject, downloadFile};
