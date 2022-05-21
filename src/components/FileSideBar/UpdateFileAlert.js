@@ -46,7 +46,7 @@ const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
       //success message
       const success = {
         type: 'success',
-        endpoint: 'home'
+        endpoint: 'file_update'
       };
       newToast(success);
     }

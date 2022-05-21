@@ -52,11 +52,11 @@ const DeleteFileAlert = ({ isOpen, onClose, file, projectData, setProjectData  }
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-              {stringTranslate('home.delete_head')}
+              {stringTranslate('editor.delete_head')}
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              {stringTranslate('home.delete_message', { name: file.file_name })}
+              {stringTranslate('editor.delete_message', { name: file.file_name })}
             </AlertDialogBody>
 
             <AlertDialogFooter>

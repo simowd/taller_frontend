@@ -95,6 +95,9 @@ const strings = {
     file_name: 'File Name',
     update_head: 'Update File',
     update_message: 'Are you sure you want to update the file named {name}?',
+    update_file_success: 'File updated successfully',
+    delete_head: 'Delete File',
+    delete_message: 'Are you sure you want to delete the file named {name}?',
   },
   errors: {
     server_error: 'Server error, try again later.',
