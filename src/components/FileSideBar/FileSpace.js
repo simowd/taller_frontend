@@ -7,7 +7,7 @@ import { downloadFile } from '../../services/file_managment';
 import DeleteFileAlert from '../FileSideBar/DeleteFileAlert';
 import UpdateFileAlert from '../FileSideBar/UpdateFileAlert';
 
-const FileSpace = ({ file, projectData, setProjectData }) => {
+const FileSpace = ({ file, projectData, setProjectData, setCurrentFile }) => {
 
   const [loadingD, setLoadingD] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,13 +33,17 @@ const FileSpace = ({ file, projectData, setProjectData }) => {
       newToast(error_data);
     }
   };
+  
+  const setFile = () => {
+    setCurrentFile(file.id_file);
+  };
 
   return (
     <Flex background={'#282C34'} height={'3rem'} width={'100%'} borderRightRadius={'3xl'} mt={'1rem'}>
       <DeleteFileAlert isOpen={isOpen} onClose={onClose} file={file} projectData={projectData} setProjectData={setProjectData} />
       <UpdateFileAlert isOpen={isOpenU} onClose={onCloseU} file={file} projectData={projectData} setProjectData={setProjectData} />
       <HStack pl={'0.5rem'} w={'100%'}>
-        <Flex width={'55%'}>
+        <Flex width={'55%'} as={'button'} onClick={setFile}>
           <HStack spacing={1}>
             <Icon color={'white'} as={RiFileCodeLine} w={5} h={5}></Icon>
             <Heading fontWeight={'light'} fontSize={'14'} size={'sm'} color={'white'} noOfLines={1}> {file.file_name} </Heading>

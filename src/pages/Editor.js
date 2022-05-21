@@ -12,7 +12,7 @@ const Editor = () => {
   const user = useSelector(state => state.user);
   const params = useParams();
   const location = useLocation();
-  const [currentFile] = useState(location.state.id_file);
+  const [currentFile, setCurrentFile] = useState(location.state.id_file);
   
   const [projectData, setProjectData] = useReducer(
     (state, newState) => ({...state, ...newState}),
@@ -47,7 +47,7 @@ const Editor = () => {
       return (
         <Grid h='100vh' w='100%' templateColumns={'20rem 1fr 4rem 1fr'}>
           <GridItem display={'flex'} alignItems='flex-start' height={'100%'} overflowY={'auto'} overflowX='hidden'>
-            <FileSideBar projectData={projectData} setProjectData={setProjectData}/>
+            <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile}/>
           </GridItem>
           <GridItem display={'flex'}>
             <EditorInstance user={user} projectData={projectData} currentFile={currentFile} />

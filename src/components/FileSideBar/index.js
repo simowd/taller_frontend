@@ -6,7 +6,7 @@ import FileSpace from './FileSpace';
 import { RiFileAddLine } from 'react-icons/ri';
 import CreateFileAlert from './CreateFileAlert';
 
-const FileSideBar = ({ projectData, setProjectData }) => {
+const FileSideBar = ({ projectData, setProjectData, setCurrentFile }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const fileBuilder = () => {
@@ -15,7 +15,7 @@ const FileSideBar = ({ projectData, setProjectData }) => {
       if (projectData.project !== undefined || projectData.project !== null) {
         if (projectData.project.files !== undefined) {
           for (const file of projectData.project.files) {
-            newArr.push(<FileSpace key={file.id_file} file={file} projectData={projectData} setProjectData={setProjectData} />);
+            newArr.push(<FileSpace setCurrentFile={setCurrentFile} key={file.id_file} file={file} projectData={projectData} setProjectData={setProjectData} />);
           }
         }
       }
