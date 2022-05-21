@@ -90,6 +90,9 @@ const strings = {
     title: 'Files',
     upload: 'Upload File',
     new_file: 'Create New File',
+    create_file: 'New file was created',
+    create_head: 'Create File',
+    file_name: 'File Name'
   },
   errors: {
     server_error: 'Server error, try again later.',

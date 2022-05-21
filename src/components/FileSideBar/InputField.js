@@ -7,7 +7,7 @@ const InputField = ({ form, field, name, required = false }) => {
   return (
     <FormControl isRequired={required} isInvalid={form.errors[name] && form.touched[name]}>
       <FormLabel htmlFor={name}>
-        {translate(`home.${name}`)}
+        {translate(`editor.${name}`)}
       </FormLabel>
       <InputGroup>
         <Input {...field} id={name} autoComplete='off' />

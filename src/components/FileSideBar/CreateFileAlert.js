@@ -42,7 +42,7 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
       //success message
       const success = {
         type: 'success',
-        endpoint: 'create_folder'
+        endpoint: 'create_file'
       };
       newToast(success);
     }
@@ -82,7 +82,7 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
               <AlertDialogContent>
                 <Form>
                   <AlertDialogHeader ref={cancelRef} fontSize='lg' fontWeight='bold'>
-                    {stringTranslate('home.create_head')}
+                    {stringTranslate('editor.create_head')}
                   </AlertDialogHeader>
                   <AlertDialogBody>
                     <Field name={'file_name'}>

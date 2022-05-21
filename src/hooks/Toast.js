@@ -73,6 +73,9 @@ export const useToastHook = () => {
         if (endpoint === 'update_password'){
           info.title = intl.formatMessage({ id: 'account.update_password_success' });
         }
+        if (endpoint === 'create_file'){
+          info.title = intl.formatMessage({ id: 'editor.create_file' });
+        }
       }
       toast(info);
     }
