@@ -5,7 +5,7 @@ import { useToastHook } from '../../hooks/Toast';
 import { stringTranslate, translate } from '../../i18n';
 import InputField from './InputField';
 import * as Yup from 'yup';
-import { createFile } from '../../services/file';
+import fileService from '../../services/file';
 
 const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
   const cancelRef = React.useRef();
@@ -21,13 +21,18 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
 
   const onSubmit = async (values, actions) => {
     try {
-      const response = await createFile(values, projectData.project.id_folder);
+      const data = {
+        ...values,
+        file_name: values.file_name + '.py'
+      };
+      const response = await fileService.createFile(data, projectData.project.id_folder);
+      console.log(response);
       if (response.status === 200) {
         setProjectData({
-          project: projectData.project.concat({ ...response, content: '' }),
+          project: {...projectData.project ,files: projectData.project.files.concat({ ...response.data, content: '' })},
           editorData: projectData.editorData.concat({
-            id_file: response.id_file,
-            storage: response.storage,
+            id_file: response.data.id_file,
+            storage: response.data.storage,
             value: '',
             language: 'python'
           })
@@ -42,6 +47,7 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
       newToast(success);
     }
     catch (error) {
+      console.log(error);
       //Setting up error data
       const error_data = {
         type: 'error',

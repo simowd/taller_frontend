@@ -1,10 +1,13 @@
-import { Box, Heading, HStack, VStack } from '@chakra-ui/react';
+import { Heading, HStack, IconButton, useDisclosure, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { stringTranslate } from '../../i18n';
 import FileUploadButton from './FileUploadButton';
 import FileSpace from './FileSpace';
+import { RiFileAddLine } from 'react-icons/ri';
+import CreateFileAlert from './CreateFileAlert';
 
 const FileSideBar = ({ projectData, setProjectData }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const fileBuilder = () => {
     const newArr = new Array();
@@ -28,11 +31,13 @@ const FileSideBar = ({ projectData, setProjectData }) => {
 
   return (
     <VStack boxShadow={'md'} background={'white'} mr={'0.5rem'} roundedRight={'lg'} width={'95%'} height={'98%'}>
+      <CreateFileAlert isOpen={isOpen} onClose={onClose} projectData={projectData} setProjectData={setProjectData}/>
       <HStack width={'100%'} p={'1rem'}>
         <Heading w={'75%'} as='h3' fontWeight={'medium'} size='md'>{stringTranslate('editor.title')}</Heading>
-        <Box>
+        <HStack>
           <FileUploadButton setProjectData={setProjectData} projectData={projectData} />
-        </Box>
+          <IconButton icon={<RiFileAddLine />} fontSize={'20'} size={'sm'} onClick={onOpen} variant={'ghost'} aria-label={stringTranslate('editor.new_file')} />
+        </HStack>
       </HStack>
       <VStack height={'100%'} width={'100%'} overflowY={'scroll'} overflowX='hidden'>
         {fileBuilder()}

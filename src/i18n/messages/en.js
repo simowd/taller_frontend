@@ -88,7 +88,8 @@ const strings = {
   },
   editor: {
     title: 'Files',
-    upload: 'Upload File'
+    upload: 'Upload File',
+    new_file: 'Create New File',
   },
   errors: {
     server_error: 'Server error, try again later.',
