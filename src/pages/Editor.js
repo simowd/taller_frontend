@@ -47,7 +47,7 @@ const Editor = () => {
             <FileSideBar projectData={projectData} setProjectData={setProjectData}/>
           </GridItem>
           <GridItem display={'flex'}>
-            <EditorInstance user={user} />
+            <EditorInstance user={user} projectData={projectData}/>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
             <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} icon={<Icon as={FaPlay} />}></IconButton>

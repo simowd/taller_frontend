@@ -83,7 +83,7 @@ const strings = {
     update: 'Update',
     repeated: 'New name can\'t be old name',
     create: 'Create',
-    existed: 'Folder name already exists',
+    existed: 'Resource name already exists',
     change_password: 'Change Password',
   },
   editor: {

@@ -26,7 +26,6 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
         file_name: values.file_name + '.py'
       };
       const response = await fileService.createFile(data, projectData.project.id_folder);
-      console.log(response);
       if (response.status === 200) {
         setProjectData({
           project: {...projectData.project ,files: projectData.project.files.concat({ ...response.data, content: '' })},
@@ -47,7 +46,6 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
       newToast(success);
     }
     catch (error) {
-      console.log(error);
       //Setting up error data
       const error_data = {
         type: 'error',

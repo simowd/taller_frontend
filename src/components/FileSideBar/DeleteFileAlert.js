@@ -4,7 +4,7 @@ import { useToastHook } from '../../hooks/Toast';
 import { stringTranslate } from '../../i18n';
 import fileService from '../../services/file';
 
-const DeleteFileAlert = ({ isOpen, onClose, file, projectData, setProjectData  }) => {
+const DeleteFileAlert = ({ isOpen, onClose, file, projectData, setProjectData }) => {
   const [loading, setLoading] = useState(false);
   const cancelRef = React.useRef();
 
@@ -18,12 +18,11 @@ const DeleteFileAlert = ({ isOpen, onClose, file, projectData, setProjectData  }
       setProjectData({
         project: {
           ...projectData,
-          files: projectData.project.files.filter((fil) =>{ 
-            return fil.id_file !== file.id_file;})
+          files: projectData.project.files.filter((fil) => {
+            return fil.id_file !== file.id_file;
+          })
         },
-        editorData: {
-          ...projectData.editorData.filter((fil) => fil.id_file !== file.id_file)
-        }
+        editorData: projectData.editorData.filter((fil) => fil.id_file !== file.id_file)
       });
       setLoading(false);
       onClose();

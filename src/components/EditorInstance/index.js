@@ -4,9 +4,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 import editorOptions from './editorOptions';
 
-const EditorInstance = ({ user }) => {
+const EditorInstance = ({ user, projectData }) => {
   const monacoRef = useRef(null);
   const [socket, setSocket] = useState(null);
+
+  console.log(projectData);
 
   //Setup the WebSocket connection to the backend
   useEffect(() => {
