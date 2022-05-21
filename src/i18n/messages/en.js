@@ -84,7 +84,7 @@ const strings = {
     repeated: 'New name can\'t be old name',
     create: 'Create',
     existed: 'Folder name already exists',
-    change_password: 'Change Password'
+    change_password: 'Change Password',
   },
   editor: {
     title: 'Files',
@@ -92,7 +92,9 @@ const strings = {
     new_file: 'Create New File',
     create_file: 'New file was created',
     create_head: 'Create File',
-    file_name: 'File Name'
+    file_name: 'File Name',
+    update_head: 'Update File',
+    update_message: 'Are you sure you want to update the file named {name}?',
   },
   errors: {
     server_error: 'Server error, try again later.',

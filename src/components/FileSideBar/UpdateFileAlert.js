@@ -85,10 +85,10 @@ const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
               <AlertDialogContent>
                 <Form>
                   <AlertDialogHeader ref={cancelRef} fontSize='lg' fontWeight='bold'>
-                    {stringTranslate('home.update_head')}
+                    {stringTranslate('editor.update_head')}
                   </AlertDialogHeader>
                   <AlertDialogBody>
-                    {stringTranslate('home.update_message', { name: file.file_name })}
+                    {stringTranslate('editor.update_message', { name: file.file_name })}
 
                     <Field name={'file_name'}>
                       {({ field, form }) => (
