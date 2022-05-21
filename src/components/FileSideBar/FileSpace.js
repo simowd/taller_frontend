@@ -36,14 +36,16 @@ const FileSpace = ({ file, projectData, setProjectData }) => {
 
   return (
     <Flex background={'#282C34'} height={'3rem'} width={'100%'} borderRightRadius={'3xl'} mt={'1rem'}>
-      <DeleteFileAlert isOpen={isOpen} onClose={onClose} file={file} projectData={projectData} setProjectData={setProjectData}/>
-      <UpdateFileAlert isOpen={isOpenU} onClose={onCloseU} file={file} projectData={projectData} setProjectData={setProjectData}/>
+      <DeleteFileAlert isOpen={isOpen} onClose={onClose} file={file} projectData={projectData} setProjectData={setProjectData} />
+      <UpdateFileAlert isOpen={isOpenU} onClose={onCloseU} file={file} projectData={projectData} setProjectData={setProjectData} />
       <HStack pl={'0.5rem'} w={'100%'}>
-        <Flex width={'75%'}>
-          <Icon color={'white'} as={RiFileCodeLine} w={5} h={5}></Icon>
-          <Heading fontWeight={'light'} fontSize={'14'} size={'sm'} color={'white'} noOfLines={1}> {file.file_name} </Heading>
+        <Flex width={'55%'}>
+          <HStack spacing={1}>
+            <Icon color={'white'} as={RiFileCodeLine} w={5} h={5}></Icon>
+            <Heading fontWeight={'light'} fontSize={'14'} size={'sm'} color={'white'} noOfLines={1}> {file.file_name} </Heading>
+          </HStack>
         </Flex>
-        <HStack spacing={0.5}>
+        <HStack width={'45%'} spacing={0.2}>
           <IconButton color={'white'} icon={<RiEditLine />} size={'md'} variant={'link'} aria-label={stringTranslate('home.edit')} onClick={onOpenU} />
           <IconButton color={'white'} icon={<RiDownload2Line />} size={'md'} variant={'link'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
           <IconButton color={'white'} icon={<RiDeleteBinLine />} size={'md'} variant={'link'} aria-label={stringTranslate('home.delete')} onClick={onOpen} />

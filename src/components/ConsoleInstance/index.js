@@ -66,7 +66,7 @@ const ConsoleInstance = ({ user, data='' }) => {
   };
 
   return (
-    <Flex h={'95%'} w={'100%'} alignSelf={'center'} justify={'center'}>
+    <Flex h={'98%'} w={'100%'} alignSelf={'center'} justify={'center'}>
       {renderEditor()}
     </Flex>
   );

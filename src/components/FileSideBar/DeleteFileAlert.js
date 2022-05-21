@@ -17,7 +17,7 @@ const DeleteFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
       await fileService.deleteFile(file.id_file);
       setProjectData({
         project: {
-          ...projectData,
+          ...projectData.project,
           files: projectData.project.files.filter((fil) => {
             return fil.id_file !== file.id_file;
           })

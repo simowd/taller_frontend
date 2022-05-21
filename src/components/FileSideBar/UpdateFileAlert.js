@@ -38,7 +38,7 @@ const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
       await fileService.updateFile(data, file.id_file);
       setProjectData(
         {
-          project: {...projectData, files: projectData.project.files.map((fil) => fil.id_file === file.id_file ? {...fil, ...data} : fil)},
+          project: {...projectData.project, files: projectData.project.files.map((fil) => fil.id_file === file.id_file ? {...fil, ...data} : fil)},
           editorData: projectData.editorData.map((fil) => fil.id_file === file.id_file ? {...fil, ...data}: fil)
         }
       );

@@ -76,7 +76,7 @@ export const useToastHook = () => {
         if (endpoint === 'create_file'){
           info.title = intl.formatMessage({ id: 'editor.create_file' });
         }
-        if (endpoint === 'update_file'){
+        if (endpoint === 'file_update'){
           info.title = intl.formatMessage({ id: 'editor.update_file_success' });
         }
       }

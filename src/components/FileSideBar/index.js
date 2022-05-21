@@ -30,7 +30,7 @@ const FileSideBar = ({ projectData, setProjectData }) => {
   };
 
   return (
-    <VStack boxShadow={'md'} background={'white'} mr={'0.5rem'} roundedRight={'lg'} width={'95%'} height={'98%'}>
+    <VStack boxShadow={'md'} background={'white'} mr={'0.5rem'} roundedRight={'lg'} width={'95%'} height={'98%'} overflowY={'scroll'} overflowX='hidden'>
       <CreateFileAlert isOpen={isOpen} onClose={onClose} projectData={projectData} setProjectData={setProjectData}/>
       <HStack width={'100%'} p={'1rem'}>
         <Heading w={'75%'} as='h3' fontWeight={'medium'} size='md'>{stringTranslate('editor.title')}</Heading>
@@ -39,7 +39,7 @@ const FileSideBar = ({ projectData, setProjectData }) => {
           <IconButton icon={<RiFileAddLine />} fontSize={'20'} size={'sm'} onClick={onOpen} variant={'ghost'} aria-label={stringTranslate('editor.new_file')} />
         </HStack>
       </HStack>
-      <VStack height={'100%'} width={'100%'} overflowY={'scroll'} overflowX='hidden'>
+      <VStack height={'100%'} width={'100%'} >
         {fileBuilder()}
       </VStack>
     </VStack>
