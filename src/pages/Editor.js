@@ -86,10 +86,8 @@ const Editor = () => {
 
   const execute = async () => {
     if (projectData.editorData.find(file => currentFile === file.id_file)) {
-      await runCode(currentCode.code);
+      await runCode(currentCode);
     }
-
-    console.log(currentCode);
   };
 
   const builder = () => {

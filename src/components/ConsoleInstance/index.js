@@ -6,15 +6,6 @@ import editorOptions from './editorOptions';
 const ConsoleInstance = ({ user, output }) => {
   const monacoRef = useRef(null);
 
-  //Send the data to Backend with Socket.IO
-  // const onEditorChange = (value, event) => {
-  //   const data = {
-  //     value,
-  //     ...event,
-  //   };
-  //   console.log(data);
-  // };
-
   //Set editor language  
   if (user) {
     if (user.locale && user.locale !== 'en') {

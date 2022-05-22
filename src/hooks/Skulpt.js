@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import Skulpt from 'skulpt';
+import outputService from '../services/output';
 
 const useSkulpt = () => {
   const Sk = Skulpt;
   const [output, setOutput] = useState('');
   var outputValues = '';
 
-  const runCode = async (code) => {
+  const runCode = async (currentCode) => {
     outputValues = '';
 
     Sk.pre = 'output';
@@ -23,14 +24,17 @@ const useSkulpt = () => {
     });
 
     var myPromise = Sk.misceval.asyncToPromise(function () {
-      return Sk.importMainWithBody('<stdin>', false, code, true);
+      return Sk.importMainWithBody('<stdin>', false, currentCode.code, true);
     });
 
-    myPromise.then((mod) => {
+    myPromise.then(async (mod) => {
       console.log('success', mod);
+      await outputService.newOutput({status: 1, result: outputValues}, currentCode.file);
       setOutput(outputValues);
-    }, (error) => {
+    }, async (error) => {
       console.log(error.toString());
+      const response = await outputService.newOutput({status: -1, result: error.toString()}, currentCode.file);
+      console.log(response);
       setOutput(error.toString());
     });
   };
