@@ -30,7 +30,7 @@ const Projects = () => {
   return (
     <Flex alignItems={'center'} justifyContent={'center'} alignContent={'center'} flexDirection={'column'} paddingX={'3rem'} w={'100%'} h={'100%'}>
       <Heading as='h1' size={'2xl'} py={'2.5rem'}> {stringTranslate('home.my_projects')} </ Heading>
-      <SimpleGrid columns={{md: 2, lg: 3}} height={'100%'} width={'100%'} spacing={20} justifyContent={'space-between'}>
+      <SimpleGrid columns={{md: 2, lg: 3}} height={'100%'} width={'100%'} spacing={20} pb={'2rem'} justifyContent={'space-between'}>
         {projects ? <ProjectCardCreate projects={projects}/> : null}
         {projectBuilder()}
       </SimpleGrid>
