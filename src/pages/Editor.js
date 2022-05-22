@@ -21,6 +21,7 @@ const Editor = () => {
   );
 
   const [currentFile, setCurrentFile] = useState();
+  const [currentCode, setCurrentCode] = useState();
 
   useEffect(() => {
     if (user) {
@@ -68,10 +69,27 @@ const Editor = () => {
     }
   }, [projectData]);
 
+  useEffect(() => {
+    if (currentFile) {
+      setCurrentCode({ file: currentFile, code: projectData.editorData.find(file => currentFile === file.id_file).value });
+    }
+    if (currentCode) {
+      const projectNewData = { ...projectData.project, files: projectData.project.files.map(file => file.id_file === currentCode.file ? { ...file, content: currentCode.code } : file) };
+
+      const editorNewData = projectData.editorData.map(file => file.id_file === currentCode.file ? { ...file, value: currentCode.code } : file);
+      setProjectData({
+        project: projectNewData,
+        editorData: editorNewData
+      });
+    }
+  }, [currentFile]);
+
   const execute = async () => {
     if (projectData.editorData.find(file => currentFile === file.id_file)) {
-      await runCode(projectData.editorData.find(file => currentFile === file.id_file).value);
+      await runCode(currentCode.code);
     }
+
+    console.log(currentCode);
   };
 
   const builder = () => {
@@ -82,7 +100,7 @@ const Editor = () => {
             <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile} />
           </GridItem>
           <GridItem display={'flex'}>
-            <EditorInstance user={user} projectData={projectData} currentFile={currentFile} />
+            <EditorInstance user={user} projectData={projectData} currentFile={currentFile} setCurrentCode={setCurrentCode} setProjectData={setProjectData} />
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
             <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>

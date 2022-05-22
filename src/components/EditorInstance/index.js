@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 import useOptions from './editorOptions';
 
-const EditorInstance = ({ user, projectData, currentFile, setCode }) => {
+const EditorInstance = ({ user, projectData, currentFile, setProjectData, setCurrentCode }) => {
   const monacoRef = useRef(null);
   const monaco = useMonaco();
   const [socket, setSocket] = useState(null);
@@ -30,15 +30,22 @@ const EditorInstance = ({ user, projectData, currentFile, setCode }) => {
 
 
   //Send the data to Backend with Socket.IO
-  const onEditorChange = (value, event) => {
+  const onEditorChange = () => {
+    const currentModel = monaco.editor.getModels().find(model => model.uri.path === `/${file.id_file}`);
+
+    const newValue = currentModel.getValue().toString();
+
     const data = {
-      value,
-      ...event,
+      value: newValue,
+      file_storage: file.storage,
+      folder_storage: projectData.project.storage
     };
 
-    //console.log(data);
-    console.log(monaco.editor.getModels());
-    //socket.emit('code:sent', data);
+    socket.emit('code:sent', data);
+
+    setCurrentCode({ file: currentFile, code: newValue });
+
+    
   };
 
   //Set editor language  
@@ -72,7 +79,7 @@ const EditorInstance = ({ user, projectData, currentFile, setCode }) => {
   //Render the editor once the user has been loaded
   const renderEditor = () => {
     if (user && projectData.editorData && currentFile) {
-      if ( file !== undefined){
+      if (file !== undefined) {
         return (
           <Editor
             onChange={onEditorChange}

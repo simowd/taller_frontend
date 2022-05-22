@@ -17,7 +17,7 @@ const useOptions = () => {
       enabled: false,
     },
     tabCompletion: 'off',
-    wordWrap: 'on',
+    wordWrap: 'off',
   };
 
   return { editorOptions };
