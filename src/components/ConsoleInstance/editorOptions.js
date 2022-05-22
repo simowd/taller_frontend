@@ -3,8 +3,8 @@ const editorOptions = {
   autoClosingBrackets: 'never',
   bracketPairColorization: 'on',
   folding: false,
-  // fontFamily: ,
-  // fontSize: ,
+  fontFamily: 'Source Code Pro',
+  fontSize: '16',
   links: false,
   minimap: {
     enabled: false,

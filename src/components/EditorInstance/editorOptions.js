@@ -1,17 +1,26 @@
-const editorOptions = {
-  autoIndent: 'none',
-  accessibilitySupport: 'on',
-  autoClosingBrackets: 'never',
-  bracketPairColorization: 'on',
-  folding: false,
-  // fontFamily: ,
-  // fontSize: ,
-  links: false,
-  minimap: {
-    enabled: false,
-  },
-  tabCompletion: 'off',
-  wordWrap: 'on',
+import { useSelector } from 'react-redux';
+
+
+const useOptions = () => {
+  const options = useSelector(state => state.settings);
+
+  const editorOptions = {
+    autoIndent: 'none',
+    accessibilitySupport: 'on',
+    autoClosingBrackets: 'never',
+    bracketPairColorization: 'on',
+    folding: false,
+    fontFamily: options ? options.font_type : undefined,
+    fontSize: options ? options.font_size : undefined,
+    links: false,
+    minimap: {
+      enabled: false,
+    },
+    tabCompletion: 'off',
+    wordWrap: 'on',
+  };
+
+  return { editorOptions };
 };
 
-export default editorOptions;
+export default useOptions;

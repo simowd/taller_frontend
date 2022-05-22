@@ -3,17 +3,17 @@ import Editor, { loader } from '@monaco-editor/react';
 import React, { useRef } from 'react';
 import editorOptions from './editorOptions';
 
-const ConsoleInstance = ({ user, data='' }) => {
+const ConsoleInstance = ({ user, output }) => {
   const monacoRef = useRef(null);
 
   //Send the data to Backend with Socket.IO
-  const onEditorChange = (value, event) => {
-    const data = {
-      value,
-      ...event,
-    };
-    console.log(data);
-  };
+  // const onEditorChange = (value, event) => {
+  //   const data = {
+  //     value,
+  //     ...event,
+  //   };
+  //   console.log(data);
+  // };
 
   //Set editor language  
   if (user) {
@@ -47,9 +47,8 @@ const ConsoleInstance = ({ user, data='' }) => {
     if (user) {
       return (
         <Editor
-          onChange={onEditorChange}
           defaultLanguage='plaintext'
-          defaultValue={data}
+          value={output}
           onMount={handleEditorDidMount}
           beforeMount={handleEditorWillMount}
           loading={<Spinner size={'lg'} color={'purple.400'}

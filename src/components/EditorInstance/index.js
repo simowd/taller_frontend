@@ -1,20 +1,23 @@
+/* eslint-disable no-unused-vars */
 import { Flex, Spinner } from '@chakra-ui/react';
-import Editor, { loader } from '@monaco-editor/react';
+import Editor, { loader, useMonaco } from '@monaco-editor/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
-import editorOptions from './editorOptions';
+import useOptions from './editorOptions';
 
-const EditorInstance = ({ user, projectData }) => {
+const EditorInstance = ({ user, projectData, currentFile, setCode }) => {
   const monacoRef = useRef(null);
+  const monaco = useMonaco();
   const [socket, setSocket] = useState(null);
+  const { editorOptions } = useOptions();
 
-  console.log(projectData);
+  const file = projectData.editorData.find(file => file.id_file === currentFile);
 
   //Setup the WebSocket connection to the backend
   useEffect(() => {
     if (user) {
       //Create the instance of the connection when user is gotten by browser
-      const io_socket = io(process.env.REACT_APP_BACKEND_URL,{
+      const io_socket = io(process.env.REACT_APP_BACKEND_URL, {
         extraHeaders: {
           'Authorization': user.token.token
         }
@@ -32,7 +35,10 @@ const EditorInstance = ({ user, projectData }) => {
       value,
       ...event,
     };
-    socket.emit('code:sent', data);
+
+    //console.log(data);
+    console.log(monaco.editor.getModels());
+    //socket.emit('code:sent', data);
   };
 
   //Set editor language  
@@ -60,28 +66,41 @@ const EditorInstance = ({ user, projectData }) => {
   // eslint-disable-next-line no-unused-vars
   const handleEditorDidMount = (editor, monaco) => {
     monacoRef.current = editor;
+
   };
 
   //Render the editor once the user has been loaded
   const renderEditor = () => {
-    if (user) {
-      return (
-        <Editor
-          onChange={onEditorChange}
-          defaultLanguage='python'
-          defaultValue=''
-          onMount={handleEditorDidMount}
-          beforeMount={handleEditorWillMount}
-          loading={<Spinner size={'lg'} color={'purple.400'}
-          />}
-          options={editorOptions}
-        />
-      );
+    if (user && projectData.editorData && currentFile) {
+      if ( file !== undefined){
+        return (
+          <Editor
+            onChange={onEditorChange}
+            defaultLanguage={file.language}
+            defaultValue={file.value}
+            path={file.id_file.toString()}
+            onMount={handleEditorDidMount}
+            beforeMount={handleEditorWillMount}
+            loading={<Spinner size={'lg'} color={'purple.400'}
+            />}
+            options={editorOptions}
+            saveViewState={true}
+          />
+        );
+      }
+      else {
+        return null;
+      }
     }
     else {
-      return (
-        <Spinner size={'lg'} color={'purple.400'} />
-      );
+      if (currentFile === null || currentFile === undefined) {
+        return null;
+      }
+      else {
+        return (
+          <Spinner size={'lg'} color={'purple.400'} />
+        );
+      }
     }
   };
 

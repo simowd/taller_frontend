@@ -12,6 +12,7 @@
     "@fontsource/open-sans": "^4.5.8",
     "@fontsource/raleway": "^4.5.8",
     "@fontsource/roboto": "^4.5.5",
+    "@fontsource/source-code-pro": "^4.5.9",
     "@fontsource/ubuntu": "^4.5.9",
     "@fontsource/ubuntu-mono": "^4.5.9",
     "@monaco-editor/react": "^4.4.5",

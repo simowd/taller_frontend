@@ -7,17 +7,20 @@ import ConsoleInstance from '../components/ConsoleInstance';
 import FileSideBar from '../components/FileSideBar';
 import editorService from '../services/editor';
 import { useLocation, useParams } from 'react-router-dom';
+import useSkulpt from '../hooks/Skulpt';
 
 const Editor = () => {
   const user = useSelector(state => state.user);
   const params = useParams();
   const location = useLocation();
-  const [currentFile, setCurrentFile] = useState(location.state.id_file);
-  
+  const { runCode, output } = useSkulpt();
+
   const [projectData, setProjectData] = useReducer(
-    (state, newState) => ({...state, ...newState}),
-    {project: null, editorData: null}
+    (state, newState) => ({ ...state, ...newState }),
+    { project: null, editorData: null }
   );
+
+  const [currentFile, setCurrentFile] = useState();
 
   useEffect(() => {
     if (user) {
@@ -34,7 +37,7 @@ const Editor = () => {
               };
             });
 
-            setProjectData({ project: response.data, editorData: filteredData});
+            setProjectData({ project: response.data, editorData: filteredData });
           }
         }
       };
@@ -42,21 +45,50 @@ const Editor = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (projectData.project) {
+      if (currentFile === null || currentFile === undefined) {
+        if (location.state) {
+          setCurrentFile(location.state.id_file);
+        }
+        else if (projectData.project.files.length !== 0) {
+          setCurrentFile(projectData.project.files[0].id_file);
+        }
+      }
+      else {
+        if (!projectData.project.files.map(file => file.id_file).includes(currentFile)) {
+          if (projectData.project.files.length !== 0) {
+            setCurrentFile(projectData.project.files[0].id_file);
+          }
+          else {
+            setCurrentFile(null);
+          }
+        }
+      }
+    }
+  }, [projectData]);
+
+  const execute = async () => {
+    if (projectData.editorData.find(file => currentFile === file.id_file)) {
+      await runCode(projectData.editorData.find(file => currentFile === file.id_file).value);
+    }
+  };
+
   const builder = () => {
     if (projectData.project || projectData.editorData) {
       return (
         <Grid h='100vh' w='100%' templateColumns={'20rem 1fr 4rem 1fr'}>
           <GridItem display={'flex'} alignItems='flex-start' height={'100%'} overflowY={'auto'} overflowX='hidden'>
-            <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile}/>
+            <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile} />
           </GridItem>
           <GridItem display={'flex'}>
             <EditorInstance user={user} projectData={projectData} currentFile={currentFile} />
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
-            <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} icon={<Icon as={FaPlay} />}></IconButton>
+            <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
-            <ConsoleInstance user={user} />
+            <ConsoleInstance user={user} output={output} />
           </GridItem>
         </Grid>
       );
