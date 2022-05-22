@@ -15,7 +15,11 @@ const useSkulpt = () => {
     Sk.configure({
       output: outputData,
       read: builtinRead,
-      execLimit: Number.POSITIVE_INFINITY
+      execLimit: Number.POSITIVE_INFINITY,
+      inputfun: function (prompt) {
+        return window.prompt(prompt);
+      },
+      inputfunTakesPrompt: true,
     });
 
     var myPromise = Sk.misceval.asyncToPromise(function () {
@@ -38,7 +42,7 @@ const useSkulpt = () => {
   }
 
   const outputData = (text) => {
-    outputValues = outputValues === '' ? `${text}` :`${outputValues}\r${text}`;
+    outputValues = outputValues === '' ? `${text}` : `${outputValues}\r${text}`;
     return text;
   };
 
