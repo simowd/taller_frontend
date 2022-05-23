@@ -1,7 +1,7 @@
 import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, FormControl, FormErrorMessage, FormLabel, Switch } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useToastHook } from '../../hooks/Toast';
 import { stringTranslate, translate } from '../../i18n';
 import { createProject } from '../../reducers/projects_reducer';
@@ -12,6 +12,7 @@ import FileUploadButton from './FileUploadButton';
 const CreateFileAlert = ({ isOpen, onClose, projects }) => {
   const cancelRef = React.useRef();
   const dispatch = useDispatch();
+  const options = useSelector(state => state.settings);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -55,6 +56,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
         leastDestructiveRef={cancelRef}
         onClose={onClose}
         isCentered
+        motionPreset={options ? (options.animations ? 'slideInBottom' : 'none') : 'slideInBottom'}
       >
         <AlertDialogOverlay>
           <Formik initialValues={{

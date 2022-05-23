@@ -5,9 +5,11 @@ import { useToastHook } from '../../hooks/Toast';
 import { stringTranslate, translate } from '../../i18n';
 import * as Yup from 'yup';
 import userService from '../../services/user';
+import { useSelector } from 'react-redux';
 
 const UpdatePassword = ({ isOpen, onClose }) => {
   const cancelRef = React.useRef();
+  const options = useSelector(state => state.settings);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -52,6 +54,7 @@ const UpdatePassword = ({ isOpen, onClose }) => {
         leastDestructiveRef={cancelRef}
         onClose={onClose}
         isCentered
+        motionPreset={options ? (options.animations ? 'slideInBottom' : 'none') : 'slideInBottom'}
       >
         <AlertDialogOverlay>
           <Formik initialValues={{

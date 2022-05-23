@@ -6,10 +6,12 @@ import { stringTranslate, translate } from '../../i18n';
 import InputField from './InputField';
 import * as Yup from 'yup';
 import fileService from '../../services/file';
+import { useSelector } from 'react-redux';
 
 // eslint-disable-next-line no-unused-vars
 const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData }) => {
   const cancelRef = React.useRef();
+  const options = useSelector(state => state.settings);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -72,6 +74,7 @@ const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
         leastDestructiveRef={cancelRef}
         onClose={onClose}
         isCentered
+        motionPreset={options ? (options.animations ? 'slideInBottom' : 'none') : 'slideInBottom'}
       >
         <AlertDialogOverlay>
           <Formik initialValues={{

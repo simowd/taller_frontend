@@ -94,7 +94,7 @@ const Editor = () => {
     if (projectData.project || projectData.editorData) {
       return (
         <Grid h='100vh' w='100%' templateColumns={'20rem 1fr 4rem 1fr'}>
-          <GridItem display={'flex'} alignItems='flex-start' height={'100%'} overflowY={'auto'} overflowX='hidden'>
+          <GridItem display={'flex'} alignItems='center' height={'100%'} overflowY={'auto'} overflowX='hidden'>
             <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile} />
           </GridItem>
           <GridItem display={'flex'}>
