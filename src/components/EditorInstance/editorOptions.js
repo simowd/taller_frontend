@@ -14,6 +14,7 @@ const useOptions = () => {
           autoIndent: 'none',
           accessibilitySupport: 'on',
           autoClosingBrackets: 'never',
+          autoClosingQuotes: 'never',
           bracketPairColorization: 'on',
           folding: false,
           fontFamily: options ? options.font_type : undefined,
