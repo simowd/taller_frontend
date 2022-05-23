@@ -2,6 +2,7 @@
 import { Flex, Spinner } from '@chakra-ui/react';
 import Editor, { loader, useMonaco } from '@monaco-editor/react';
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 import useOptions from './editorOptions';
 
@@ -9,6 +10,7 @@ const EditorInstance = ({ user, projectData, currentFile, setProjectData, setCur
   const monacoRef = useRef(null);
   const monaco = useMonaco();
   const [socket, setSocket] = useState(null);
+  const options = useSelector(state => state.settings);
   const { editorOptions } = useOptions();
 
   const file = projectData.editorData.find(file => file.id_file === currentFile);
@@ -91,6 +93,7 @@ const EditorInstance = ({ user, projectData, currentFile, setProjectData, setCur
             loading={<Spinner size={'lg'} color={'purple.400'}
             />}
             options={editorOptions}
+            theme={options.high_contrast ? 'hc-black' : 'vs-dark'}
             saveViewState={true}
           />
         );
