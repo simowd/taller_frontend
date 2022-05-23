@@ -12,7 +12,7 @@ const theme = extendTheme({
         bg: mode('#FAF7F7', 'gray.800')(props)
       }
     })
-  }
+  },
 });
 
 export default theme;

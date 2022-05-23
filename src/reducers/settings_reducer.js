@@ -3,6 +3,7 @@ import settingsService from '../services/settings';
 export const loadSettings = () => {
   return async (dispatch) => {
     const response = await settingsService.getSettings();
+    window.localStorage.setItem('chakra-ui-color-mode', response.data.dark_light === 1 ? 'dark' : 'light');
     dispatch({
       type: 'SET_SETTINGS',
       data: response.data,
@@ -27,6 +28,7 @@ const reducer = (state = null, action) => {
   case ('UPDATE_SETTING'):
     return {...state, ...action.data};
   case('CLEAR_USER'):
+    window.localStorage.setItem('chakra-ui-color-mode', 'light');
     return null;
   }
   return state;
