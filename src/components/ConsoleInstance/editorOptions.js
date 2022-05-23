@@ -12,7 +12,6 @@ const editorOptions = {
   lineNumbers: 'off',
   readOnly: true,
   tabCompletion: 'off',
-  wordWrap: 'on',
 };
 
 export default editorOptions;

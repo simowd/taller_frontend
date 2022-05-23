@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Flex, Spinner } from '@chakra-ui/react';
-import Editor, { loader, useMonaco } from '@monaco-editor/react';
+import Editor, { loader } from '@monaco-editor/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
@@ -8,7 +8,6 @@ import useOptions from './editorOptions';
 
 const EditorInstance = ({ user, projectData, currentFile, setProjectData, setCurrentCode }) => {
   const monacoRef = useRef(null);
-  const monaco = useMonaco();
   const [socket, setSocket] = useState(null);
   const options = useSelector(state => state.settings);
   const { editorOptions } = useOptions();
@@ -32,22 +31,16 @@ const EditorInstance = ({ user, projectData, currentFile, setProjectData, setCur
 
 
   //Send the data to Backend with Socket.IO
-  const onEditorChange = () => {
-    const currentModel = monaco.editor.getModels().find(model => model.uri.path === `/${file.id_file}`);
-
-    const newValue = currentModel.getValue().toString();
-
+  const onEditorChange = (value) => {
     const data = {
-      value: newValue,
+      value: value,
       file_storage: file.storage,
       folder_storage: projectData.project.storage
     };
 
     socket.emit('code:sent', data);
 
-    setCurrentCode({ file: currentFile, code: newValue });
-
-    
+    setCurrentCode({ file: currentFile, code: value });    
   };
 
   //Set editor language  
@@ -70,18 +63,19 @@ const EditorInstance = ({ user, projectData, currentFile, setProjectData, setCur
   const handleEditorWillMount = (monaco) => {
     //Enable Accesability support default
     //monaco.editor.EditorOptions.accessibilitySupport = 2;
+    //monaco.editor.remeasureFonts();
   };
 
   // eslint-disable-next-line no-unused-vars
   const handleEditorDidMount = (editor, monaco) => {
     monacoRef.current = editor;
-
+    monaco.editor.remeasureFonts();
   };
 
   //Render the editor once the user has been loaded
   const renderEditor = () => {
-    if (user && projectData.editorData && currentFile) {
-      if (file !== undefined) {
+    if (user && projectData.editorData && currentFile && editorOptions && options) {
+      if (file !== undefined && editorOptions !== undefined) {
         return (
           <Editor
             onChange={onEditorChange}
