@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
-import { Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Heading, Input, useColorMode } from '@chakra-ui/react';
 import { stringTranslate, translate } from '../../i18n/message_handle';
 import * as Yup from 'yup';
 import { loginUser } from '../../reducers/user_reducer';
@@ -16,12 +16,16 @@ const LoginForm = () => {
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
   const navigate = useNavigate();
+  const { toggleColorMode } = useColorMode();
 
   const onSubmit = async (values, actions) => {
     const loginValues = values;
     try {
       await dispatch(loginUser(loginValues));
       await dispatch(loadSettings());
+      if (window.localStorage.getItem('chakra-ui-color-mode') === 'dark') {
+        toggleColorMode();
+      }
       navigate('/s/menu');
     }
     catch (error) {

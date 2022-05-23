@@ -1,10 +1,11 @@
+import { useColorMode } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 const LogoutContainer = () => {
   const dispatch = useDispatch();
-  const {toggleColorMode} = useDispatch();
+  const {toggleColorMode} = useColorMode();
 
   useEffect(() => {
     if( window.localStorage.getItem('chakra-ui-color-mode') === 'dark'){
