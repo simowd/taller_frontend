@@ -4,12 +4,18 @@ import { Navigate } from 'react-router-dom';
 
 const LogoutContainer = () => {
   const dispatch = useDispatch();
+  const {toggleColorMode} = useDispatch();
 
   useEffect(() => {
+    if( window.localStorage.getItem('chakra-ui-color-mode') === 'dark'){
+      toggleColorMode();
+    }
     dispatch({
       type: 'CLEAR_USER',
       data: null
     });
+
+    
   }, []);
   
   return(<Navigate to='/'/>);

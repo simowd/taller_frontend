@@ -1,4 +1,4 @@
-import { Heading, HStack, IconButton, useDisclosure, VStack } from '@chakra-ui/react';
+import { Heading, HStack, IconButton, useColorModeValue, useDisclosure, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { stringTranslate } from '../../i18n';
 import FileUploadButton from './FileUploadButton';
@@ -30,7 +30,7 @@ const FileSideBar = ({ projectData, setProjectData, setCurrentFile }) => {
   };
 
   return (
-    <VStack boxShadow={'md'} background={'white'} mr={'0.5rem'} roundedRight={'lg'} width={'95%'} height={'98%'} overflowY={'scroll'} overflowX='hidden'>
+    <VStack boxShadow={'md'} background={useColorModeValue('white', '35343F')} mr={'0.5rem'} roundedRight={'lg'} width={'95%'} height={'98%'} overflowY={'scroll'} overflowX='hidden'>
       <CreateFileAlert isOpen={isOpen} onClose={onClose} projectData={projectData} setProjectData={setProjectData}/>
       <HStack width={'100%'} p={'1rem'}>
         <Heading w={'75%'} as='h3' fontWeight={'medium'} size='md'>{stringTranslate('editor.title')}</Heading>

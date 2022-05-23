@@ -7,7 +7,7 @@ import { LOCALES } from './constants';
 
 import messages from './messages';
 
-const LangProvider = ({ children, locale = LOCALES.ENGLISH }) => {
+const LangProvider = ({ children, locale = LOCALES.SPANISH }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 

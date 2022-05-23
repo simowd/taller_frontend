@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useToastHook } from '../../hooks/Toast';
 import * as Yup from 'yup';
 import { stringTranslate, translate } from '../../i18n';
-import { Box, Button, Flex, Heading, HStack, Skeleton, StackDivider, useDisclosure, VStack } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, HStack, Skeleton, StackDivider, useColorModeValue, useDisclosure, VStack } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import InputField from './InputField';
 import CountrySelect from './CountrySelect';
@@ -45,6 +45,8 @@ const UserInformation = () => {
         type: 'CHANGE_LOCALE',
         data: values.language,
       });
+
+      window.localStorage.setItem('user', JSON.stringify({...JSON.parse(window.localStorage.getItem('user')), locale: values.language}));
 
       //success message
       const success = {
@@ -180,7 +182,7 @@ const UserInformation = () => {
   });
 
   return (
-    <Flex bg={'white'} px={'5rem'} pb={'8rem'} pt={'5rem'} boxShadow='sm' borderRadius={'xl'} m={'5rem'} flexDirection={'column'}>
+    <Flex background={useColorModeValue('white', '35343F')} px={'5rem'} pb={'8rem'} pt={'5rem'} boxShadow='sm' borderRadius={'xl'} m={'5rem'} flexDirection={'column'}>
       <Flex justifyContent={'center'}>
         <Heading >
           {stringTranslate('account.my_account').toUpperCase()}
