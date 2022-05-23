@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, HStack, Icon, IconButton, Link, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack, Icon, IconButton, Link, Text, useColorModeValue, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { RiEditLine, RiDownload2Line, RiDeleteBinLine, RiFolderWarningLine } from 'react-icons/ri';
 import { stringTranslate } from '../../i18n';
@@ -58,7 +58,7 @@ const ProjectCardSketchbook = ({ project }) => {
   };
 
   return (
-    <Box background={'white'} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between' boxShadow='md'>
+    <Box background={useColorModeValue('white', '#282C34')} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between' boxShadow='md'>
       <HStack height={'15%'} pl={'0.5rem'} w={'100%'}>
         <Link w='75%' as={RouteLink} to={`/e/${project.id_folder}`}>
           <Heading w='75%' as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>

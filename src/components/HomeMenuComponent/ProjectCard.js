@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, HStack, Icon, IconButton, Link, Text, useDisclosure, VStack } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack, Icon, IconButton, Link, Text, useColorModeValue, useDisclosure, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { RiEditLine, RiDownload2Line, RiDeleteBinLine, RiFolderWarningLine } from 'react-icons/ri';
 import { stringTranslate } from '../../i18n';
@@ -62,7 +62,7 @@ const ProjectCard = ({ project, projects }) => {
   };
 
   return (
-    <Box background={'white'} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between' boxShadow='md'>
+    <Box background={useColorModeValue('white', '#282C34')} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between' boxShadow='md'>
       <DeleteFileAlert isOpen={isOpen} onClose={onClose} project={project} />
       <UpdateFileAlert isOpen={isOpenU} onClose={onCloseU} project={project} projects={projects} />
       <HStack height={'15%'} pl={'0.5rem'} w={'100%'}>
