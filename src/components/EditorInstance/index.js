@@ -1,34 +1,15 @@
-/* eslint-disable no-unused-vars */
 import { Flex, Spinner } from '@chakra-ui/react';
 import Editor, { loader } from '@monaco-editor/react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { io } from 'socket.io-client';
 import useOptions from './editorOptions';
 
-const EditorInstance = ({ user, projectData, currentFile, setProjectData, setCurrentCode }) => {
+const EditorInstance = ({ user, projectData, currentFile, socket, setCurrentCode }) => {
   const monacoRef = useRef(null);
-  const [socket, setSocket] = useState(null);
   const options = useSelector(state => state.settings);
   const { editorOptions } = useOptions();
 
   const file = projectData.editorData.find(file => file.id_file === currentFile);
-
-  //Setup the WebSocket connection to the backend
-  useEffect(() => {
-    if (user) {
-      //Create the instance of the connection when user is gotten by browser
-      const io_socket = io(process.env.REACT_APP_BACKEND_URL, {
-        extraHeaders: {
-          'Authorization': user.token.token
-        }
-      });
-      setSocket(io_socket);
-      //Delete Socket when the component dies
-      return () => io_socket.disconnect();
-    }
-  }, [user]);
-
 
   //Send the data to Backend with Socket.IO
   const onEditorChange = (value) => {

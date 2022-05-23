@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { RiDeleteBinLine, RiDownload2Line, RiEditLine, RiFileCodeLine } from 'react-icons/ri';
 import { useToastHook } from '../../hooks/Toast';
 import { stringTranslate } from '../../i18n';
-import { downloadFile } from '../../services/file_managment';
+import { buildFileDownload } from '../../services/file_managment';
 import DeleteFileAlert from '../FileSideBar/DeleteFileAlert';
 import UpdateFileAlert from '../FileSideBar/UpdateFileAlert';
 
-const FileSpace = ({ file, projectData, setProjectData, setCurrentFile }) => {
+const FileSpace = ({ file, projectData, setProjectData, setCurrentFile, currentCode }) => {
 
   const [loadingD, setLoadingD] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -18,10 +18,11 @@ const FileSpace = ({ file, projectData, setProjectData, setCurrentFile }) => {
   const onDownload = async () => {
     try {
       setLoadingD(true);
-      await downloadFile(file);
+      await buildFileDownload(projectData, file, currentCode);
       setLoadingD(false);
     }
     catch (error) {
+      console.log(error);
       setLoadingD(false);
       //Setting up error data
       const error_data = {

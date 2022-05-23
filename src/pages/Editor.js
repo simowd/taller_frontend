@@ -8,12 +8,14 @@ import FileSideBar from '../components/FileSideBar';
 import editorService from '../services/editor';
 import { useLocation, useParams } from 'react-router-dom';
 import useSkulpt from '../hooks/Skulpt';
+import { io } from 'socket.io-client';
 
 const Editor = () => {
   const user = useSelector(state => state.user);
   const params = useParams();
   const location = useLocation();
   const { runCode, output } = useSkulpt();
+  const [socket, setSocket] = useState(null);
 
   const [projectData, setProjectData] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -23,6 +25,7 @@ const Editor = () => {
   const [currentFile, setCurrentFile] = useState();
   const [currentCode, setCurrentCode] = useState();
 
+  //Get all projects
   useEffect(() => {
     if (user) {
       const getProject = async () => {
@@ -46,6 +49,22 @@ const Editor = () => {
     }
   }, [user]);
 
+  //Setup the WebSocket connection to the backend
+  useEffect(() => {
+    if (user) {
+      //Create the instance of the connection when user is gotten by browser
+      const io_socket = io(process.env.REACT_APP_BACKEND_URL, {
+        extraHeaders: {
+          'Authorization': user.token.token
+        }
+      });
+      setSocket(io_socket);
+      //Delete Socket when the component dies
+      return () => io_socket.disconnect();
+    }
+  }, [user]);
+
+  // Set current file
   useEffect(() => {
     if (projectData.project) {
       if (currentFile === null || currentFile === undefined) {
@@ -69,6 +88,7 @@ const Editor = () => {
     }
   }, [projectData]);
 
+  //Current code for editor
   useEffect(() => {
     if (currentFile) {
       setCurrentCode({ file: currentFile, code: projectData.editorData.find(file => currentFile === file.id_file).value });
@@ -95,10 +115,10 @@ const Editor = () => {
       return (
         <Grid h='100vh' w='100%' templateColumns={'20rem 1fr 4rem 1fr'}>
           <GridItem display={'flex'} alignItems='center' height={'100%'} overflowY={'auto'} overflowX='hidden'>
-            <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile} />
+            <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile} currentCode={currentCode}/>
           </GridItem>
           <GridItem display={'flex'}>
-            <EditorInstance user={user} projectData={projectData} currentFile={currentFile} setCurrentCode={setCurrentCode} setProjectData={setProjectData} />
+            <EditorInstance user={user} projectData={projectData} currentFile={currentFile} setCurrentCode={setCurrentCode} setProjectData={setProjectData} socket={socket}/>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
             <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
