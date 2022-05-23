@@ -16,7 +16,7 @@ const useSkulpt = () => {
     Sk.configure({
       output: outputData,
       read: builtinRead,
-      execLimit: Number.POSITIVE_INFINITY,
+      execLimit: 10000,
       inputfun: function (prompt) {
         return window.prompt(prompt);
       },
@@ -29,13 +29,23 @@ const useSkulpt = () => {
 
     myPromise.then(async (mod) => {
       console.log('success', mod);
-      await outputService.newOutput({status: 1, result: outputValues}, currentCode.file);
-      setOutput(outputValues);
+      try {
+        await outputService.newOutput({ status: 1, result: outputValues }, currentCode.file);
+        setOutput(outputValues);
+      }
+      catch (e) {
+        setOutput(outputValues);
+      }
+
     }, async (error) => {
       console.log(error.toString());
-      const response = await outputService.newOutput({status: -1, result: error.toString()}, currentCode.file);
-      console.log(response);
-      setOutput(error.toString());
+      try {
+        await outputService.newOutput({ status: -1, result: error.toString() }, currentCode.file);
+        setOutput(error.toString());
+      }
+      catch (e) {
+        setOutput(outputValues);
+      }      
     });
   };
 
