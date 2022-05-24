@@ -119,7 +119,9 @@ const strings = {
     }
   },
   accesibility: {
-    skip_content: 'Ir al contenido principal'
+    skip_content: 'Ir al contenido principal',
+    skip_files: 'Ir a los archivos del proyecto',
+    skip_editor: 'Ir al editor de código',
   }
 };
 

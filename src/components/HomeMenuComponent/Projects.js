@@ -1,4 +1,5 @@
 import { Flex, Heading, SimpleGrid } from '@chakra-ui/react';
+import { SkipNavContent } from '@chakra-ui/skip-nav';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { stringTranslate } from '../../i18n';
@@ -29,6 +30,7 @@ const Projects = () => {
 
   return (
     <Flex alignItems={'center'} justifyContent={'center'} alignContent={'center'} flexDirection={'column'} paddingX={'3rem'} w={'100%'} h={'100%'}>
+      <SkipNavContent />
       <Heading as='h1' size={'2xl'} py={'2.5rem'}> {stringTranslate('home.my_projects')} </ Heading>
       <SimpleGrid columns={{md: 2, lg: 3}} height={'100%'} width={'100%'} spacing={20} pb={'2rem'} justifyContent={'space-between'}>
         {projects ? <ProjectCardCreate projects={projects}/> : null}

@@ -8,7 +8,8 @@ import { stringTranslate } from '../../../i18n';
 const EditorSideBar = () => {
   return (
     <Grid h='100vh' w='100%' templateColumns='72px 1fr'>
-      <SkipNavLink> { stringTranslate('accesibility.skip_content') } </SkipNavLink>
+      <SkipNavLink> { stringTranslate('accesibility.skip_files') } </SkipNavLink>
+      <SkipNavLink id={'skip-editor'}> { stringTranslate('accesibility.skip_editor') } </SkipNavLink>
       <GridItem>
         <SideBarContainer />
       </GridItem>

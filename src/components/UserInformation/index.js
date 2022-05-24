@@ -14,6 +14,7 @@ import UpdatePassword from './UpdatePassword';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
 import windowState from '../../sounds/window_state.ogg';
+import { SkipNavContent } from '@chakra-ui/skip-nav';
 
 const UserInformation = () => {
   const user = useSelector(state => state.user);
@@ -191,6 +192,7 @@ const UserInformation = () => {
   return (
     <Flex background={useColorModeValue('white', '35343F')} px={'5rem'} pb={'8rem'} pt={'5rem'} boxShadow='sm' borderRadius={'xl'} m={'5rem'} flexDirection={'column'}>
       <Flex justifyContent={'center'}>
+        <SkipNavContent />
         <Heading >
           {stringTranslate('account.my_account').toUpperCase()}
         </Heading>

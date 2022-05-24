@@ -11,6 +11,7 @@ import useSkulpt from '../hooks/Skulpt';
 import { io } from 'socket.io-client';
 import focusActionble from '../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../hooks/Sound';
+import { SkipNavContent } from '@chakra-ui/skip-nav';
 
 const Editor = () => {
   const user = useSelector(state => state.user);
@@ -121,6 +122,7 @@ const Editor = () => {
             <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile} currentCode={currentCode}/>
           </GridItem>
           <GridItem display={'flex'}>
+            <SkipNavContent id={'skip-editor'}/>
             <EditorInstance user={user} projectData={projectData} currentFile={currentFile} setCurrentCode={setCurrentCode} setProjectData={setProjectData} socket={socket}/>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>

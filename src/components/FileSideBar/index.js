@@ -7,6 +7,7 @@ import { RiFileAddLine } from 'react-icons/ri';
 import CreateFileAlert from './CreateFileAlert';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import { SkipNavContent } from '@chakra-ui/skip-nav';
 
 const FileSideBar = ({ projectData, setProjectData, setCurrentFile, currentCode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -36,6 +37,7 @@ const FileSideBar = ({ projectData, setProjectData, setCurrentFile, currentCode 
     <VStack boxShadow={'md'} background={useColorModeValue('white', '35343F')} mr={'0.5rem'} roundedRight={'lg'} width={'95%'} height={'98%'} overflowY={'scroll'} overflowX='hidden'>
       <CreateFileAlert isOpen={isOpen} onClose={onClose} projectData={projectData} setProjectData={setProjectData}/>
       <HStack width={'100%'} p={'1rem'}>
+        <SkipNavContent />
         <Heading w={'75%'} as='h3' fontWeight={'medium'} size='md'>{stringTranslate('editor.title')}</Heading>
         <HStack>
           <FileUploadButton setProjectData={setProjectData} projectData={projectData}/>
