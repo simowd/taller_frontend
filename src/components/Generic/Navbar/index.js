@@ -8,7 +8,7 @@ import NavContainer from './NavContainer';
 const Navbar = () => {
   return (
     <Grid bg={'#FAF7F7'} h={'100vh'} templateRows={'5rem 1fr'}>
-      <SkipNavLink> {stringTranslate('accesibility.skip_content')} </SkipNavLink>
+      <SkipNavLink> {stringTranslate('accesibility.skip_editor')} </SkipNavLink>
       <GridItem>
         <NavContainer />
       </GridItem>

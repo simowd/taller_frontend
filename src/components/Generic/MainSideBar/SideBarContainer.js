@@ -16,7 +16,7 @@ const SideBarContainer = () => {
     <Grid borderRightRadius={'md'} w='100%' h='100vh' templateRows='4.5rem 1fr 4.5rem' background='#282C34' justifyContent='left' paddingLeft={'2rem'} sx={{ position: '-webkit-sticky', /* Safari */ position: 'sticky', top: '0', }}>
       <GridItem display='flex' alignItems={'center'}>
         <SkipNavLink> {stringTranslate('accesibility.skip_content')} </SkipNavLink>
-        <Box pt={'1rem'}>
+        <Box pt={'1rem'} display={'flex'} alignItems={'flex-start'} aria-hidden={'true'} >
           <Icon as={SiPython} w={10} h={10} color={'white'} />
         </Box>
       </GridItem>

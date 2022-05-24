@@ -12,7 +12,7 @@ const SideBarContainer = () => {
     <Grid w='100%' h='100vh' templateRows='4.5rem 1fr 4.5rem' background='#282C34' justifyContent='center'>
       <GridItem display='flex' justifyContent={'center'} alignItems={'center'}>
         <Box pt={'1rem'}>
-          <Icon as={SiPython} w={10} h={10} color={'white'} />
+          <Icon aria-hidden={'true'} as={SiPython} w={10} h={10} color={'white'} />
         </Box>
       </GridItem>
       <GridItem display='flex' justifyContent={'center'}>

@@ -8,7 +8,7 @@ const strings = {
     closeNavbar: 'Cerrar el Menú de Navegación',
     openNavbar: 'Abrir el Menú de Navegación',
     login: 'Iniciar Sesión',
-    signup: 'Registro'
+    signup: 'Registrarse'
   },
   sidebar: {
     home: 'Pantalla de Inicio',
