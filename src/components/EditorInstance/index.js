@@ -68,7 +68,7 @@ const EditorInstance = ({ user, projectData, currentFile, socket, setCurrentCode
             loading={<Spinner size={'lg'} color={'purple.400'}
             />}
             options={editorOptions}
-            theme={options.high_contrast ? 'hc-black' : 'vs-dark'}
+            theme={options.high_contrast ? 'hc-black' : (options.dark_light ==='dark' ? 'vs-dark' : 'vs-light')}
             saveViewState={true}
           />
         );
