@@ -6,12 +6,15 @@ import { stringTranslate } from '../../i18n';
 import { buildFileDownload } from '../../services/file_managment';
 import DeleteFileAlert from '../FileSideBar/DeleteFileAlert';
 import UpdateFileAlert from '../FileSideBar/UpdateFileAlert';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const FileSpace = ({ file, projectData, setProjectData, setCurrentFile, currentCode }) => {
 
   const [loadingD, setLoadingD] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isOpenU, onOpen: onOpenU, onClose: onCloseU } = useDisclosure();
+  const [playSound] = useAccesibleSound(focusActionble);
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
 
@@ -44,16 +47,16 @@ const FileSpace = ({ file, projectData, setProjectData, setCurrentFile, currentC
       <DeleteFileAlert isOpen={isOpen} onClose={onClose} file={file} projectData={projectData} setProjectData={setProjectData} />
       <UpdateFileAlert isOpen={isOpenU} onClose={onCloseU} file={file} projectData={projectData} setProjectData={setProjectData} />
       <HStack pl={'0.5rem'} w={'100%'}>
-        <Flex width={'55%'} as={'button'} onClick={setFile}>
+        <Flex width={'55%'} as={'button'} onFocus={() => playSound()} onClick={setFile}>
           <HStack spacing={1}>
             <Icon color={useColorModeValue('white', 'black')} as={RiFileCodeLine} w={5} h={5}></Icon>
             <Heading fontWeight={'light'} fontSize={'14'} size={'sm'} color={useColorModeValue('white', 'black')} noOfLines={1}> {file.file_name} </Heading>
           </HStack>
         </Flex>
         <HStack width={'45%'} spacing={0.2}>
-          <IconButton color={useColorModeValue('white', 'black')} icon={<RiEditLine />} size={'md'} variant={'link'} aria-label={stringTranslate('home.edit')} onClick={onOpenU} />
-          <IconButton color={useColorModeValue('white', 'black')} icon={<RiDownload2Line />} size={'md'} variant={'link'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
-          <IconButton color={useColorModeValue('white', 'black')} icon={<RiDeleteBinLine />} size={'md'} variant={'link'} aria-label={stringTranslate('home.delete')} onClick={onOpen} />
+          <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiEditLine />} size={'md'} variant={'link'} aria-label={stringTranslate('home.edit')} onClick={onOpenU} />
+          <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiDownload2Line />} size={'md'} variant={'link'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
+          <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiDeleteBinLine />} size={'md'} variant={'link'} aria-label={stringTranslate('home.delete')} onClick={onOpen} />
         </HStack>
       </HStack>
     </Flex>

@@ -6,9 +6,12 @@ import { stringTranslate, translate } from '../../i18n';
 import InputField from './InputField';
 import * as Yup from 'yup';
 import fileService from '../../services/file';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
   const cancelRef = React.useRef();
+  const [playSound] = useAccesibleSound(focusActionble);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -94,7 +97,7 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
                           <FormLabel htmlFor='private'>
                             {translate('home.private')}
                           </FormLabel>
-                          <Switch {...field} id='private' size={'lg'} defaultChecked={true} />
+                          <Switch onFocus={() => playSound()} {...field} id='private' size={'lg'} defaultChecked={true} />
                           <FormErrorMessage> {form.errors.private} </FormErrorMessage>
                         </FormControl>
                       )}
@@ -102,10 +105,10 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
 
                   </AlertDialogBody>
                   <AlertDialogFooter>
-                    <Button onClick={onClose}>
+                    <Button onFocus={() => playSound()} onClick={onClose}>
                       {stringTranslate('forms.cancel')}
                     </Button>
-                    <Button colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
+                    <Button onFocus={() => playSound()} colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
                       {stringTranslate('forms.create')}
                     </Button>
                   </AlertDialogFooter>

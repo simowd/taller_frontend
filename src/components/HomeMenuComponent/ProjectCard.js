@@ -8,11 +8,14 @@ import { useToastHook } from '../../hooks/Toast';
 import UpdateFileAlert from './UpdateFileAlert';
 import FileSpace from './FileSpace';
 import { Link as RouteLink } from 'react-router-dom';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const ProjectCard = ({ project, projects }) => {
   const [loadingD, setLoadingD] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isOpenU, onOpen: onOpenU, onClose: onCloseU } = useDisclosure();
+  const [playSound] = useAccesibleSound(focusActionble);
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
 
@@ -66,13 +69,13 @@ const ProjectCard = ({ project, projects }) => {
       <DeleteFileAlert isOpen={isOpen} onClose={onClose} project={project} />
       <UpdateFileAlert isOpen={isOpenU} onClose={onCloseU} project={project} projects={projects} />
       <HStack height={'15%'} pl={'0.5rem'} w={'100%'}>
-        <Link w='75%'as={RouteLink} to={`/e/${project.id_folder}`}>
+        <Link onFocus={() => playSound()} w='75%'as={RouteLink} to={`/e/${project.id_folder}`}>
           <Heading as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>
         </Link>
         <Box>
-          <IconButton icon={<RiEditLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.edit')} onClick={onOpenU} />
-          <IconButton icon={<RiDownload2Line />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
-          <IconButton icon={<RiDeleteBinLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.delete')} onClick={onOpen} />
+          <IconButton onFocus={() => playSound()} icon={<RiEditLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.edit')} onClick={onOpenU} />
+          <IconButton onFocus={() => playSound()} icon={<RiDownload2Line />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
+          <IconButton onFocus={() => playSound()} icon={<RiDeleteBinLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.delete')} onClick={onOpen} />
         </Box>
       </HStack>
       <VStack height={'85%'} spacing={'1.5rem'} pt={'0.5rem'} display='flex' alignItems={'flex-start'} alignContent={'flex-start'} justifyContent='flex-start'>

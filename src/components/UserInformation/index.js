@@ -11,6 +11,8 @@ import LanguageSelect from './LanguageSelect';
 import GenderSelect from './GenderSelect';
 import userService from '../../services/user';
 import UpdatePassword from './UpdatePassword';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const UserInformation = () => {
   const user = useSelector(state => state.user);
@@ -19,6 +21,7 @@ const UserInformation = () => {
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
   const dispatch = useDispatch();
+  const [playSound] = useAccesibleSound(focusActionble);
 
   useEffect(() => {
     if (user) {
@@ -136,17 +139,16 @@ const UserInformation = () => {
                       </Field>
                       <Box py={'0.2rem'}></Box>
                       <Flex justifyContent={'space-around'} pt={'2rem'} width='100%'>
-                        <Button colorScheme={'gray'} isLoading={props.isSubmitting} loadingText={stringTranslate('auth.loading')} type='submit' size={'md'}>
+                        <Button onFocus={() => playSound()} colorScheme={'gray'} isLoading={props.isSubmitting} loadingText={stringTranslate('auth.loading')} type='submit' size={'md'}>
                           {translate('forms.update')}
                         </Button>
-                        <Button colorScheme={'gray'} onClick={onOpen} size={'md'}>
+                        <Button onFocus={() => playSound()} colorScheme={'gray'} onClick={onOpen} size={'md'}>
                           {translate('forms.change_password')}
                         </Button>
                       </Flex>
                     </Box>
                   </HStack>
                 </Form>
-
               );
             }}
           </Formik>

@@ -4,9 +4,12 @@ import { useDispatch } from 'react-redux';
 import { stringTranslate } from '../../i18n';
 import { updateSettings } from '../../reducers/settings_reducer';
 import font_family from '../../utils/data/font_family';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const SettingFontType = ({ setting, name }) => {
   const dispatch = useDispatch();
+  const [playSound] = useAccesibleSound(focusActionble);
 
   const onChange = async (event) => {
     await dispatch(updateSettings({ [name]: event.target.value }));
@@ -26,7 +29,7 @@ const SettingFontType = ({ setting, name }) => {
       <FormLabel htmlFor={name} mb={'0'}>
         {stringTranslate(`settings.${name}`)}
       </FormLabel>
-      <Select onChange={onChange} id={name} defaultValue={setting} >
+      <Select onFocus={() => playSound()} onChange={onChange} id={name} defaultValue={setting} >
         {optionBuilder()}
       </Select>
     </FormControl>

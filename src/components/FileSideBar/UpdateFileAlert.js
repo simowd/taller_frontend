@@ -7,11 +7,14 @@ import InputField from './InputField';
 import * as Yup from 'yup';
 import fileService from '../../services/file';
 import { useSelector } from 'react-redux';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 // eslint-disable-next-line no-unused-vars
 const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData }) => {
   const cancelRef = React.useRef();
   const options = useSelector(state => state.settings);
+  const [playSound] = useAccesibleSound(focusActionble);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -104,7 +107,7 @@ const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
                           <FormLabel htmlFor='private'>
                             {translate('home.private')}
                           </FormLabel>
-                          <Switch {...field} defaultChecked={field.value} id='private' size={'lg'}/>
+                          <Switch onFocus={() => playSound()} {...field} defaultChecked={field.value} id='private' size={'lg'}/>
                           <FormErrorMessage> {form.errors.private} </FormErrorMessage>
                         </FormControl>
                       )}
@@ -112,10 +115,10 @@ const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
 
                   </AlertDialogBody>
                   <AlertDialogFooter>
-                    <Button onClick={onClose}>
+                    <Button onFocus={() => playSound()} onClick={onClose}>
                       {stringTranslate('forms.cancel')}
                     </Button>
-                    <Button colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
+                    <Button onFocus={() => playSound()} colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
                       {stringTranslate('forms.update')}
                     </Button>
                   </AlertDialogFooter>

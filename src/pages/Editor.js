@@ -9,6 +9,8 @@ import editorService from '../services/editor';
 import { useLocation, useParams } from 'react-router-dom';
 import useSkulpt from '../hooks/Skulpt';
 import { io } from 'socket.io-client';
+import focusActionble from '../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../hooks/Sound';
 
 const Editor = () => {
   const user = useSelector(state => state.user);
@@ -16,6 +18,7 @@ const Editor = () => {
   const location = useLocation();
   const { runCode, output } = useSkulpt();
   const [socket, setSocket] = useState(null);
+  const [playSound] = useAccesibleSound(focusActionble);
 
   const [projectData, setProjectData] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -121,7 +124,7 @@ const Editor = () => {
             <EditorInstance user={user} projectData={projectData} currentFile={currentFile} setCurrentCode={setCurrentCode} setProjectData={setProjectData} socket={socket}/>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
-            <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
+            <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} onFocus={() => playSound()} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
             <ConsoleInstance user={user} output={output} />

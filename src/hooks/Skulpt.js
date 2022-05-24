@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import Skulpt from 'skulpt';
 import outputService from '../services/output';
+import goodAnswer from '../sounds/good_answer.mp3';
+import wrongAnswer from '../sounds/wrong_answer.mp3';
+import useAccesibleSound from './Sound';
 
 const useSkulpt = () => {
   const Sk = Skulpt;
   const [output, setOutput] = useState('');
+  const [playSoundR] = useAccesibleSound(goodAnswer);
+  const [playSoundW] = useAccesibleSound(wrongAnswer);
   var outputValues = '';
 
   const runCode = async (currentCode) => {
@@ -30,6 +35,7 @@ const useSkulpt = () => {
     myPromise.then(async (mod) => {
       console.log('success', mod);
       try {
+        playSoundR();
         await outputService.newOutput({ status: 1, result: outputValues }, currentCode.file);
         setOutput(outputValues);
       }
@@ -40,6 +46,7 @@ const useSkulpt = () => {
     }, async (error) => {
       console.log(error.toString());
       try {
+        playSoundW();
         await outputService.newOutput({ status: -1, result: error.toString() }, currentCode.file);
         setOutput(error.toString());
       }

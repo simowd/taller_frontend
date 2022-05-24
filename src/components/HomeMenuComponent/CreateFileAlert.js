@@ -8,11 +8,14 @@ import { createProject } from '../../reducers/projects_reducer';
 import InputField from './InputField';
 import * as Yup from 'yup';
 import FileUploadButton from './FileUploadButton';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const CreateFileAlert = ({ isOpen, onClose, projects }) => {
   const cancelRef = React.useRef();
   const dispatch = useDispatch();
   const options = useSelector(state => state.settings);
+  const [playSound] = useAccesibleSound(focusActionble);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -85,7 +88,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
                           <FormLabel htmlFor='private'>
                             {translate('home.private')}
                           </FormLabel>
-                          <Switch {...field} id='private' size={'lg'} defaultChecked={true}/>
+                          <Switch onFocus={() => playSound()} {...field} id='private' size={'lg'} defaultChecked={true}/>
                           <FormErrorMessage> {form.errors.private} </FormErrorMessage>
                         </FormControl>
                       )}
@@ -93,10 +96,10 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
 
                   </AlertDialogBody>
                   <AlertDialogFooter>
-                    <Button onClick={onClose}>
+                    <Button onFocus={() => playSound()} onClick={onClose}>
                       {stringTranslate('forms.cancel')}
                     </Button>
-                    <Button colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
+                    <Button onFocus={() => playSound()} colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
                       {stringTranslate('forms.create')}
                     </Button>
                   </AlertDialogFooter>

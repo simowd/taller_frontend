@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useToastHook } from '../../hooks/Toast';
 import { stringTranslate } from '../../i18n';
 import { deleteProject } from '../../reducers/projects_reducer';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const DeleteFileAlert = ({ isOpen, onClose, project }) => {
   const [loading, setLoading] = useState(false);
   const cancelRef = React.useRef();
   const dispatch = useDispatch();
   const options = useSelector(state => state.settings);
+  const [playSound] = useAccesibleSound(focusActionble);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -54,10 +57,10 @@ const DeleteFileAlert = ({ isOpen, onClose, project }) => {
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
+              <Button onFocus={() => playSound()} ref={cancelRef} onClick={onClose}>
                 {stringTranslate('forms.cancel')}
               </Button>
-              <Button colorScheme='red' isLoading={loading} onClick={onDeleteProject} ml={3}>
+              <Button onFocus={() => playSound()} colorScheme='red' isLoading={loading} onClick={onDeleteProject} ml={3}>
                 {stringTranslate('forms.delete')}
               </Button>
             </AlertDialogFooter>

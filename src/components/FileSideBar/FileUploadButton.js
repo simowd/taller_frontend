@@ -3,9 +3,12 @@ import React, { useRef } from 'react';
 import { RiFileUploadLine } from 'react-icons/ri';
 import { stringTranslate } from '../../i18n';
 import { uploadFile } from '../../services/file_managment';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const FileUploadButton = ({ setProjectData, projectData }) => {
   const inputRef = useRef(null);
+  const [playSound] = useAccesibleSound(focusActionble);
 
   const changeHandler = async (event) => {
     const response = await uploadFile(event.target.files[0], projectData.project.id_folder);
@@ -30,7 +33,7 @@ const FileUploadButton = ({ setProjectData, projectData }) => {
   return (
     <>
       <input hidden type='file' id='file' name='file' onChange={changeHandler} ref={inputRef} accept={'text/x-python'} />
-      <IconButton icon={<RiFileUploadLine />} fontSize={'20'} size={'sm'} onClick={onClick} variant={'ghost'} aria-label={stringTranslate('editor.upload')} />
+      <IconButton onFocus={() => playSound()} icon={<RiFileUploadLine />} fontSize={'20'} size={'sm'} onClick={onClick} variant={'ghost'} aria-label={stringTranslate('editor.upload')} />
     </>
   );
 };

@@ -7,11 +7,14 @@ import { stringTranslate, translate } from '../../i18n';
 import { updateProject } from '../../reducers/projects_reducer';
 import InputField from './InputField';
 import * as Yup from 'yup';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const UpdateFileAlert = ({ isOpen, onClose, project, projects }) => {
   const cancelRef = React.useRef();
   const dispatch = useDispatch();
   const options = useSelector(state => state.settings);
+  const [playSound] = useAccesibleSound(focusActionble);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -85,7 +88,7 @@ const UpdateFileAlert = ({ isOpen, onClose, project, projects }) => {
                           <FormLabel htmlFor='private'>
                             {translate('home.private')}
                           </FormLabel>
-                          <Switch {...field} id='private' size={'lg'} defaultChecked={project.private}/>
+                          <Switch onFocus={() => playSound()} {...field} id='private' size={'lg'} defaultChecked={project.private}/>
                           <FormErrorMessage> {form.errors.private} </FormErrorMessage>
                         </FormControl>
                       )}
@@ -93,10 +96,10 @@ const UpdateFileAlert = ({ isOpen, onClose, project, projects }) => {
 
                   </AlertDialogBody>
                   <AlertDialogFooter>
-                    <Button onClick={onClose}>
+                    <Button onFocus={() => playSound()} onClick={onClose}>
                       {stringTranslate('forms.cancel')}
                     </Button>
-                    <Button colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
+                    <Button onFocus={() => playSound()} colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
                       {stringTranslate('forms.update')}
                     </Button>
                   </AlertDialogFooter>

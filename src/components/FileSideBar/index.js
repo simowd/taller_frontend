@@ -5,9 +5,12 @@ import FileUploadButton from './FileUploadButton';
 import FileSpace from './FileSpace';
 import { RiFileAddLine } from 'react-icons/ri';
 import CreateFileAlert from './CreateFileAlert';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const FileSideBar = ({ projectData, setProjectData, setCurrentFile, currentCode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [playSound] = useAccesibleSound(focusActionble);
 
   const fileBuilder = () => {
     const newArr = new Array();
@@ -35,8 +38,8 @@ const FileSideBar = ({ projectData, setProjectData, setCurrentFile, currentCode 
       <HStack width={'100%'} p={'1rem'}>
         <Heading w={'75%'} as='h3' fontWeight={'medium'} size='md'>{stringTranslate('editor.title')}</Heading>
         <HStack>
-          <FileUploadButton setProjectData={setProjectData} projectData={projectData} />
-          <IconButton icon={<RiFileAddLine />} fontSize={'20'} size={'sm'} onClick={onOpen} variant={'ghost'} aria-label={stringTranslate('editor.new_file')} />
+          <FileUploadButton setProjectData={setProjectData} projectData={projectData}/>
+          <IconButton onFocus={() => playSound()} icon={<RiFileAddLine />} fontSize={'20'} size={'sm'} onClick={onOpen} variant={'ghost'} aria-label={stringTranslate('editor.new_file')} />
         </HStack>
       </HStack>
       <VStack height={'100%'} width={'100%'} >

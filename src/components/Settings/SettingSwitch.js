@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { stringTranslate } from '../../i18n';
 import { updateSettings } from '../../reducers/settings_reducer';
+import focusActionble from '../../sounds/focus_actionable.ogg';
+import useAccesibleSound from '../../hooks/Sound';
 
 const SettingSwitch = ({ setting, name }) => {
   const [checked, setChecked] = useState(!!setting);
   const dispatch = useDispatch();
   const { toggleColorMode } = useColorMode();
+  const [playSound] = useAccesibleSound(focusActionble);
 
   const onChange = async () => {
     setChecked(!checked);
@@ -22,7 +25,7 @@ const SettingSwitch = ({ setting, name }) => {
       <FormLabel htmlFor={name} mb={'0'}>
         {stringTranslate(`settings.${name}`)}
       </FormLabel>
-      <Switch onChange={onChange} id={name} size={'lg'} value={checked} defaultChecked={checked}/>
+      <Switch onFocus={() => playSound()} onChange={onChange} id={name} size={'lg'} value={checked} defaultChecked={checked}/>
     </FormControl>
   );
 };

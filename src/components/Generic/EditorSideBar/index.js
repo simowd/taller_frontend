@@ -9,7 +9,7 @@ const EditorSideBar = () => {
   return (
     <Grid h='100vh' w='100%' templateColumns='72px 1fr'>
       <SkipNavLink> { stringTranslate('accesibility.skip_content') } </SkipNavLink>
-      <GridItem >
+      <GridItem>
         <SideBarContainer />
       </GridItem>
       <GridItem>
