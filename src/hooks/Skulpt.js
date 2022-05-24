@@ -12,6 +12,36 @@ const useSkulpt = () => {
   const [playSoundW] = useAccesibleSound(wrongAnswer);
   var outputValues = '';
 
+  const userlessCode = (currentCode) => {
+    outputValues = '';
+
+    Sk.pre = 'output';
+    Sk.execLimit = 0;
+
+    Sk.configure({
+      output: outputData,
+      read: builtinRead,
+      execLimit: 10000,
+      inputfun: function (prompt) {
+        return window.prompt(prompt);
+      },
+      inputfunTakesPrompt: true,
+    });
+
+    var myPromise = Sk.misceval.asyncToPromise(function () {
+      return Sk.importMainWithBody('<stdin>', false, currentCode, true);
+    });
+
+    myPromise.then(async (mod) => {
+      console.log('success', mod);
+      setOutput(outputValues);
+    }, async (error) => {
+      console.log(error.toString());
+      setOutput(error.toString());
+
+    });
+  };
+
   const runCode = async (currentCode) => {
     outputValues = '';
 
@@ -52,7 +82,7 @@ const useSkulpt = () => {
       }
       catch (e) {
         setOutput(outputValues);
-      }      
+      }
     });
   };
 
@@ -67,7 +97,7 @@ const useSkulpt = () => {
     return text;
   };
 
-  return { runCode, output };
+  return { runCode, output, userlessCode };
 };
 
 export default useSkulpt;

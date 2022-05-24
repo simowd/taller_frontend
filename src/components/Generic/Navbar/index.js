@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Grid, GridItem } from '@chakra-ui/react';
 import { SkipNavLink } from '@chakra-ui/skip-nav';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
@@ -7,12 +7,16 @@ import NavContainer from './NavContainer';
 
 const Navbar = () => {
   return (
-    <Box bg={'#FAF7F7'}>
-      <SkipNavLink> { stringTranslate('accesibility.skip_content') } </SkipNavLink>
-      <NavContainer />
-      <Outlet />
-    </Box>
+    <Grid bg={'#FAF7F7'} h={'100vh'} templateRows={'5rem 1fr'}>
+      <SkipNavLink> {stringTranslate('accesibility.skip_content')} </SkipNavLink>
+      <GridItem>
+        <NavContainer />
+      </GridItem>
+      <GridItem>
+        <Outlet />
+      </GridItem>
+    </Grid>
   );
 };
 
-export default Navbar ;
+export default Navbar;

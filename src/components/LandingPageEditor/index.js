@@ -3,7 +3,7 @@ import Editor, { loader } from '@monaco-editor/react';
 import React, { useRef } from 'react';
 import editorOptions from './editorOptions';
 
-const LandingPageEditor = () => {
+const LandingPageEditor = ({setCode}) => {
   const monacoRef = useRef(null);
 
   loader.config({
@@ -31,7 +31,7 @@ const LandingPageEditor = () => {
   };
 
   const onEditorChange = (value) => {
-    console.log(value);
+    setCode(value);
   };
 
   //Render the editor once the user has been loaded

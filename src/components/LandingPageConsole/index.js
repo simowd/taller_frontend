@@ -3,7 +3,7 @@ import Editor, { loader } from '@monaco-editor/react';
 import React, { useRef } from 'react';
 import editorOptions from './editorOptions';
 
-const ConsoleInstance = () => {
+const LandingPageConsole = ({output}) => {
   const monacoRef = useRef(null);
 
   //Set editor language  
@@ -35,7 +35,7 @@ const ConsoleInstance = () => {
     return (
       <Editor
         defaultLanguage='plaintext'
-        value={''}
+        value={output}
         onMount={handleEditorDidMount}
         beforeMount={handleEditorWillMount}
         loading={<Spinner size={'lg'} color={'purple.400'}
@@ -53,4 +53,4 @@ const ConsoleInstance = () => {
   );
 };
 
-export default ConsoleInstance;
+export default LandingPageConsole;

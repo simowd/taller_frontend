@@ -11,6 +11,7 @@ import LogoutContainer from './components/Generic/LogoutContainer';
 import Settings from './components/Settings';
 import User from './pages/User';
 import RequireAuth from './hooks/RequireAuth';
+import Landing from './pages/Landing';
 
 function App() {
   //Setup react routes
@@ -18,7 +19,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Navbar />}>
-          <Route index />
+          <Route index element={<Landing />}/>
           <Route path='signin' element={<Login />} />
           <Route path='signup' element={<SignUp />} />
         </Route>
