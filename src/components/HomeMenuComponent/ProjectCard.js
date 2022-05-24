@@ -9,6 +9,7 @@ import UpdateFileAlert from './UpdateFileAlert';
 import FileSpace from './FileSpace';
 import { Link as RouteLink } from 'react-router-dom';
 import focusActionble from '../../sounds/focus_actionable.ogg';
+import viewEntered from '../../sounds/view_entered.ogg';
 import useAccesibleSound from '../../hooks/Sound';
 
 const ProjectCard = ({ project, projects }) => {
@@ -16,6 +17,7 @@ const ProjectCard = ({ project, projects }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isOpenU, onOpen: onOpenU, onClose: onCloseU } = useDisclosure();
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundEntered] = useAccesibleSound(viewEntered);
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
 
@@ -69,7 +71,7 @@ const ProjectCard = ({ project, projects }) => {
       <DeleteFileAlert isOpen={isOpen} onClose={onClose} project={project} />
       <UpdateFileAlert isOpen={isOpenU} onClose={onCloseU} project={project} projects={projects} />
       <HStack height={'15%'} pl={'0.5rem'} w={'100%'}>
-        <Link onFocus={() => playSound()} w='75%'as={RouteLink} to={`/e/${project.id_folder}`}>
+        <Link onFocus={() => playSound()} w='75%'as={RouteLink} to={`/e/${project.id_folder}`} onClick={() => playSoundEntered()}>
           <Heading as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>
         </Link>
         <Box>
