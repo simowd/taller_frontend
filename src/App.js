@@ -10,6 +10,7 @@ import HomeMenu from './pages/HomeMenu';
 import LogoutContainer from './components/Generic/LogoutContainer';
 import Settings from './components/Settings';
 import User from './pages/User';
+import RequireAuth from './hooks/RequireAuth';
 
 function App() {
   //Setup react routes
@@ -21,7 +22,7 @@ function App() {
           <Route path='signin' element={<Login />} />
           <Route path='signup' element={<SignUp />} />
         </Route>
-        <Route path='/s' element={<MainSideBar />}>
+        <Route path='/s' element={<RequireAuth> <MainSideBar /></RequireAuth>}>
           <Route index element={<Navigate to='/s/menu' />} />
           <Route path='home' element={<HomeMenu />} />
           <Route path='settings' element={<Settings />} />
@@ -30,7 +31,7 @@ function App() {
           <Route path='account' element={<User />} />
           <Route path='*' element={<Navigate to='/s/home' />} />
         </Route>
-        <Route path='/e' element={<EditorSideBar />}>
+        <Route path='/e' element={<RequireAuth> <EditorSideBar /></RequireAuth>}>
           <Route index element={<Navigate to='/s/menu' />} />
           <Route path=':projectId' element={<Editor />} />
         </ Route>
