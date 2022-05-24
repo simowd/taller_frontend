@@ -9,12 +9,14 @@ import InputField from './InputField';
 import * as Yup from 'yup';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 const UpdateFileAlert = ({ isOpen, onClose, project, projects }) => {
   const cancelRef = React.useRef();
   const dispatch = useDispatch();
   const options = useSelector(state => state.settings);
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -28,6 +30,7 @@ const UpdateFileAlert = ({ isOpen, onClose, project, projects }) => {
   const onSubmit = async (values, actions) => {
     try {
       await dispatch(updateProject(values, project.id_folder));
+      playSoundState();
       onClose();
       //success message
       const success = {

@@ -5,13 +5,16 @@ import { stringTranslate } from '../../i18n';
 import { updateSettings } from '../../reducers/settings_reducer';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 const SettingFontSize = ({ setting, name }) => {
   const dispatch = useDispatch();
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   const onChange = async (event) => {
     await dispatch(updateSettings({ [name]: event}));
+    playSoundState();
   };
 
   return (

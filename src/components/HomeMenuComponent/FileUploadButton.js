@@ -2,14 +2,17 @@ import { Button } from '@chakra-ui/react';
 import React, { useRef, useState } from 'react';
 import { RiFileUploadLine } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
+import useAccesibleSound from '../../hooks/Sound';
 import { useToastHook } from '../../hooks/Toast';
 import { stringTranslate } from '../../i18n';
 import { uploadProjectFile } from '../../reducers/projects_reducer';
+import windowState from '../../sounds/window_state.ogg';
 
 const FileUploadButton = ({ projects, onClose }) => {
   const inputRef = useRef(null);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -18,6 +21,7 @@ const FileUploadButton = ({ projects, onClose }) => {
     const file = event.target.files[0];
     try {
       setLoading(true);
+      playSoundState();
       const exists = projects.map((folder) => folder.folder_name).includes(file.name.replace(/\.[^/.]+$/, ''));
       if (exists){
         throw new Error(409);

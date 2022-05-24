@@ -6,12 +6,14 @@ import { stringTranslate } from '../../i18n';
 import fileService from '../../services/file';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 const DeleteFileAlert = ({ isOpen, onClose, file, projectData, setProjectData }) => {
   const [loading, setLoading] = useState(false);
   const cancelRef = React.useRef();
   const options = useSelector(state => state.settings);
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -20,6 +22,7 @@ const DeleteFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
     try {
       setLoading(true);
       await fileService.deleteFile(file.id_file);
+      playSoundState();
       setProjectData({
         project: {
           ...projectData.project,

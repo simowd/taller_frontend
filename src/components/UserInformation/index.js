@@ -13,6 +13,7 @@ import userService from '../../services/user';
 import UpdatePassword from './UpdatePassword';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 const UserInformation = () => {
   const user = useSelector(state => state.user);
@@ -22,6 +23,8 @@ const UserInformation = () => {
   const [state, newToast] = useToastHook();
   const dispatch = useDispatch();
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
+  
 
   useEffect(() => {
     if (user) {
@@ -50,6 +53,8 @@ const UserInformation = () => {
       });
 
       window.localStorage.setItem('user', JSON.stringify({...JSON.parse(window.localStorage.getItem('user')), locale: values.language}));
+
+      playSoundState();
 
       //success message
       const success = {

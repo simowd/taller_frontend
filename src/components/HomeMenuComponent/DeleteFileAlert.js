@@ -6,6 +6,7 @@ import { stringTranslate } from '../../i18n';
 import { deleteProject } from '../../reducers/projects_reducer';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 const DeleteFileAlert = ({ isOpen, onClose, project }) => {
   const [loading, setLoading] = useState(false);
@@ -13,6 +14,7 @@ const DeleteFileAlert = ({ isOpen, onClose, project }) => {
   const dispatch = useDispatch();
   const options = useSelector(state => state.settings);
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -21,6 +23,7 @@ const DeleteFileAlert = ({ isOpen, onClose, project }) => {
     try {
       setLoading(true);
       await dispatch(deleteProject(project.id_folder));
+      playSoundState();
       setLoading(false);
       onClose();
     }

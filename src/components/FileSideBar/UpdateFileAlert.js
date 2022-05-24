@@ -9,12 +9,14 @@ import fileService from '../../services/file';
 import { useSelector } from 'react-redux';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 // eslint-disable-next-line no-unused-vars
 const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData }) => {
   const cancelRef = React.useRef();
   const options = useSelector(state => state.settings);
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -41,6 +43,7 @@ const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
       }
       
       await fileService.updateFile(data, file.id_file);
+      playSoundState();
       setProjectData(
         {
           project: {...projectData.project, files: projectData.project.files.map((fil) => fil.id_file === file.id_file ? {...fil, ...data} : fil)},

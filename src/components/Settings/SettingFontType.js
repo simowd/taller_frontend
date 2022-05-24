@@ -6,13 +6,16 @@ import { updateSettings } from '../../reducers/settings_reducer';
 import font_family from '../../utils/data/font_family';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 const SettingFontType = ({ setting, name }) => {
   const dispatch = useDispatch();
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   const onChange = async (event) => {
     await dispatch(updateSettings({ [name]: event.target.value }));
+    playSoundState();
   };
 
   const optionBuilder = () => {

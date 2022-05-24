@@ -10,12 +10,14 @@ import * as Yup from 'yup';
 import FileUploadButton from './FileUploadButton';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 const CreateFileAlert = ({ isOpen, onClose, projects }) => {
   const cancelRef = React.useRef();
   const dispatch = useDispatch();
   const options = useSelector(state => state.settings);
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -29,6 +31,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
   const onSubmit = async (values, actions) => {
     try {
       await dispatch(createProject(values));
+      playSoundState();
       onClose();
       //success message
       const success = {

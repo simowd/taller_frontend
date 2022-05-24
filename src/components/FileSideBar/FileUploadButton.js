@@ -5,15 +5,18 @@ import { stringTranslate } from '../../i18n';
 import { uploadFile } from '../../services/file_managment';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 const FileUploadButton = ({ setProjectData, projectData }) => {
   const inputRef = useRef(null);
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   const changeHandler = async (event) => {
     const response = await uploadFile(event.target.files[0], projectData.project.id_folder);
 
     if (response.status === 200) {
+      playSoundState();
       setProjectData({
         project: { ...projectData.project, files: projectData.project.files.concat(response.data) },
         editorData: projectData.editorData.concat({

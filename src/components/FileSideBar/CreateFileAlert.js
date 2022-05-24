@@ -8,10 +8,12 @@ import * as Yup from 'yup';
 import fileService from '../../services/file';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import windowState from '../../sounds/window_state.ogg';
 
 const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
   const cancelRef = React.useRef();
   const [playSound] = useAccesibleSound(focusActionble);
+  const [playSoundState] = useAccesibleSound(windowState);
 
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
@@ -30,6 +32,7 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
       };
       const response = await fileService.createFile(data, projectData.project.id_folder);
       if (response.status === 200) {
+        playSoundState();
         setProjectData({
           project: {...projectData.project ,files: projectData.project.files.concat({ ...response.data, content: '' })},
           editorData: projectData.editorData.concat({
