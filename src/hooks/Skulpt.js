@@ -3,6 +3,7 @@ import Skulpt from 'skulpt';
 import outputService from '../services/output';
 import goodAnswer from '../sounds/good_answer.mp3';
 import wrongAnswer from '../sounds/wrong_answer.mp3';
+import useErrorHandler from './ErrorParser';
 import useAccesibleSound from './Sound';
 
 const useSkulpt = () => {
@@ -11,6 +12,7 @@ const useSkulpt = () => {
   const [playSoundR] = useAccesibleSound(goodAnswer);
   const [playSoundW] = useAccesibleSound(wrongAnswer);
   var outputValues = '';
+  const { parseError } = useErrorHandler();
 
   const userlessCode = (currentCode) => {
     outputValues = '';
@@ -36,7 +38,8 @@ const useSkulpt = () => {
       console.log('success', mod);
       setOutput(outputValues);
     }, async (error) => {
-      console.log(error.toString());
+      //console.log(error.toString());
+      parseError(error);
       setOutput(error.toString());
 
     });

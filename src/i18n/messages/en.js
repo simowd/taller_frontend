@@ -122,6 +122,20 @@ const strings = {
     skip_content: 'Skip to content',
     skip_files: 'Skip to project files',
     skip_editor: 'Skip to the editor',
+  },
+  skulpt: {
+    name_error: 'NameError: name {var_name} is not defined on line {line}',
+    attribute_error: 'AttributeError: {var_name} object has no attribute {function} on line {line}',
+    value_error: 'ValueError: {var_name} domain error on line {line}',
+    zerodivision_error: 'ZeroDivisionError: {var_name} division or modulo by zero on line {line}',
+    assertion_error: 'AssertionError: {var_name} on line {line}',
+    import_error: 'ImportError: No module named {var_name} on line {line}',
+    index_error: 'IndexError: list index out of range on line {line}',
+    key_error: 'KeyError: {var_name} on line {line}',
+    system_exit_error: 'SystemExitError: {var_name} on line {line}',
+    overflow_error: 'OverflowError: Numerical value out of range on line {line}',
+    recursion_error: 'RecursionError: Maximum call stack size exceeded on line {line}',
+    syntax_error: 'SyntaxError: bad input on line {line}',
   }
 };
 
