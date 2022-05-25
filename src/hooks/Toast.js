@@ -1,10 +1,30 @@
 import { useToast } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
-import { intl } from '../i18n';
+import { createIntl, createIntlCache } from 'react-intl';
+import { LOCALES } from '../i18n';
+import language_messages from '../i18n/messages';
 
 export const useToastHook = () => {
   const [state, setState] = useState(undefined);
   const toast = useToast();
+
+  let intl;
+  const cache = createIntlCache();
+
+  const user = JSON.parse(window.localStorage.getItem('user'));
+
+  if (user) {
+    intl = createIntl({
+      locale: user.locale,
+      messages: language_messages[user.locale]
+    }, cache);
+  }
+  else {
+    intl = createIntl({
+      locale: LOCALES.SPANISH,
+      messages: language_messages[LOCALES.SPANISH]
+    }, cache);
+  }
 
   let info = {
     title: '',
@@ -21,7 +41,7 @@ export const useToastHook = () => {
       const { type, status, endpoint } = state;
       info.status = type;
       if (status === 500) {
-        info.title = intl.formatMessage('errors.server_error');
+        info.title = intl.formatMessage({ id: 'errors.server_error' });
       }
       else if (info.status === 'error') {
         if (endpoint === 'login') {
@@ -39,16 +59,16 @@ export const useToastHook = () => {
         }
         if (endpoint === 'home') {
           if (status === 405) {
-            info.title = intl.formatMessage({ id: 'errors.generic.not_allowed'});
+            info.title = intl.formatMessage({ id: 'errors.generic.not_allowed' });
           }
           if (status === 401) {
-            info.title = intl.formatMessage({ id: 'errors.generic.unauthorized'});
+            info.title = intl.formatMessage({ id: 'errors.generic.unauthorized' });
           }
           if (status === 404) {
-            info.title = intl.formatMessage({ id: 'errors.generic.not_found'});
+            info.title = intl.formatMessage({ id: 'errors.generic.not_found' });
           }
           if (status === 409) {
-            info.title = intl.formatMessage({ id: 'forms.existed'});
+            info.title = intl.formatMessage({ id: 'forms.existed' });
           }
         }
         if (endpoint === 'change_password') {
@@ -58,25 +78,25 @@ export const useToastHook = () => {
         }
       }
       else if (info.status === 'success') {
-        if (endpoint === 'signup'){
+        if (endpoint === 'signup') {
           info.title = intl.formatMessage({ id: 'auth.account_created' });
         }
-        if (endpoint === 'home'){
+        if (endpoint === 'home') {
           info.title = intl.formatMessage({ id: 'home.update_success' });
         }
-        if (endpoint === 'create_folder'){
+        if (endpoint === 'create_folder') {
           info.title = intl.formatMessage({ id: 'home.create_success' });
         }
-        if (endpoint === 'account'){
+        if (endpoint === 'account') {
           info.title = intl.formatMessage({ id: 'account.account_success' });
         }
-        if (endpoint === 'update_password'){
+        if (endpoint === 'update_password') {
           info.title = intl.formatMessage({ id: 'account.update_password_success' });
         }
-        if (endpoint === 'create_file'){
+        if (endpoint === 'create_file') {
           info.title = intl.formatMessage({ id: 'editor.create_file' });
         }
-        if (endpoint === 'file_update'){
+        if (endpoint === 'file_update') {
           info.title = intl.formatMessage({ id: 'editor.update_file_success' });
         }
       }
