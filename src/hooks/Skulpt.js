@@ -39,8 +39,8 @@ const useSkulpt = () => {
       setOutput(outputValues);
     }, async (error) => {
       //console.log(error.toString());
-      parseError(error);
-      setOutput(error.toString());
+      const parsedError = parseError(error);
+      setOutput(parsedError);
 
     });
   };
@@ -81,7 +81,8 @@ const useSkulpt = () => {
       try {
         playSoundW();
         await outputService.newOutput({ status: -1, result: error.toString() }, currentCode.file);
-        setOutput(error.toString());
+        const parsedError = parseError(error);
+        setOutput(parsedError);
       }
       catch (e) {
         setOutput(outputValues);

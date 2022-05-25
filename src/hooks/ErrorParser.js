@@ -18,8 +18,8 @@ const useErrorHandler = () => {
   }
   else {
     intl = createIntl({
-      locale: LOCALES.ENGLISH,
-      messages: language_messages[LOCALES.ENGLISH]
+      locale: LOCALES.SPANISH,
+      messages: language_messages[LOCALES.SPANISH]
     }, cache);
   }
 
@@ -129,6 +129,15 @@ const useErrorHandler = () => {
       const varNum = regex[1];
 
       res = (intl.formatMessage({ id: 'skulpt.syntax_error' }, { line: varNum }));
+      break;
+    }
+    case 'NotImplementedError': {
+      const regex = res.match(/^NotImplementedError: ([a-zA-Z]*) is not yet implemented in Skulpt on line ([0-9]*)$/i);
+
+      const varName = regex[1];
+      const varNum = regex[2];
+
+      res = (intl.formatMessage({ id: 'skulpt.not_implemented_error' }, { var_name: varName, line: varNum }));
       break;
     }
     default:

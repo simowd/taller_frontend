@@ -41,6 +41,7 @@ const ConsoleInstance = ({ user, output }) => {
     if (user && options) {
       return (
         <Editor
+          options={editorOptions}
           defaultLanguage='plaintext'
           value={output}
           onMount={handleEditorDidMount}
@@ -48,7 +49,7 @@ const ConsoleInstance = ({ user, output }) => {
           loading={<Spinner size={'lg'} color={'purple.400'}
           />}
           theme={options.high_contrast ? 'hc-black' : 'vs-dark'}
-          options={editorOptions}
+          
         />
       );
     }

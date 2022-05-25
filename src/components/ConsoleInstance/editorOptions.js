@@ -3,7 +3,7 @@ const editorOptions = {
   autoClosingBrackets: 'never',
   bracketPairColorization: 'on',
   folding: false,
-  fontFamily: 'Source Code Pro',
+  //fontFamily: 'Source Code Pro',
   fontSize: '16',
   links: false,
   minimap: {
@@ -12,6 +12,9 @@ const editorOptions = {
   lineNumbers: 'off',
   readOnly: true,
   tabCompletion: 'off',
+  wordWrap: 'wordWrapColumn',
+  wordWrapColumn: 40,
+  
 };
 
 export default editorOptions;

@@ -24,6 +24,10 @@ const useOptions = () => {
             enabled: false,
           },
           tabCompletion: 'off',
+          wordWrap: 'wordWrapColumn',
+          wordWrapColumn: 40,
+          wrappingIndent: 'same',
+          wordWrapMinified: false
         }
       );
     }

@@ -122,6 +122,21 @@ const strings = {
     skip_content: 'Ir al contenido principal',
     skip_files: 'Ir a los archivos del proyecto',
     skip_editor: 'Ir al editor de código',
+  },
+  skulpt: {
+    name_error: 'NameError - Error de Nombre:\n nombre {var_name} no está definido en la línea {line}',
+    attribute_error: 'AttributeError - Error de atributo:\n objeto{var_name} no tiene el atributo {function} en la línea {line}',
+    value_error: 'ValueError - Error de Valor:\n {var_name} error de dominio en línea {line}',
+    zerodivision_error: 'ZeroDivisionError - Error de División entre cero:\n {var_name} división o módulo entre cero en la línea {line}',
+    assertion_error: 'AssertionError - Error de aserción:\n {var_name} en la línea {line}',
+    import_error: 'ImportError - Error de Import:\n No existe un módulo llamado {var_name} en la línea {line}',
+    index_error: 'IndexError - Error de Indice:\n Indice fuer de rango en la línea {line}',
+    key_error: 'KeyError - Error de llave:\n {var_name} en la línea {line}',
+    system_exit_error: 'SystemExitError - Error de Salida del Sistema:\n {var_name} en la línea {line}',
+    overflow_error: 'OverflowError - Error de Overflow:\n Valor numérico fuera del rango en la línea {line}',
+    recursion_error: 'RecursionError - Error de Recursión:\n Se excedió el tamaño máximo de la pila de llamadas en la línea {line}',
+    syntax_error: 'SyntaxError - Error de Sintáxis:\n entrada mal planteada el la línea {line}',
+    not_implemented_error: 'NotImplementedError - Error, aún no Implementado:\n {var_name} aún no fue implementado en el proyecto en la línea {line}',
   }
 };
 

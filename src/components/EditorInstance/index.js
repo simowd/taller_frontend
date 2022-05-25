@@ -59,6 +59,7 @@ const EditorInstance = ({ user, projectData, currentFile, socket, setCurrentCode
       if (file !== undefined && editorOptions !== undefined) {
         return (
           <Editor
+            options={editorOptions}
             onChange={onEditorChange}
             defaultLanguage={file.language}
             defaultValue={file.value}
@@ -67,7 +68,6 @@ const EditorInstance = ({ user, projectData, currentFile, socket, setCurrentCode
             beforeMount={handleEditorWillMount}
             loading={<Spinner size={'lg'} color={'purple.400'}
             />}
-            options={editorOptions}
             theme={options.high_contrast ? 'hc-black' : (options.dark_light ==='dark' ? 'vs-dark' : 'vs-light')}
             saveViewState={true}
           />
