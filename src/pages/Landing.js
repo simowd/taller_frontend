@@ -5,10 +5,18 @@ import { FaPlay } from 'react-icons/fa';
 import LandingPageConsole from '../components/LandingPageConsole';
 import useSkulpt from '../hooks/Skulpt';
 import { SkipNavContent } from '@chakra-ui/skip-nav';
+import useKeypress from 'react-use-keypress';
+
 
 const Landing = () => {
   const { userlessCode, output } = useSkulpt();
   const [code, setCode] = useState();
+  useKeypress(['F4', ''], () => {
+    if(event.key === 'F4') {
+      document.getElementById('console').focus();
+      execute();
+    }
+  });
 
   const execute = () => {
     userlessCode(code);

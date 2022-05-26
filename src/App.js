@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<NoRequireAuth> <Navbar /> </NoRequireAuth>}>
-          <Route index element={<Landing />}/>
+          <Route index element={<Landing />} />
           <Route path='signin' element={<Login />} />
           <Route path='signup' element={<SignUp />} />
         </Route>

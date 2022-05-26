@@ -8,10 +8,20 @@ import CreateFileAlert from './CreateFileAlert';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../../hooks/Sound';
 import { SkipNavContent } from '@chakra-ui/skip-nav';
+import useKeypress from 'react-use-keypress';
 
 const FileSideBar = ({ projectData, setProjectData, setCurrentFile, currentCode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [playSound] = useAccesibleSound(focusActionble);
+
+  useKeypress(['p'], () => {
+    if(event.ctrlKey) {
+      if(event.key === 'p') {
+        event.preventDefault();
+        onOpen();
+      }
+    }
+  });
 
   const fileBuilder = () => {
     const newArr = new Array();

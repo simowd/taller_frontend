@@ -47,7 +47,7 @@ const LandingPageConsole = ({output}) => {
   };
 
   return (
-    <Flex h={'98%'} w={'100%'} alignSelf={'center'} justify={'center'}>
+    <Flex h={'98%'} w={'100%'} alignSelf={'center'} justify={'center'} id={'console'}>
       {renderEditor()}
     </Flex>
   );

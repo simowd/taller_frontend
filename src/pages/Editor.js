@@ -12,6 +12,7 @@ import { io } from 'socket.io-client';
 import focusActionble from '../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../hooks/Sound';
 import { SkipNavContent } from '@chakra-ui/skip-nav';
+import useKeypress from 'react-use-keypress';
 
 const Editor = () => {
   const user = useSelector(state => state.user);
@@ -107,6 +108,28 @@ const Editor = () => {
       });
     }
   }, [currentFile]);
+
+  useKeypress(['F4', 's'], () => {
+    if(event.key === 'F4') {
+      execute();
+    }
+    if(event.ctrlKey){
+      if (event.key === 's') {
+        event.preventDefault();
+        if (projectData.project.files) {
+          const file = projectData.project.files.find(element => element.id_file === currentFile);
+          if (file){
+            const data = {
+              value: currentCode.code,
+              file_storage: file.storage,
+              folder_storage: projectData.project.storage,
+            };
+            socket.emit('code:save', data);
+          }
+        }
+      }
+    }
+  });
 
   const execute = async () => {
     if (projectData.editorData.find(file => currentFile === file.id_file)) {
