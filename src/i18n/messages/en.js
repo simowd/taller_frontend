@@ -137,6 +137,16 @@ const strings = {
     recursion_error: 'RecursionError:\n Maximum call stack size exceeded on line {line}',
     syntax_error: 'SyntaxError:\n bad input on line {line}',
     not_implemented_error: 'NotImplementedError:\n {var_name} is not yet implemented in the project on line {line}',
+  },
+  help: {
+    homepage: 'Navigate to homepage',
+    settings: 'Navigate to settings',
+    account: 'Navigate to account',
+    title: 'Shortcut Help Modal',
+    run_code: 'Run Code',
+    new_file: 'Create a new file',
+    new_project: 'Create a new project',
+    save_file: 'Save current file'
   }
 };
 

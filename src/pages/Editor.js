@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { Grid, GridItem, Icon, IconButton, Progress } from '@chakra-ui/react';
+import { Grid, GridItem, Icon, IconButton, Progress, useDisclosure } from '@chakra-ui/react';
 import EditorInstance from '../components/EditorInstance';
 import { FaPlay } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
@@ -13,6 +13,7 @@ import focusActionble from '../sounds/focus_actionable.ogg';
 import useAccesibleSound from '../hooks/Sound';
 import { SkipNavContent } from '@chakra-ui/skip-nav';
 import useKeypress from 'react-use-keypress';
+import ShortcutModal from '../components/Generic/ShortcutModal';
 
 const Editor = () => {
   const user = useSelector(state => state.user);
@@ -21,6 +22,7 @@ const Editor = () => {
   const { runCode, output } = useSkulpt();
   const [socket, setSocket] = useState(null);
   const [playSound] = useAccesibleSound(focusActionble);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [projectData, setProjectData] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -109,7 +111,7 @@ const Editor = () => {
     }
   }, [currentFile]);
 
-  useKeypress(['F4', 's'], () => {
+  useKeypress(['F4', 's', 'F1'], () => {
     if(event.key === 'F4') {
       execute();
     }
@@ -129,6 +131,10 @@ const Editor = () => {
         }
       }
     }
+    if(event.key === 'F1') {
+      event.preventDefault();
+      onOpen();
+    }
   });
 
   const execute = async () => {
@@ -141,6 +147,7 @@ const Editor = () => {
     if (projectData.project || projectData.editorData) {
       return (
         <Grid h='100vh' w='100%' templateColumns={'20rem 1fr 4rem 1fr'}>
+          <ShortcutModal onClose={onClose} isOpen={isOpen}/>
           <GridItem display={'flex'} alignItems='center' height={'100%'} overflowY={'auto'} overflowX='hidden'>
             <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile} currentCode={currentCode}/>
           </GridItem>

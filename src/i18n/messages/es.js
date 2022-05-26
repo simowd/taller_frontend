@@ -137,6 +137,16 @@ const strings = {
     recursion_error: 'RecursionError - Error de Recursión:\n Se excedió el tamaño máximo de la pila de llamadas en la línea {line}',
     syntax_error: 'SyntaxError - Error de Sintáxis:\n entrada mal planteada el la línea {line}',
     not_implemented_error: 'NotImplementedError - Error, aún no Implementado:\n {var_name} aún no fue implementado en el proyecto en la línea {line}',
+  },
+  help: {
+    homepage: 'Ir a la pantalla principal',
+    settings: 'Ir a la pantalla de configuración',
+    account: 'Ir a la pantalla de cuenta',
+    title: 'Ayuda con los atajos de teclado',
+    run_code: 'Ejecutar el código',
+    new_file: 'Crear un nuevo archivo',
+    new_project: 'Crear un nuevo proyecto',
+    save_file: 'Guardar archivo'
   }
 };
 
