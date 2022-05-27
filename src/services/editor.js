@@ -7,4 +7,9 @@ const getProjects = async (projectId) => {
   return response;
 };
 
-export default {getProjects};
+const getFile = async (fileId) => {
+  const response = await api.get(`${filesURL}/file/${fileId}`);
+  return response;
+};
+
+export default {getProjects, getFile};

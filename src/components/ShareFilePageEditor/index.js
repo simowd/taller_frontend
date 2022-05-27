@@ -3,7 +3,7 @@ import Editor, { loader } from '@monaco-editor/react';
 import React, { useRef } from 'react';
 import editorOptions from './editorOptions';
 
-const LandingPageEditor = ({setCode, code}) => {
+const ShareFilePageEditor = ({ setCode, code }) => {
   const monacoRef = useRef(null);
 
   loader.config({
@@ -17,7 +17,7 @@ const LandingPageEditor = ({setCode, code}) => {
     }
   });
 
-  
+
 
   // eslint-disable-next-line no-unused-vars
   const handleEditorWillMount = (monaco) => {
@@ -38,20 +38,28 @@ const LandingPageEditor = ({setCode, code}) => {
 
   //Render the editor once the user has been loaded
   const renderEditor = () => {
-    return (
-      <Editor
-        defaultValue={code}
-        onChange={onEditorChange}
-        defaultLanguage={'python'}
-        onMount={handleEditorDidMount}
-        beforeMount={handleEditorWillMount}
-        loading={<Spinner size={'lg'} color={'purple.400'}
-        />}
-        options={editorOptions}
-        theme={'vs-light'}
-        saveViewState={true}
-      />
-    );
+    if (code !== undefined && code != null) {
+      return (
+        <Editor
+          defaultValue={code}
+          onChange={onEditorChange}
+          defaultLanguage={'python'}
+          onMount={handleEditorDidMount}
+          beforeMount={handleEditorWillMount}
+          loading={<Spinner size={'lg'} color={'purple.400'}
+          />}
+          options={editorOptions}
+          theme={'vs-light'}
+          saveViewState={true}
+        />
+      );
+    }
+    else {
+      return (
+        <Spinner size={'lg'} color={'purple.400'} />
+      );
+    }
+
   };
 
   return (
@@ -61,4 +69,4 @@ const LandingPageEditor = ({setCode, code}) => {
   );
 };
 
-export default LandingPageEditor;
+export default ShareFilePageEditor;

@@ -13,6 +13,7 @@ import User from './pages/User';
 import RequireAuth from './hooks/RequireAuth';
 import Landing from './pages/Landing';
 import NoRequireAuth from './hooks/NoRequireAuth ';
+import SharedFile from './pages/SharedFile';
 
 function App() {
   //Setup react routes
@@ -36,7 +37,14 @@ function App() {
         <Route path='/e' element={<RequireAuth> <EditorSideBar /></RequireAuth>}>
           <Route index element={<Navigate to='/s/menu' />} />
           <Route path=':projectId' element={<Editor />} />
-        </ Route>
+        </Route>
+        <Route path={'/c'} element={<Navbar />}>
+          <Route index element={<Navigate to='/' />} />
+          <Route path={'file'}> 
+            <Route index element={<Navigate to='/' />} />
+            <Route path=':fileId' element={<SharedFile />} />
+          </Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
