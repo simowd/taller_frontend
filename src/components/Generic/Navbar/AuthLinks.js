@@ -1,37 +1,54 @@
-import { Button, Stack } from '@chakra-ui/react';
 import React from 'react';
+import { Button, Stack } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import { stringTranslate } from '../../../i18n/message_handle';
+import { useSelector } from 'react-redux';
 
 const AuthLinks = () => {
+  const user = useSelector(state => state.user);
+
+  const authBuilder = () => {
+    if (user) {
+      return null;
+    }
+    else {
+      return (
+        <Stack spacing='1rem' direction={'row'} justify={'flex-end'} flex={{ base: 2, md: 0 }}>
+          <Button
+            as={RouterLink}
+            to='/signin'
+            fontSize={'sm'}
+            alignItems={'center'}
+            fontWeight={400}
+            variant={'link'}
+            href={'#'}>
+            {stringTranslate('navbar.login')}
+          </Button>
+          <Button
+            as={RouterLink}
+            to='/signup'
+            display={{ base: 'none', md: 'inline-flex' }}
+            fontSize={'sm'}
+            fontWeight={600}
+            color={'white'}
+            bg={'purple.400'}
+            href={'#'}
+            _hover={{
+              bg: 'purple.300',
+            }}>
+            {stringTranslate('navbar.signup')}
+          </Button>
+        </Stack>
+      );
+    }
+  };
+
   return (
-    <Stack spacing='1rem' direction={'row'} justify={'flex-end'} flex={{ base: 2, md: 0 }}>
-      <Button
-        as={RouterLink}
-        to='/signin'
-        fontSize={'sm'}
-        alignItems={'center'}
-        fontWeight={400}
-        variant={'link'}
-        href={'#'}>
-        { stringTranslate('navbar.login') }
-      </Button>
-      <Button
-        as={RouterLink}
-        to='/signup'
-        display={{ base: 'none', md: 'inline-flex' }}
-        fontSize={'sm'}
-        fontWeight={600}
-        color={'white'}
-        bg={'purple.400'}
-        href={'#'}
-        _hover={{
-          bg: 'purple.300',
-        }}>
-        { stringTranslate('navbar.signup') }
-      </Button>
-    </Stack>
+    <>
+      {authBuilder()}
+    </>
   );
+
 };
 
 export default AuthLinks;
