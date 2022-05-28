@@ -6,6 +6,7 @@ import LandingPageConsole from '../components/LandingPageConsole';
 import useSkulpt from '../hooks/Skulpt';
 import { SkipNavContent } from '@chakra-ui/skip-nav';
 import useKeypress from 'react-use-keypress';
+import { stringTranslate } from '../i18n';
 
 
 const Landing = () => {
@@ -29,7 +30,7 @@ const Landing = () => {
         <LandingPageEditor setCode={setCode} />
       </GridItem>
       <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
-        <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
+        <IconButton aria-label={stringTranslate('editor.run')} h='98%' w='80%' px={'2%'} py={'5%'} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
       </GridItem>
       <GridItem display={'flex'} justifyContent='center' alignItems={'center'} mr={'1rem'}>
         <LandingPageConsole output={output} />

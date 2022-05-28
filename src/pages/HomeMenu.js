@@ -1,4 +1,3 @@
-import { SkipNavContent } from '@chakra-ui/skip-nav';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HomeMenuComponent from '../components/HomeMenuComponent';
@@ -20,7 +19,6 @@ const HomeMenu = () => {
 
   return(
     <div>
-      <SkipNavContent />
       <HomeMenuComponent />
     </div>
   );

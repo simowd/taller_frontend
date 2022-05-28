@@ -20,7 +20,9 @@ const AuthLinks = () => {
             fontSize={'sm'}
             alignItems={'center'}
             fontWeight={400}
-            variant={'link'}
+            variant={'outline'}
+            bg={'white'}
+            color={'black'}
             href={'#'}>
             {stringTranslate('navbar.login')}
           </Button>
@@ -31,10 +33,10 @@ const AuthLinks = () => {
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
-            bg={'purple.400'}
+            bg={'#35343F'}
             href={'#'}
             _hover={{
-              bg: 'purple.300',
+              bg: 'gray.800',
             }}>
             {stringTranslate('navbar.signup')}
           </Button>

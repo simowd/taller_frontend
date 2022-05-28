@@ -102,7 +102,8 @@ const strings = {
     delete_message: '¿Está seguro de eliminar el archivo con nombre {name}?',
     share_head: 'Compartir archivo',
     share_message: 'Copia el link para compartir con otras personas: \n',
-    copy: 'Copiar'
+    copy: 'Copiar',
+    run:'Ejecutar el código'
   },
   errors: {
     server_error: 'Error del servidor, intente de nuevo más tarde.',

@@ -7,6 +7,7 @@ import useKeypress from 'react-use-keypress';
 import LandingPageConsole from '../components/LandingPageConsole';
 import ShareFilePageEditor from '../components/ShareFilePageEditor';
 import useSkulpt from '../hooks/Skulpt';
+import { stringTranslate } from '../i18n';
 import fileService from '../services/editor';
 
 const SharedFile = () => {
@@ -52,7 +53,7 @@ const SharedFile = () => {
         <ShareFilePageEditor file={fileId} setCode={setCode} code={code}/>
       </GridItem>
       <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
-        <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
+        <IconButton aria-label={stringTranslate('editor.run')} h='98%' w='80%' px={'2%'} py={'5%'} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
       </GridItem>
       <GridItem display={'flex'} justifyContent='center' alignItems={'center'} mr={'1rem'}>
         <LandingPageConsole output={output} />

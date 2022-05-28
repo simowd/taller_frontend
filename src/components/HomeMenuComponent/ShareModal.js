@@ -38,7 +38,7 @@ const ShareModal = ({ isOpen, onClose, folder }) => {
           <Spacer />
           <HStack>
             <Input size='md' isReadOnly value={text} />
-            <Button isLoading={isCopied} onClick={handleCopyClick} >{stringTranslate('editor.copy')}</Button>
+            <Button isLoading={isCopied} colorScheme='linkedin'  onClick={handleCopyClick} >{stringTranslate('editor.copy')}</Button>
           </HStack>
         </ModalBody>
 

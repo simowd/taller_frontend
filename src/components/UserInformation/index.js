@@ -145,7 +145,7 @@ const UserInformation = () => {
                       </Field>
                       <Box py={'0.2rem'}></Box>
                       <Flex justifyContent={'space-around'} pt={'2rem'} width='100%'>
-                        <Button onFocus={() => playSound()} colorScheme={'gray'} isLoading={props.isSubmitting} loadingText={stringTranslate('auth.loading')} type='submit' size={'md'}>
+                        <Button onFocus={() => playSound()} colorScheme='linkedin'  isLoading={props.isSubmitting} loadingText={stringTranslate('auth.loading')} type='submit' size={'md'}>
                           {translate('forms.update')}
                         </Button>
                         <Button onFocus={() => playSound()} colorScheme={'gray'} onClick={onOpen} size={'md'}>

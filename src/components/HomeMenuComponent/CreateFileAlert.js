@@ -102,7 +102,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
                     <Button onFocus={() => playSound()} onClick={onClose}>
                       {stringTranslate('forms.cancel')}
                     </Button>
-                    <Button onFocus={() => playSound()} colorScheme='purple' isLoading={props.isSubmitting} type='submit' ml={3}>
+                    <Button onFocus={() => playSound()} colorScheme='linkedin' isLoading={props.isSubmitting} type='submit' ml={3}>
                       {stringTranslate('forms.create')}
                     </Button>
                   </AlertDialogFooter>

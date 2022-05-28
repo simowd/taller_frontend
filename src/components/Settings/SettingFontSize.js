@@ -22,7 +22,7 @@ const SettingFontSize = ({ setting, name }) => {
       <FormLabel htmlFor={name} mb={'0'}>
         {stringTranslate(`settings.${name}`)}
       </FormLabel>
-      <NumberInput onFocus={() => playSound()} onChange={onChange} id={setting} defaultValue={setting} min={8} max={32}>
+      <NumberInput onFocus={() => playSound()} onChange={onChange} id={name} defaultValue={setting} min={8} max={32}>
         <NumberInputField />
         <NumberInputStepper>
           <NumberIncrementStepper />

@@ -14,6 +14,7 @@ import useAccesibleSound from '../hooks/Sound';
 import { SkipNavContent } from '@chakra-ui/skip-nav';
 import useKeypress from 'react-use-keypress';
 import ShortcutModal from '../components/Generic/ShortcutModal';
+import { stringTranslate } from '../i18n';
 
 const Editor = () => {
   const user = useSelector(state => state.user);
@@ -156,7 +157,7 @@ const Editor = () => {
             <EditorInstance user={user} projectData={projectData} currentFile={currentFile} setCurrentCode={setCurrentCode} setProjectData={setProjectData} socket={socket}/>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
-            <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} onFocus={() => playSound()} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
+            <IconButton aria-label={stringTranslate('editor.run')} h='98%' w='80%' px={'2%'} py={'5%'} onFocus={() => playSound()} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
             <ConsoleInstance user={user} output={output} />

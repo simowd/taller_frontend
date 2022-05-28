@@ -12,6 +12,7 @@ import ShortcutModal from '../components/Generic/ShortcutModal';
 import LandingPageConsole from '../components/LandingPageConsole';
 import SharedEditorInstace from '../components/SharedEditorInstance';
 import SharedFileSideBar from '../components/SharedFileSideBar';
+import { stringTranslate } from '../i18n';
 
 const SharedProjectEditor = () => {
   const params = useParams();
@@ -123,7 +124,7 @@ const SharedProjectEditor = () => {
             <SharedEditorInstace projectData={projectData} currentFile={currentFile} setCurrentCode={setCurrentCode} setProjectData={setProjectData} />
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
-            <IconButton aria-label='' h='98%' w='80%' px={'2%'} py={'5%'} onFocus={() => playSound()} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
+            <IconButton aria-label={stringTranslate('editor.run')} h='98%' w='80%' px={'2%'} py={'5%'} onFocus={() => playSound()} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
             <LandingPageConsole output={output} />
