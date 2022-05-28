@@ -61,7 +61,8 @@ const Editor = () => {
   useEffect(() => {
     if (user) {
       //Create the instance of the connection when user is gotten by browser
-      const io_socket = io(process.env.REACT_APP_BACKEND_URL, {
+      const io_socket = io('/', {
+        path: '/socket',
         extraHeaders: {
           'Authorization': user.token.token
         }
