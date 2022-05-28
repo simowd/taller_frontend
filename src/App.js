@@ -14,6 +14,7 @@ import RequireAuth from './hooks/RequireAuth';
 import Landing from './pages/Landing';
 import NoRequireAuth from './hooks/NoRequireAuth ';
 import SharedFile from './pages/SharedFile';
+import SharedProjectEditor from './pages/SharedProjectEditor';
 
 function App() {
   //Setup react routes
@@ -43,6 +44,10 @@ function App() {
           <Route path={'file'}> 
             <Route index element={<Navigate to='/' />} />
             <Route path=':fileId' element={<SharedFile />} />
+          </Route>
+          <Route path={'project'}> 
+            <Route index element={<Navigate to='/' />} />
+            <Route path=':projectId' element={<SharedProjectEditor />} />
           </Route>
         </Route>
       </Routes>
