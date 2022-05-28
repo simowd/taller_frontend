@@ -85,7 +85,8 @@ const strings = {
     repeated: 'El nuevo nombre no puede ser el antiguo nombre',
     create: 'Crear',
     existed: 'Contenido ya existe',
-    change_password: 'Cambiar contraseña'
+    change_password: 'Cambiar contraseña',
+    alphanumeric: 'Solo se pueden usar caractéres alfanuméricos'
   },
   editor: {
     title: 'Archivos',

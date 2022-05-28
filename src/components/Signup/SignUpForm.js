@@ -51,7 +51,7 @@ const SignUpForm = () => {
   const yup_sign_up = Yup.object({
     name: Yup.string().max(50, stringTranslate('forms.max_length', { length: 50 })),
     last_name: Yup.string().max(50, stringTranslate('forms.max_length', { length: 50 })),
-    username: Yup.string().max(50, stringTranslate('forms.max_length', { length: 50 })).required(stringTranslate('forms.required')),
+    username: Yup.string().max(50, stringTranslate('forms.max_length', { length: 50 })).required(stringTranslate('forms.required')).notOneOf([' '], stringTranslate('forms.alphanumeric')),
     email: Yup.string().email(stringTranslate('forms.email')).max(100, stringTranslate('forms.max_length', { length: 100 })).required(stringTranslate('forms.required')),
     password: Yup.string().max(255, stringTranslate('forms.max_length', { length: 255 })).required(stringTranslate('forms.required')),
     gender: Yup.mixed().required(stringTranslate('forms.required')),

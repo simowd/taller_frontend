@@ -86,6 +86,7 @@ const strings = {
     create: 'Create',
     existed: 'Resource name already exists',
     change_password: 'Change Password',
+    alphanumeric: 'Only alphanumeric characters can be used'
   },
   editor: {
     title: 'Files',
