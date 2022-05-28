@@ -34,7 +34,8 @@ const strings = {
     create_success: 'Created folder successfully',
     create_folder: 'Create new folder',
     folder_not_found: 'Folder does not have any content',
-    upload_file: 'Upload Folder'
+    upload_file: 'Upload Folder',
+    share: 'Share'
   },
   settings: {
     title: 'Settings',
@@ -98,6 +99,9 @@ const strings = {
     update_file_success: 'File updated successfully',
     delete_head: 'Delete File',
     delete_message: 'Are you sure you want to delete the file named {name}?',
+    share_head: 'Share File',
+    share_message: 'Copy the link to share it with people:\n',
+    copy: 'Copy link'
   },
   errors: {
     server_error: 'Server error, try again later.',

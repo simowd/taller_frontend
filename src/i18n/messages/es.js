@@ -34,7 +34,8 @@ const strings = {
     create_success: 'Carpeta creada exitosamente',
     create_folder: 'Crear una nueva carpeta',
     folder_not_found: 'Esta carpeta está vacía',
-    upload_file: 'Actualizar carpeta'
+    upload_file: 'Actualizar carpeta',
+    share: 'Compartir'
   },
   settings: {
     title: 'Configuración',
@@ -84,7 +85,7 @@ const strings = {
     repeated: 'El nuevo nombre no puede ser el antiguo nombre',
     create: 'Crear',
     existed: 'Contenido ya existe',
-    change_password: 'Cambiar contraseña',
+    change_password: 'Cambiar contraseña'
   },
   editor: {
     title: 'Archivos',
@@ -98,6 +99,9 @@ const strings = {
     update_file_success: 'Archivo actualizado exitosamente',
     delete_head: 'Eliminar Archivo',
     delete_message: '¿Está seguro de eliminar el archivo con nombre {name}?',
+    share_head: 'Compartir archivo',
+    share_message: 'Copia el link para compartir con otras personas: \n',
+    copy: 'Copiar'
   },
   errors: {
     server_error: 'Error del servidor, intente de nuevo más tarde.',
