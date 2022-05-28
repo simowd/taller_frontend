@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, HStack, Icon, IconButton, Link, Text, useColorModeValue, useDisclosure, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { RiEditLine, RiDownload2Line, RiDeleteBinLine, RiFolderWarningLine } from 'react-icons/ri';
+import { RiEditLine, RiDownload2Line, RiDeleteBinLine, RiFolderWarningLine, RiShareBoxLine } from 'react-icons/ri';
 import { stringTranslate } from '../../i18n';
 import { downloadProject } from '../../services/file_managment';
 import DeleteFileAlert from './DeleteFileAlert';
@@ -11,6 +11,7 @@ import { Link as RouteLink } from 'react-router-dom';
 import focusActionble from '../../sounds/focus_actionable.ogg';
 import viewEntered from '../../sounds/view_entered.ogg';
 import useAccesibleSound from '../../hooks/Sound';
+import ShareModal from './ShareModal';
 
 const ProjectCard = ({ project, projects }) => {
   const [loadingD, setLoadingD] = useState(false);
@@ -20,6 +21,7 @@ const ProjectCard = ({ project, projects }) => {
   const [playSoundEntered] = useAccesibleSound(viewEntered);
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
+  const { isOpen: isOpenS, onOpen: onOpenS, onClose: onCloseS } = useDisclosure();
 
   const onDownload = async () => {
     try {
@@ -70,14 +72,16 @@ const ProjectCard = ({ project, projects }) => {
     <Box background={useColorModeValue('white', '#282C34')} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between' boxShadow='md'>
       <DeleteFileAlert isOpen={isOpen} onClose={onClose} project={project} />
       <UpdateFileAlert isOpen={isOpenU} onClose={onCloseU} project={project} projects={projects} />
+      <ShareModal isOpen={isOpenS} onClose={onCloseS} folder={project}/>
       <HStack height={'15%'} pl={'0.5rem'} w={'100%'}>
-        <Link onFocus={() => playSound()} w='75%'as={RouteLink} to={`/e/${project.id_folder}`} onClick={() => playSoundEntered()}>
+        <Link onFocus={() => playSound()} w='70%'as={RouteLink} to={`/e/${project.id_folder}`} onClick={() => playSoundEntered()}>
           <Heading as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>
         </Link>
-        <Box>
+        <Box justifyContent={'flex-end'}>
           <IconButton onFocus={() => playSound()} icon={<RiEditLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.edit')} onClick={onOpenU} />
           <IconButton onFocus={() => playSound()} icon={<RiDownload2Line />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
           <IconButton onFocus={() => playSound()} icon={<RiDeleteBinLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.delete')} onClick={onOpen} />
+          {project.private ? null : <IconButton onFocus={() => playSound()} icon={<RiShareBoxLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.share')} onClick={onOpenS} />}
         </Box>
       </HStack>
       <VStack height={'85%'} spacing={'1.5rem'} pt={'0.5rem'} display='flex' alignItems={'flex-start'} alignContent={'flex-start'} justifyContent='flex-start'>
