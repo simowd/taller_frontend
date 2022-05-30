@@ -97,7 +97,7 @@ const CreateFileAlert = ({ isOpen, onClose, projectData, setProjectData }) => {
                     <Field type="checkbox" name={'private'}>
                       {({ field, form }) => (
                         <FormControl isInvalid={form.errors.private && form.touched.private}>
-                          <FormLabel htmlFor='private'>
+                          <FormLabel htmlFor='private' pt={'1rem'}>
                             {translate('home.private')}
                           </FormLabel>
                           <Switch onFocus={() => playSound()} {...field} id='private' size={'lg'} defaultChecked={true} />

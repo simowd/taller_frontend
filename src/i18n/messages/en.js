@@ -104,7 +104,8 @@ const strings = {
     delete_message: 'Are you sure you want to delete the file named {name}?',
     share_head: 'Share File',
     share_message: 'Copy the link to share it with people:\n',
-    copy: 'Copy link'
+    copy: 'Copy link',
+    run: 'Run code'
   },
   errors: {
     server_error: 'Server error, try again later.',
