@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { createUser } from '../../reducers/user_reducer';
 import { useDispatch } from 'react-redux';
 import { useToastHook } from '../../hooks/Toast';
-import { useNavigate } from 'react-router-dom';
+
 import CountrySelect from './CountrySelect';
 import LanguageSelect from './LanguageSelect';
 import GenderSelect from './GenderSelect';
@@ -17,7 +17,7 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
   // eslint-disable-next-line no-unused-vars
   const [state, newToast] = useToastHook();
-  const navigate = useNavigate();
+  
 
   const onSubmit = async (values, actions) => {
     const signUpValues = values;
@@ -30,7 +30,6 @@ const SignUpForm = () => {
         endpoint: 'signup'
       };
       newToast(success);
-      navigate('/signin');
     }
     catch (error) {
       //Setting up error data
@@ -53,7 +52,7 @@ const SignUpForm = () => {
     last_name: Yup.string().max(50, stringTranslate('forms.max_length', { length: 50 })),
     username: Yup.string().max(50, stringTranslate('forms.max_length', { length: 50 })).required(stringTranslate('forms.required')).notOneOf([' '], stringTranslate('forms.alphanumeric')),
     email: Yup.string().email(stringTranslate('forms.email')).max(100, stringTranslate('forms.max_length', { length: 100 })).required(stringTranslate('forms.required')),
-    password: Yup.string().max(255, stringTranslate('forms.max_length', { length: 255 })).required(stringTranslate('forms.required')),
+    password: Yup.string().max(255, stringTranslate('forms.max_length', { length: 255 })).required(stringTranslate('forms.required')).min(6, stringTranslate('forms.min_length', { length: 6 })),
     gender: Yup.mixed().required(stringTranslate('forms.required')),
     country: Yup.mixed().required(stringTranslate('forms.required')),
     language: Yup.mixed().required(stringTranslate('forms.required')),

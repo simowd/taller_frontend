@@ -77,6 +77,7 @@ const strings = {
   forms: {
     required: 'Campo obligatorio',
     max_length: 'Tiene que tener {length, number} caracteres o menos',
+    min_length: 'Tiene que tener {length, number} caracteres o más',
     email: 'Tiene que ser un correo electrónico',
     repeat_password: 'Las contraseñas tienen que coincidir',
     cancel: 'Cancelar',

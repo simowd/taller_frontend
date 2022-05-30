@@ -77,6 +77,7 @@ const strings = {
   forms: {
     required: 'Required',
     max_length: 'Must be {length, number} characters or less',
+    min_length: 'Must be {length, number} characters or more',
     email: 'Must be an email',
     repeat_password: 'Password must match',
     cancel: 'Cancel',

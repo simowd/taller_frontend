@@ -3,10 +3,13 @@ import { useState, useEffect } from 'react';
 import { createIntl, createIntlCache } from 'react-intl';
 import { LOCALES } from '../i18n';
 import language_messages from '../i18n/messages';
+import { useNavigate } from 'react-router-dom';
 
 export const useToastHook = () => {
   const [state, setState] = useState(undefined);
   const toast = useToast();
+
+  const navigate = useNavigate();
 
   let intl;
   const cache = createIntlCache();
@@ -101,6 +104,9 @@ export const useToastHook = () => {
         }
       }
       toast(info);
+      if (endpoint === 'signup' && info.status === 'success') {
+        navigate('/signin');
+      }
     }
   }, [state, toast]);
 
