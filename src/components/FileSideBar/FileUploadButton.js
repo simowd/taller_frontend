@@ -35,7 +35,7 @@ const FileUploadButton = ({ setProjectData, projectData }) => {
 
   return (
     <>
-      <input hidden type='file' id='file' name='file' onChange={changeHandler} ref={inputRef} accept={'text/x-python'} />
+      <input hidden type='file' id='file' name='file' onChange={changeHandler} ref={inputRef} accept={'text/x-python, .txt'} />
       <IconButton onFocus={() => playSound()} icon={<RiFileUploadLine />} fontSize={'20'} size={'sm'} onClick={onClick} variant={'ghost'} aria-label={stringTranslate('editor.upload')} />
     </>
   );

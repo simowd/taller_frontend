@@ -34,7 +34,7 @@ const strings = {
     create_success: 'Carpeta creada exitosamente',
     create_folder: 'Crear una nueva carpeta',
     folder_not_found: 'Esta carpeta está vacía',
-    upload_file: 'Actualizar carpeta',
+    upload_file: 'Subir carpeta',
     share: 'Compartir'
   },
   settings: {
