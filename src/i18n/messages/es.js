@@ -87,7 +87,8 @@ const strings = {
     create: 'Crear',
     existed: 'Contenido ya existe',
     change_password: 'Cambiar contraseña',
-    alphanumeric: 'Solo se pueden usar caractéres alfanuméricos'
+    alphanumeric: 'Solo se pueden usar caractéres alfanuméricos',
+    not_empty: 'El nombre no puede contener solo espacios en blanco',
   },
   editor: {
     title: 'Archivos',

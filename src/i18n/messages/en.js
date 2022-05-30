@@ -88,7 +88,7 @@ const strings = {
     existed: 'Resource name already exists',
     change_password: 'Change Password',
     alphanumeric: 'Only alphanumeric characters can be used',
-    run:'Run Code'
+    not_empty: 'The name can\' t be only spaces',
   },
   editor: {
     title: 'Files',

@@ -24,7 +24,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
 
   //Setting up yup schema
   const yup_update_folder = Yup.object({
-    folder_name: Yup.string().max(255, stringTranslate('forms.max_length', { length: 255 })).notOneOf(projects.map((folder) => folder.folder_name), stringTranslate('forms.existed')).required(stringTranslate('forms.required')),
+    folder_name: Yup.string().max(255, stringTranslate('forms.max_length', { length: 255 })).notOneOf(projects.map((folder) => folder.folder_name), stringTranslate('forms.existed')).required(stringTranslate('forms.required')).matches(/^(?!\s+$).*/, stringTranslate('forms.not_empty')),
     private: Yup.boolean().required(stringTranslate('forms.required')),
   });
 
