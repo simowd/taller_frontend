@@ -34,7 +34,7 @@ const strings = {
     create_success: 'Carpeta creada exitosamente',
     create_folder: 'Crear una nueva carpeta',
     folder_not_found: 'Esta carpeta está vacía',
-    upload_file: 'Actualizar carpeta',
+    upload_file: 'Subir carpeta',
     share: 'Compartir'
   },
   settings: {
@@ -77,6 +77,7 @@ const strings = {
   forms: {
     required: 'Campo obligatorio',
     max_length: 'Tiene que tener {length, number} caracteres o menos',
+    min_length: 'Tiene que tener {length, number} caracteres o más',
     email: 'Tiene que ser un correo electrónico',
     repeat_password: 'Las contraseñas tienen que coincidir',
     cancel: 'Cancelar',
@@ -86,7 +87,8 @@ const strings = {
     create: 'Crear',
     existed: 'Contenido ya existe',
     change_password: 'Cambiar contraseña',
-    alphanumeric: 'Solo se pueden usar caractéres alfanuméricos'
+    alphanumeric: 'Solo se pueden usar caractéres alfanuméricos',
+    not_empty: 'El nombre no puede contener solo espacios en blanco',
   },
   editor: {
     title: 'Archivos',
@@ -141,7 +143,7 @@ const strings = {
     system_exit_error: 'SystemExitError - Error de Salida del Sistema:\n {var_name} en la línea {line}',
     overflow_error: 'OverflowError - Error de Overflow:\n Valor numérico fuera del rango en la línea {line}',
     recursion_error: 'RecursionError - Error de Recursión:\n Se excedió el tamaño máximo de la pila de llamadas en la línea {line}',
-    syntax_error: 'SyntaxError - Error de Sintáxis:\n entrada mal planteada el la línea {line}',
+    syntax_error: 'SyntaxError - Error de Sintáxis:\n entrada mal planteada en la línea {line}',
     not_implemented_error: 'NotImplementedError - Error, aún no Implementado:\n {var_name} aún no fue implementado en el proyecto en la línea {line}',
   },
   help: {

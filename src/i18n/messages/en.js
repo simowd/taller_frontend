@@ -77,6 +77,7 @@ const strings = {
   forms: {
     required: 'Required',
     max_length: 'Must be {length, number} characters or less',
+    min_length: 'Must be {length, number} characters or more',
     email: 'Must be an email',
     repeat_password: 'Password must match',
     cancel: 'Cancel',
@@ -87,7 +88,7 @@ const strings = {
     existed: 'Resource name already exists',
     change_password: 'Change Password',
     alphanumeric: 'Only alphanumeric characters can be used',
-    run:'Run Code'
+    not_empty: 'The name can\' t be only spaces',
   },
   editor: {
     title: 'Files',
@@ -103,7 +104,8 @@ const strings = {
     delete_message: 'Are you sure you want to delete the file named {name}?',
     share_head: 'Share File',
     share_message: 'Copy the link to share it with people:\n',
-    copy: 'Copy link'
+    copy: 'Copy link',
+    run: 'Run code'
   },
   errors: {
     server_error: 'Server error, try again later.',

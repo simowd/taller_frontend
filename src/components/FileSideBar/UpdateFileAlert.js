@@ -101,13 +101,13 @@ const UpdateFileAlert = ({ isOpen, onClose, file, projectData, setProjectData })
 
                     <Field name={'file_name'}>
                       {({ field, form }) => (
-                        <InputField name={'file_name'} field={field} form={form} />
+                        <InputField name={'file_name'} field={field} form={form} pt={'1rem'}/>
                       )}
                     </Field>
                     <Field type="checkbox" name={'private'}>
                       {({ field, form }) => (
                         <FormControl isInvalid={form.errors.private && form.touched.private}>
-                          <FormLabel htmlFor='private'>
+                          <FormLabel htmlFor='private' pt={'1rem'}>
                             {translate('home.private')}
                           </FormLabel>
                           <Switch onFocus={() => playSound()} {...field} defaultChecked={field.value} id='private' size={'lg'}/>

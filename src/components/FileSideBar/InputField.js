@@ -10,7 +10,7 @@ const InputField = ({ form, field, name, required = false }) => {
 
   return (
     <FormControl isRequired={required} isInvalid={form.errors[name] && form.touched[name]}>
-      <FormLabel htmlFor={name}>
+      <FormLabel htmlFor={name} pt={'0.5rem'}>
         {translate(`editor.${name}`)}
       </FormLabel>
       <InputGroup>

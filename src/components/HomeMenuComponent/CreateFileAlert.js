@@ -24,7 +24,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
 
   //Setting up yup schema
   const yup_update_folder = Yup.object({
-    folder_name: Yup.string().max(255, stringTranslate('forms.max_length', { length: 255 })).notOneOf(projects.map((folder) => folder.folder_name), stringTranslate('forms.existed')).required(stringTranslate('forms.required')),
+    folder_name: Yup.string().max(255, stringTranslate('forms.max_length', { length: 255 })).notOneOf(projects.map((folder) => folder.folder_name), stringTranslate('forms.existed')).required(stringTranslate('forms.required')).matches(/^(?!\s+$).*/, stringTranslate('forms.not_empty')),
     private: Yup.boolean().required(stringTranslate('forms.required')),
   });
 
@@ -88,7 +88,7 @@ const CreateFileAlert = ({ isOpen, onClose, projects }) => {
                     <Field type="checkbox" name={'private'}>
                       {({ field, form }) => (
                         <FormControl isInvalid={form.errors.private && form.touched.private}>
-                          <FormLabel htmlFor='private'>
+                          <FormLabel htmlFor='private' pt={'1rem'}>
                             {translate('home.private')}
                           </FormLabel>
                           <Switch onFocus={() => playSound()} {...field} id='private' size={'lg'} defaultChecked={true}/>
