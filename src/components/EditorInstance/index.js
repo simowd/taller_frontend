@@ -3,6 +3,9 @@ import Editor, { loader } from '@monaco-editor/react';
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import useOptions from './editorOptions';
+import { createIntl, createIntlCache } from 'react-intl';
+import { LOCALES } from '../../i18n';
+import language_messages from '../../i18n/messages';
 
 const EditorInstance = ({ user, projectData, currentFile, socket, setCurrentCode }) => {
   const monacoRef = useRef(null);
@@ -10,6 +13,22 @@ const EditorInstance = ({ user, projectData, currentFile, socket, setCurrentCode
   const { editorOptions } = useOptions();
 
   const file = projectData.editorData.find(file => file.id_file === currentFile);
+
+  let intl;
+  const cache = createIntlCache();
+
+  if (user) {
+    intl = createIntl({
+      locale: user.locale,
+      messages: language_messages[user.locale]
+    }, cache);
+  }
+  else {
+    intl = createIntl({
+      locale: LOCALES.SPANISH,
+      messages: language_messages[LOCALES.SPANISH]
+    }, cache);
+  }
 
   //Send the data to Backend with Socket.IO
   const onEditorChange = (value) => {
@@ -51,6 +70,36 @@ const EditorInstance = ({ user, projectData, currentFile, socket, setCurrentCode
   const handleEditorDidMount = (editor, monaco) => {
     monacoRef.current = editor;
     monaco.editor.remeasureFonts();
+    editor.addAction({
+      id: 'jump_acc',
+      label: intl.formatMessage({ id: 'editor.fejump' }),
+      keybindings: [
+        monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyK
+      ],
+      precondition: null,
+      keybindContext: null,
+      run: (ed) => {
+        const pos = ed.getPosition();
+        const nextBlock = ed.getModel().findNextMatch('#B ', pos);
+        const Npos = {column: 4, lineNumber: nextBlock.range.startLineNumber};
+        ed.setPosition(Npos);
+      }
+    });
+    editor.addAction({
+      id: 'jump_acc_b',
+      label: intl.formatMessage({ id: 'editor.bejump' }),
+      keybindings: [
+        monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyJ
+      ],
+      precondition: null,
+      keybindContext: null,
+      run: (ed) => {
+        const pos = ed.getPosition();
+        const nextBlock = ed.getModel().findPreviousMatch('#B ', pos);
+        const Npos = {column: 1, lineNumber: nextBlock.range.startLineNumber};
+        ed.setPosition(Npos);
+      }
+    });
   };
 
   //Render the editor once the user has been loaded

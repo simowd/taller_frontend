@@ -105,7 +105,9 @@ const strings = {
     share_head: 'Compartir archivo',
     share_message: 'Copia el link para compartir con otras personas: \n',
     copy: 'Copiar',
-    run:'Ejecutar el código'
+    run:'Ejecutar el código',
+    fejump: 'Saltar al siguiente bloque de código',
+    bejump: 'Saltar al anterior bloque de código'
   },
   errors: {
     server_error: 'Error del servidor, intente de nuevo más tarde.',
