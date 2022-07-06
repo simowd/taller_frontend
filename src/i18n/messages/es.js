@@ -90,6 +90,14 @@ const strings = {
     alphanumeric: 'Solo se pueden usar caractéres alfanuméricos',
     not_empty: 'El nombre no puede contener solo espacios en blanco',
   },
+  tour: {
+    back: 'Atrás',
+    close: 'Cerrar',
+    last: 'Final',
+    next: 'Siguiente',
+    open: 'Abrir la ventana de dialogo',
+    skip: 'Saltar'
+  },
   editor: {
     title: 'Archivos',
     upload: 'Cargar un nuevo archivo',

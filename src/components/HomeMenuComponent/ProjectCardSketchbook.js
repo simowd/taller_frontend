@@ -63,12 +63,12 @@ const ProjectCardSketchbook = ({ project }) => {
   };
 
   return (
-    <Box background={useColorModeValue('white', '#282C34')} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between' boxShadow='md'>
+    <Box background={useColorModeValue('white', '#282C34')} borderRadius={'xl'} width={'100%'} height={'18rem'} py={'1rem'} alignContent='space-between' boxShadow='md' className='project_move'>
       <HStack height={'15%'} pl={'0.5rem'} w={'100%'}>
         <Link onFocus={() => playSound()} w='75%' as={RouteLink} onClick={() => playSoundEntered()} to={`/e/${project.id_folder}`}>
           <Heading w='75%' as='h1' fontWeight={'light'} size='md' noOfLines={1}>{project.folder_name}</Heading>
         </Link>
-        <Box>
+        <Box className='project_options'>
           <IconButton icon={<RiEditLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.edit')} isDisabled />
           <IconButton onFocus={() => playSound()} icon={<RiDownload2Line />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
           <IconButton icon={<RiDeleteBinLine />} size={'sm'} variant={'ghost'} aria-label={stringTranslate('home.delete')} isDisabled />

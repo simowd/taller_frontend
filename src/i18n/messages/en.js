@@ -109,6 +109,20 @@ const strings = {
     fejump: 'Jump to next block of code',
     bejump: 'Jump to previous block of code'
   },
+  tour: {
+    back: 'Back',
+    close: 'Close',
+    last: 'Last',
+    next: 'Next',
+    open: 'Open the dialog',
+    skip: 'Skip',
+    welcome: 'Welcome to this accessible Python Development Program. We will guide you through the different features that the system has.',
+    main: 'The system has the main page where all the projects are located. Here you can select all the projects you created. By default the Sketchbook is enabled.',
+    create_project: 'Click this button to create a new project. You can also upload a zip file to create and upload a project.',
+    project_expl: 'A project contains all the files for Python. The first three files are shown and can be accessed directly.',
+    project_opt: 'You can download, edit and delete the projects. All of the projects have the same exact format.',
+    side_bar: 'To navigate to other pages use the sidebar. The settings and user information can be updated on the links on the sidebar.',
+  },
   errors: {
     server_error: 'Server error, try again later.',
     email: 'The email provided is not valid',

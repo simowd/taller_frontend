@@ -21,7 +21,7 @@ const ProjectCardCreate = ({projects}) => {
   });
 
   return (
-    <Flex onFocus={() => playSound()} background={useColorModeValue('white', '#282C34')} borderRadius={'xl'} width={'100%'} height={'18rem'} alignContent='center' justifyContent={'center'} alignItems={'center'} boxShadow='md' onClick={onOpen} as={Button} aria-label={stringTranslate('home.create_folder')}>
+    <Flex onFocus={() => playSound()} background={useColorModeValue('white', '#282C34')} borderRadius={'xl'} width={'100%'} height={'18rem'} alignContent='center' justifyContent={'center'} alignItems={'center'} boxShadow='md' onClick={onOpen} as={Button} aria-label={stringTranslate('home.create_folder')} className={'create_project'}>
       <CreateFileAlert projects={projects} isOpen={isOpen} onClose={onClose}/>
       <Icon as={ RiFolderAddLine } w={32} h={32}/>
     </Flex>

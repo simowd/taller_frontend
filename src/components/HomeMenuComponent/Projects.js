@@ -29,7 +29,7 @@ const Projects = () => {
   };
 
   return (
-    <Flex alignItems={'center'} justifyContent={'center'} alignContent={'center'} flexDirection={'column'} paddingX={'3rem'} w={'100%'} h={'100%'}>
+    <Flex alignItems={'center'} justifyContent={'center'} alignContent={'center'} flexDirection={'column'} paddingX={'3rem'} w={'100%'} h={'100%'} className={'main_content_projects'}>
       <SkipNavContent />
       <Heading as='h1' size={'2xl'} py={'2.5rem'}> {stringTranslate('home.my_projects')} </ Heading>
       <SimpleGrid columns={{md: 2, lg: 3}} height={'100%'} width={'100%'} spacing={20} pb={'2rem'} justifyContent={'space-between'}>
