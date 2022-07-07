@@ -41,6 +41,7 @@ const ConsoleInstance = ({ user, output }) => {
     if (user && options) {
       return (
         <Editor
+          className='actual_console'
           options={editorOptions}
           defaultLanguage='plaintext'
           value={output}

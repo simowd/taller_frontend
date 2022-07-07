@@ -156,8 +156,8 @@ const Editor = () => {
             <SkipNavContent id={'skip-editor'}/>
             <EditorInstance user={user} projectData={projectData} currentFile={currentFile} setCurrentCode={setCurrentCode} setProjectData={setProjectData} socket={socket}/>
           </GridItem>
-          <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
-            <IconButton aria-label={stringTranslate('editor.run')} h='98%' w='80%' px={'2%'} py={'5%'} onFocus={() => playSound()} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
+          <GridItem display={'flex'} justifyContent='center' alignItems={'center'} className='editor_run_button'>
+            <IconButton aria-label={stringTranslate('editor.run')} h='98%' w='80%' px={'2%'} py={'5%'} onFocus={() => playSound()} onClick={execute} icon={<Icon as={FaPlay} />} ></IconButton>
           </GridItem>
           <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
             <ConsoleInstance user={user} output={output} />

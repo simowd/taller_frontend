@@ -108,6 +108,7 @@ const EditorInstance = ({ user, projectData, currentFile, socket, setCurrentCode
       if (file !== undefined && editorOptions !== undefined) {
         return (
           <Editor
+            className='actual_editor'
             options={editorOptions}
             onChange={onEditorChange}
             defaultLanguage={file.language}
