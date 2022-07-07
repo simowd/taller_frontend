@@ -126,7 +126,7 @@ const strings = {
     nav_editor: 'You can navigate to the other pages of the system from this navigation bar. Clicking on the first link will go to the projects page.',
     nav_create_button: 'These buttons enable you to create a file or upload an already existing file.',
     nav_file_expl: 'Here you can see all the files created by you. Clicking on them will bring the program to the editor. You can also edit them, download them individually or deleting it.',
-    editor_editor: 'This is the editor. Once you enter the editor. Press Ctrl + M to enable movement with the tab key. To create blocks of code create a comment with the structure "#B ".',
+    editor_editor: 'This is the editor. Once you enter the editor, press Ctrl + M to enable movement with the tab key. To create blocks of code create a comment with the structure "#B ".',
     editor_run: 'To run the program press this button. It will run the code written by you.',
     editor_console: 'This is the console. It will show the output of the code written by you. In case of an error it will show the appropiate error and the line that connects the error.',
     editor_end: 'This ends the tour. Have fun coding!',
