@@ -108,6 +108,7 @@ const strings = {
     nav_create_button: 'Estos botones permiten crear un archivo o subir un archivo ya existente al sistema.',
     nav_file_expl: 'Los archivos creados se encuentran después de los botones de creación de archivos. Al hacer click en uno le permitirá abrir el contenido del archivo en el editor. Los archivos se pueden descargar, editar o eliminar.',
     editor_editor: 'Este es el editor. Una vez que se ingresa al editor, presiona Control + M para permitir el movimiento con la tecla de tabulación. Para crear bloques de navegación se pueden crear comentarios con la estructura: "#B ".',
+    editor_run: 'Para ejecutar el programa presione este botón.',
     editor_console: 'Esta es la consola de salida. En la consola se mostrarán los resultados del código escrito, En el caso de algún error, se mostrará el error y la línea en la que se encuentra.',
     editor_end: 'Este es el fin del tour. ¡Diviertete programando!',
   },
