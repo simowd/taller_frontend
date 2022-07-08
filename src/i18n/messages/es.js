@@ -15,7 +15,8 @@ const strings = {
     files: 'Archivos',
     account: 'Mi cuenta',
     settings: 'Configuración',
-    logout: 'Cerrar Sesión'
+    logout: 'Cerrar Sesión',
+    help: 'Ayuda'
   },
   home: {
     edit: 'Editar las opciones de la carpeta',

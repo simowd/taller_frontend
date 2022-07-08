@@ -15,6 +15,7 @@ import Landing from './pages/Landing';
 import NoRequireAuth from './hooks/NoRequireAuth ';
 import SharedFile from './pages/SharedFile';
 import SharedProjectEditor from './pages/SharedProjectEditor';
+import Help from './pages/Help';
 
 function App() {
   //Setup react routes
@@ -33,6 +34,7 @@ function App() {
           <Route path='menu' element={<Navigate to='/s/home' />} />
           <Route path='logout' element={<LogoutContainer />} />
           <Route path='account' element={<User />} />
+          <Route path='help' element={<Help />}/>
           <Route path='*' element={<Navigate to='/s/home' />} />
         </Route>
         <Route path='/e' element={<RequireAuth> <EditorSideBar /></RequireAuth>}>
