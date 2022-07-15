@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper } from '@chakra-ui/react';
+import { FormControl, FormLabel, NumberInput, NumberInputField } from '@chakra-ui/react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { stringTranslate } from '../../i18n';
@@ -24,10 +24,6 @@ const SettingFontSize = ({ setting, name }) => {
       </FormLabel>
       <NumberInput onFocus={() => playSound()} onChange={onChange} id={name} defaultValue={setting} min={8} max={32}>
         <NumberInputField />
-        <NumberInputStepper>
-          <NumberIncrementStepper />
-          <NumberDecrementStepper />
-        </NumberInputStepper>
       </NumberInput>
     </FormControl>
   );
