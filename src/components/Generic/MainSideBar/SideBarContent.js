@@ -1,6 +1,6 @@
 import { VStack } from '@chakra-ui/react';
 import React from 'react';
-import { RiAccountCircleLine, RiHome6Line, RiSettingsLine } from 'react-icons/ri';
+import { RiAccountCircleLine, RiHome6Line, RiSettingsLine, RiInformationLine } from 'react-icons/ri';
 import IconLink from './IconLink';
 
 const SideBarContent = () => {
@@ -9,6 +9,7 @@ const SideBarContent = () => {
       <IconLink icon={RiHome6Line} name={'home'}/>
       <IconLink icon={RiAccountCircleLine} name={'account'}/>
       <IconLink icon={RiSettingsLine} name={'settings'}/>
+      <IconLink icon={RiInformationLine} name={'help'}/>
     </VStack>
   );
 };

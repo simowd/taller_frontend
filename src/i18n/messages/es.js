@@ -15,7 +15,8 @@ const strings = {
     files: 'Archivos',
     account: 'Mi cuenta',
     settings: 'Configuración',
-    logout: 'Cerrar Sesión'
+    logout: 'Cerrar Sesión',
+    help: 'Ayuda'
   },
   home: {
     edit: 'Editar las opciones de la carpeta',
@@ -90,6 +91,28 @@ const strings = {
     alphanumeric: 'Solo se pueden usar caractéres alfanuméricos',
     not_empty: 'El nombre no puede contener solo espacios en blanco',
   },
+  tour: {
+    back: 'Atrás',
+    close: 'Cerrar',
+    last: 'Final',
+    next: 'Siguiente',
+    open: 'Abrir la ventana de dialogo',
+    skip: 'Saltar',
+    welcome: 'Bienvenido al sistema de desarrollo Python accesible. Esta es una pequeña guía de todas las funcionalidades con las que cuenta el sistema.',
+    main: 'El sistema tiene una página principal en la que se encuentran todos tus proyectos. Aquí se pueden seleccionar y accesar los proyectos. Por defecto el proyecto Sketchbook existe.',
+    create_project: 'Haz click en este botón para crear un nuevo proyecto. También se puede subir un archivo .zip para crear y subir el proyecto al sistema.',
+    project_expl: 'Un proyecto contiene todos los archivos Python.',
+    project_opt: 'Puedes descargar los proyectos, editarlos o eliminarlos. Todos los proyectos y archivos tienen el mismo formato.',
+    side_bar: 'Para navegar a las otras páginas se puede usar la barra de navegación. Las opciones del editor y la información del usuario pueden ser editadas en estas páginas.',
+    welcome_editor: 'Este es la página del editor. Aquí se pueden crear, editar y ejecutar software que es escrito en el editor de texto en el lenguaje de programación Python. Empecemos con un pequeño tour del sistema.',
+    nav_editor: 'Puedes navegar a las pantallas anteriores por medio de la barra de navegación. Al hacer click en el primer link le permitirá ir a la pantalla principal del sistema.',
+    nav_create_button: 'Estos botones permiten crear un archivo o subir un archivo ya existente al sistema.',
+    nav_file_expl: 'Los archivos creados se encuentran después de los botones de creación de archivos. Al hacer click en uno le permitirá abrir el contenido del archivo en el editor. Los archivos se pueden descargar, editar o eliminar.',
+    editor_editor: 'Este es el editor. Una vez que se ingresa al editor, presiona Control + M para permitir el movimiento con la tecla de tabulación. Para crear bloques de navegación se pueden crear comentarios con la estructura: "#B ".',
+    editor_run: 'Para ejecutar el programa presione este botón.',
+    editor_console: 'Esta es la consola de salida. En la consola se mostrarán los resultados del código escrito, En el caso de algún error, se mostrará el error y la línea en la que se encuentra.',
+    editor_end: 'Este es el fin del tour. ¡Diviertete programando!',
+  },
   editor: {
     title: 'Archivos',
     upload: 'Cargar un nuevo archivo',
@@ -105,7 +128,9 @@ const strings = {
     share_head: 'Compartir archivo',
     share_message: 'Copia el link para compartir con otras personas: \n',
     copy: 'Copiar',
-    run:'Ejecutar el código'
+    run:'Ejecutar el código',
+    fejump: 'Saltar al siguiente bloque de código',
+    bejump: 'Saltar al anterior bloque de código'
   },
   errors: {
     server_error: 'Error del servidor, intente de nuevo más tarde.',
@@ -154,7 +179,28 @@ const strings = {
     run_code: 'Ejecutar el código',
     new_file: 'Crear un nuevo archivo',
     new_project: 'Crear un nuevo proyecto',
-    save_file: 'Guardar archivo'
+    save_file: 'Guardar archivo',
+    help_title: 'Ayuda del sistema',
+    help_intro: 'Introducción',
+    help_intro_desc: 'En esta página se presentará la descripción de todos los aspectos funcionales del sistema.',
+    help_projects: 'Pantalla de Proyectos',
+    help_projects_desc: 'En la Página de Inicio se encuentran los proyectos creados y gestionados por el usuario. La primera opción en esta pantalla es la de creación del proyecto.\n Luego, se encuentran todos los proyectos creados por el usuario de manera secuencial en el orden de creación de los proyectos.',
+    help_project_create: 'Creación de Proyectos',
+    help_project_create_desc: 'Dentro del modal de creación del proyecto existen dos opciones:\n\t- Subir Carpeta: Permite subir un archivo zip con archivos Python para poder ser accesados y ejecutados dentro del sistema.\n\t- Crear Carpeta Vacía: Para crear una carpeta vacía se pide un nombre y el estado de privacidad para el proyecto.',
+    help_project_state: 'Lista de Proyectos',
+    help_project_state_desc: 'Cada proyecto muestra los primeros tres archivos dentro de un proyecto. Adenás, se cuentan con las siguientes opciones:\n\t- Edición de proyecto: Dentro de la edición del proyecto se observan las mismas opciones que con la creación de proyectos.\n\t- Descargar el proyecto: Permite descargar un archivo zip con todos los archivos del proyecto.\n\t- Eliminar proyecto: Elimina el proyecto permanentemente del sistema.\n\t- Compartir proyecto: Si el proyecto no es privado, el sistema provee la opción de compartir el proyecto por medio de un link generado por el sistema.',
+    help_account: 'Pantalla de datos personales',
+    help_account_desc: 'Dentro de la página de mi cuenta se pueden editar los datos personales del usuario. En esta pantalla también se puede cambiar el idioma del sistema.',
+    help_settings: 'Pantalla de configuración.',
+    help_settings_desc: 'En la pantalla de configuración existen seis opciones muy importantes:\n\t- Modo oscuro: Permite cambiar todo el sistema al modo oscuro.\n\t- Retroalimentación por audio: Activa la retroalimentación por audio de la misma manera que Google Talkback.\n\t- Activar animaciones: Activa las animaciones dentro del sistema.\n\t- Editor de alto contraste: Pone al editor de texto en el modo de alto contraste para mejor lectura.\n\t- Tamaño de letra: Cambia el tamaño de letra que tiene el editor.\n\t- Tipo de letra: Cambia el tipo de letra que tiene el editor.',
+    help_editor_title: 'Editor',
+    help_editor_desc: 'En la siguiente subsección se presentará la descripción de ayuda para la pantalla del editor.',
+    help_editor_creation_files: 'Creación de Archivos',
+    help_editor_creation_files_desc: 'Existen dos botónes importantes\n\t- Crear archivo: Permite crear un nuevo archivo en la carpeta abierta. Tiene las mismas opciones que en la creación de un carpeta.\n\t- Subir archivo: Permite subir un archivo Python o un archivo de texto al sistema. Solo se debe seleccionar el archivo y el sistema automáticamente subirá el archivo.',
+    help_editor_files: 'Archivos',
+    help_editor_files_desc: 'En la sección de archivos, se listan todos los programas creados por Python. Cada archivo tiene las mismas opciones que con los proyectos en la página principal.',
+    help_editor_code: 'Editor',
+    help_editor_code_desc: 'En el editor existen muchas opciones. A continuación se mostrarán las funciones más importantes del mismo.\n\t- Tab Lock: Para evitar estar permanentemente bloqueado en el editor de texto, se puede presionar CTRL + M para desbloquear el uso de botón de tabulación.\n\t- Tabulación automática: Después crear un bloque de código (condicional, ciclo o función) la tabulación que prosigue es automática.\n\tEjecución: Para la ejecución de código se puede usar el atajo de teclado F4.\n\t- Funciones de accesibilidad: Para accesar a estas funciones presione ALT + F1 y se le presentará un menú con la explicación de ciertas funcionalidades propias del Editor Monaco'
   }
 };
 

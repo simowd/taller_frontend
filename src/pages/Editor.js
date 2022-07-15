@@ -153,14 +153,14 @@ const Editor = () => {
           <GridItem display={'flex'} alignItems='center' height={'100%'} overflowY={'auto'} overflowX='hidden'>
             <FileSideBar projectData={projectData} setProjectData={setProjectData} setCurrentFile={setCurrentFile} currentCode={currentCode}/>
           </GridItem>
-          <GridItem display={'flex'}>
+          <GridItem display={'flex'} aria-label='Editor'>
             <SkipNavContent id={'skip-editor'}/>
             <EditorInstance user={user} projectData={projectData} currentFile={currentFile} setCurrentCode={setCurrentCode} setProjectData={setProjectData} socket={socket}/>
           </GridItem>
-          <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
-            <IconButton aria-label={stringTranslate('editor.run')} h='98%' w='80%' px={'2%'} py={'5%'} onFocus={() => playSound()} onClick={execute} icon={<Icon as={FaPlay} />}></IconButton>
+          <GridItem display={'flex'} justifyContent='center' alignItems={'center'} className='editor_run_button'>
+            <IconButton aria-label={stringTranslate('editor.run')} h='98%' w='80%' px={'2%'} py={'5%'} onFocus={() => playSound()} onClick={execute} icon={<Icon as={FaPlay} />} ></IconButton>
           </GridItem>
-          <GridItem display={'flex'} justifyContent='center' alignItems={'center'}>
+          <GridItem display={'flex'} justifyContent='center' alignItems={'center'} aria-label='Terminal'>
             <ConsoleInstance user={user} output={output} />
           </GridItem>
         </Grid>

@@ -49,12 +49,12 @@ const FileSideBar = ({ projectData, setProjectData, setCurrentFile, currentCode 
       <HStack width={'100%'} p={'1rem'}>
         <SkipNavContent />
         <Heading w={'75%'} as='h3' fontWeight={'medium'} size='md'>{stringTranslate('editor.title')}</Heading>
-        <HStack>
+        <HStack className='file_creation_editor'>
           <FileUploadButton setProjectData={setProjectData} projectData={projectData}/>
           <IconButton onFocus={() => playSound()} icon={<RiFileAddLine />} fontSize={'20'} size={'sm'} onClick={onOpen} variant={'ghost'} aria-label={stringTranslate('editor.new_file')} />
         </HStack>
       </HStack>
-      <VStack height={'100%'} width={'100%'} >
+      <VStack height={'100%'} width={'100%'} className='files_editor'>
         {fileBuilder()}
       </VStack>
     </VStack>
