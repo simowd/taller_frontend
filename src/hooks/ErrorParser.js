@@ -92,7 +92,7 @@ const useErrorHandler = () => {
       break;
     }
     case 'KeyError': {
-      const regex = res.match(/^KeyError: ([a-zA-Z]*) on line [0-9]+$/i);
+      const regex = res.match(/^KeyError: ([a-zA-Z]*) on line ([0-9]*)$/i);
 
       const varName = regex[1];
       const varNum = regex[2];

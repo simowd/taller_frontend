@@ -130,7 +130,10 @@ const strings = {
     copy: 'Copiar',
     run:'Ejecutar el código',
     fejump: 'Saltar al siguiente bloque de código',
-    bejump: 'Saltar al anterior bloque de código'
+    bejump: 'Saltar al anterior bloque de código',
+    edit: 'Editar las opciones del archivo',
+    download: 'Descargar archivo',
+    delete: 'Eliminar archivo',
   },
   errors: {
     server_error: 'Error del servidor, intente de nuevo más tarde.',

@@ -108,7 +108,10 @@ const strings = {
     copy: 'Copy link',
     run: 'Run code',
     fejump: 'Jump to next block of code',
-    bejump: 'Jump to previous block of code'
+    bejump: 'Jump to previous block of code',
+    edit: 'Edit file options',
+    download: 'Download file',
+    delete: 'Delete file',
   },
   tour: {
     back: 'Back',

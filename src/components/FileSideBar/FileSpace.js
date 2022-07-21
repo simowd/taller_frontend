@@ -57,9 +57,9 @@ const FileSpace = ({ file, projectData, setProjectData, setCurrentFile, currentC
           </HStack>
         </Flex>
         <HStack align={'center'} spacing={0}>
-          <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiEditLine />} size={'md'} variant={'link'} aria-label={stringTranslate('home.edit')} onClick={onOpenU} />
-          <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiDownload2Line />} size={'md'} variant={'link'} aria-label={stringTranslate('home.download')} onClick={onDownload} isLoading={loadingD} />
-          <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiDeleteBinLine />} size={'md'} variant={'link'} aria-label={stringTranslate('home.delete')} onClick={onOpen} />
+          <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiEditLine />} size={'md'} variant={'link'} aria-label={stringTranslate('editor.edit')} onClick={onOpenU} />
+          <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiDownload2Line />} size={'md'} variant={'link'} aria-label={stringTranslate('editor.download')} onClick={onDownload} isLoading={loadingD} />
+          <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiDeleteBinLine />} size={'md'} variant={'link'} aria-label={stringTranslate('editor.delete')} onClick={onOpen} />
           {file.private ? null : <IconButton onFocus={() => playSound()} color={useColorModeValue('white', 'black')} icon={<RiShareBoxLine />} size={'md'} variant={'link'} aria-label={stringTranslate('home.share')} onClick={onOpenS} />}
         </HStack>
       </HStack>
